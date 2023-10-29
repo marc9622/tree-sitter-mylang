@@ -1,0 +1,5372 @@
+[
+  {
+    "type": "addsub_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_operand",
+          "named": true
+        },
+        {
+          "type": "addsub_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "addsub_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_operand",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "addsub_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "alias_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "and_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "and_operand",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "and_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "comp_operand",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "arr_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "as_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assign_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assign_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "assign_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "assign_operator",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "att_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "base_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_branches",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "capture_block",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "alias_decl",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "defer_stmt",
+          "named": true
+        },
+        {
+          "type": "enum_decl",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "impl_decl",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "member_func_call",
+          "named": true
+        },
+        {
+          "type": "newtype_decl",
+          "named": true
+        },
+        {
+          "type": "struct_decl",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "trait_decl",
+          "named": true
+        },
+        {
+          "type": "union_decl",
+          "named": true
+        },
+        {
+          "type": "value_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bool_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "break_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "builtin",
+    "named": true,
+    "fields": {
+      "void": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "void",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "capture_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cast_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "cast_operand",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cast_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comp_operand",
+          "named": true
+        },
+        {
+          "type": "comp_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_operand",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "construct_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "struct_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "control_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "break_stmt",
+          "named": true
+        },
+        {
+          "type": "return_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "copy_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "defer_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "func_call",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "empty_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_block_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_branches",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "alias_decl",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "enum_decl",
+          "named": true
+        },
+        {
+          "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "impl_decl",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "newtype_decl",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "struct_decl",
+          "named": true
+        },
+        {
+          "type": "trait_decl",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "union_decl",
+          "named": true
+        },
+        {
+          "type": "value_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_line_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "line_branches",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_call",
+    "named": true,
+    "fields": {
+      "func_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "value_id",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_decl",
+    "named": true,
+    "fields": {
+      "decl_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "value_id",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "capture_block",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "func_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_cond_block_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "block_branches",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_cond_line_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "line_branches",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "impl_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "alias_decl",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "enum_decl",
+          "named": true
+        },
+        {
+          "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "impl_decl",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "newtype_decl",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "struct_decl",
+          "named": true
+        },
+        {
+          "type": "trait_decl",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "union_decl",
+          "named": true
+        },
+        {
+          "type": "value_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "import_namespace",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "with_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_namespace",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "import_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "int_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "is_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "is_operand",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "is_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lambda_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "capture_block",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "line_branches",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "member_func_call",
+          "named": true
+        },
+        {
+          "type": "member_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_func_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "member_operand",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "member_operand",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "move_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "muldiv_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "muldiv_operand",
+          "named": true
+        },
+        {
+          "type": "muldiv_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "muldiv_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "negate_operand",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "muldiv_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "namespace",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespace_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "namespace_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespaced_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "namespace_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespaced_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace_path",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negate_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "negate_operand",
+          "named": true
+        },
+        {
+          "type": "negate_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negate_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "base_operand",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negate_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "newtype_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "or_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "or_operand",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "or_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "and_operand",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "panic_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "str_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "param_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "param_type_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "param_value_decl",
+    "named": true,
+    "fields": {
+      "decl_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "value_id",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paren_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "paren_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "range_operand",
+          "named": true
+        },
+        {
+          "type": "range_operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range_operand",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ref_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "return_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sizeof_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "alias_decl",
+          "named": true
+        },
+        {
+          "type": "enum_decl",
+          "named": true
+        },
+        {
+          "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "impl_decl",
+          "named": true
+        },
+        {
+          "type": "import_stmt",
+          "named": true
+        },
+        {
+          "type": "newtype_decl",
+          "named": true
+        },
+        {
+          "type": "struct_decl",
+          "named": true
+        },
+        {
+          "type": "trait_decl",
+          "named": true
+        },
+        {
+          "type": "union_decl",
+          "named": true
+        },
+        {
+          "type": "value_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "static_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "str_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "struct_decl",
+    "named": true,
+    "fields": {
+      "exposed": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "exposed",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        },
+        {
+          "type": "with_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_branch",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "copy_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "if_cond_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_cond_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_expr",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "block_expr",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "cast_expr",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "member_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_expr",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "switch_branch",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trait_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "impl_decl",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "union_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "func_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "value_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assign_decl",
+          "named": true
+        },
+        {
+          "type": "block_decl",
+          "named": true
+        },
+        {
+          "type": "decl_keyword",
+          "named": true
+        },
+        {
+          "type": "empty_decl",
+          "named": true
+        },
+        {
+          "type": "func_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "with_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "import_body",
+          "named": true
+        },
+        {
+          "type": "import_namespace",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "*=",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "+=",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "-=",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "..<",
+    "named": false
+  },
+  {
+    "type": "..=",
+    "named": false
+  },
+  {
+    "type": "..>",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "/=",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<..",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "<>",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "=..",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">..",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "?",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "^",
+    "named": false
+  },
+  {
+    "type": "alias",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "as",
+    "named": false
+  },
+  {
+    "type": "at",
+    "named": false
+  },
+  {
+    "type": "block_comment",
+    "named": true
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "continue",
+    "named": false
+  },
+  {
+    "type": "copy",
+    "named": false
+  },
+  {
+    "type": "dec_literal",
+    "named": true
+  },
+  {
+    "type": "def",
+    "named": false
+  },
+  {
+    "type": "defer",
+    "named": false
+  },
+  {
+    "type": "do",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "enum",
+    "named": false
+  },
+  {
+    "type": "exposed",
+    "named": false
+  },
+  {
+    "type": "extern",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "for",
+    "named": false
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "impl",
+    "named": false
+  },
+  {
+    "type": "import",
+    "named": false
+  },
+  {
+    "type": "in",
+    "named": false
+  },
+  {
+    "type": "is",
+    "named": false
+  },
+  {
+    "type": "line_comment",
+    "named": true
+  },
+  {
+    "type": "macro",
+    "named": false
+  },
+  {
+    "type": "move",
+    "named": false
+  },
+  {
+    "type": "newtype",
+    "named": false
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "null",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "panic",
+    "named": false
+  },
+  {
+    "type": "pub",
+    "named": false
+  },
+  {
+    "type": "pure",
+    "named": false
+  },
+  {
+    "type": "range",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "sizeof",
+    "named": false
+  },
+  {
+    "type": "static",
+    "named": false
+  },
+  {
+    "type": "struct",
+    "named": false
+  },
+  {
+    "type": "switch",
+    "named": false
+  },
+  {
+    "type": "trait",
+    "named": false
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "type_id",
+    "named": true
+  },
+  {
+    "type": "uninit",
+    "named": false
+  },
+  {
+    "type": "union",
+    "named": false
+  },
+  {
+    "type": "value_id",
+    "named": true
+  },
+  {
+    "type": "var",
+    "named": false
+  },
+  {
+    "type": "virt",
+    "named": false
+  },
+  {
+    "type": "void",
+    "named": false
+  },
+  {
+    "type": "with",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]
