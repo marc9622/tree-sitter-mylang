@@ -77,7 +77,7 @@ void: ["(" ")"]
 "struct"
 "union"
 "enum"
-"exposed"
+;"exposed"
 "trait"
 "impl"
 "for"
