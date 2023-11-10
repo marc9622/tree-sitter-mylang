@@ -127,22 +127,24 @@ def value = 3.1415F;
 
 def value = "Hello";
 
-def value =           thing;
-def value =     utils.thing;
-def value = lib.utils.thing;
+def value =     c;
+def value =   b.c;
+def value = a.b.c;
+def value = copy a.b.c;
 
-def value =               thing();
-def value =       utils().thing();
-def value = lib().utils().thing();
-def value = lib(1).utils(2).thing(3);
+def value =           c();
+def value =      b() .c();
+def value = a() .b() .c();
+def value = a(1).b(2).c(3);
+def value = copy a(1).b(2).c(3);
 
 def value =           Thing;
 def value =     Utils.Thing;
 def value = Lib.Utils.Thing;
 def value = Lib(1, a).Utils(2, b).Thing(3, b);
 
-def value = aaa.aaa.aaa().aaa(aaa).aaa.aaa().aaa().aaa;
-def value = ((((thing).aaa).aaa()).aaa);
+def value = a.a.a().a(a).a.a().a().a;
+def value = ((((a).a).a()).a);
 
 def value: Lib      .Utils      .Thing       = uninit;
 def value: Lib(1, a).Utils(2, b).Thing(3, c) = uninit;
@@ -151,6 +153,38 @@ def value = true +  10 - "Hello"  * thing /  thing() % Thing().thing;
 def value = true + (10 - "Hello") * thing / (thing() % Thing().thing);
 
 def value = true and 10 or ("Hello" and (thing or thing())) and Thing().thing;
+def value = copy thing or copy thing() and copy Thing().thing;
+
+def value = true   ::Bool;
+def value = 10     ::Int;
+def value = "Hello"::Str;
+def value = thing  ::Thing();
+def value = thing()::Thing();
+def value = this.that::Thing();
+def value = copy thing::Thing();
+
+def value = thing::Thing.field;
+def value = thing::Thing.func();
+def value = copy thing::Thing.func();
+
+def value = this::This + that::That;
+def value = this::This.func(that::That);
+def value = copy this::This.func(that::That);
+
+def value = (this.that as Thing).func();
+def value = func(this.that as Thing);
+
+def value = Thing.{};
+def value = Thing.{uninit, true, 10, "Hello", thing, thing(), Thing()};
+def value = Thing.{field = uninit};
+
+def value =     Thing(      ).{};
+def value =     Thing(uninit).{};
+def value = Lib.Thing(      ).{};
+
+def value = &value;
+def value = value^;
+def value = copy &value;
 
 def if_expr {
     if true do print(a);
@@ -168,6 +202,7 @@ def if_expr {
     if true do { break a };
     if true do a else do { break b };
 
+    /*
     switch {
         a == 1 do a;
         a == 2 { break b }
@@ -182,6 +217,12 @@ def if_expr {
             return;
         }
     }
+
+    switch maybe is {
+        Just.{inner} and true do a;
+        else do uninit;
+    }
+    */
 }
 
 def for_expr {
@@ -221,61 +262,46 @@ def range = 0<..5;
 def range = 5=..0;
 def range = 5<..0;
 
-def value = true   ::Bool;
-def value = 10     ::Int;
-def value = "Hello"::Str;
-def value = thing  ::Thing;
-def value = thing()::Thing();
-
-def value = thing::Thing.field;
-def value = thing::Thing.func();
-
-def value = this::This + that::That;
-def value = this::This.func(that::That);
-
-def value = (thing as Thing).func();
-def value = func(thing as Thing);
-
-def value = Thing.{};
-def value = Thing.{uninit, true, 10, "Hello", thing, thing(), Thing()};
-def value = Thing.{field = uninit};
-
-def value =     Thing(      ).{};
-def value =     Thing(uninit).{};
-def value = Lib.Thing(      ).{};
-
-def value = &value;
-def value = value^;
-
 alias Vector          = Lib.Vector;
 alias Vector(T: Type) = Lib.Vector(T);
 alias Vector(n: UInt) = Lib.Vector(n);
+newtype IntVector     = Lib.Vector(Int);
 
 struct DynArr {
     size: UInt,
     cap: UInt,
     arr: &[]Int,
 }
-struct DynList(alloc: A: *Alloc, L: List(T: Type)) {
+struct DynList(alloc: A: *Alloc, L: List(T: Any)) {
     list: &L,
-}
-struct DynVec(T: Type) {
-    len: UInt,
-    vec: Vector(_, Float) exposed with vec.at,
-}
-
-struct Exposed(exposed: Exposed) {
-    exposed: Exposed exposed,
-    exposed: Exposed exposed with exposed,
 }
 
 struct Just(T: Type) { value: T }
 struct Nothing {}
+struct Nothing;
+union Never {}
+union Never;
+
 union Maybe(T: Type) {
     Just(T),
     Nothing,
 }
 
+struct LinkedList(T: Any) as LL {
+    next: &LL,
+}
+
+union LinkedList(T: Any) as LL {
+    &LL,
+}
+
+union Union {
+    struct Struct {},
+    union Union {
+        struct A {},
+        struct B {},
+    },
+}
 struct Struct {
     field: struct Struct {},
     field: union Union {
@@ -284,22 +310,16 @@ struct Struct {
     },
 }
 
-enum Character: Person {
-    A = alice
-    B = Person.of("Bob")
-    C {
-        break Person.of("Charlie")
-    }
-}
+struct Struct as S {}
 
-for Person   def new (name: *String, age: *UInt)  -> Person       do Person {copy name, copy age};
-for Person   def twin(name: *String, to: *Person) -> Person { return Person {copy name, copy to.age} }
+for Person   def new (name: *String, age: *UInt)  -> Person       do Person.{copy name, copy age};
+for Person   def twin(name: *String, to: *Person) -> Person { return Person.{copy name, copy to.age} }
 for Person { def clone(person: *Person) -> Person       do copy person; }
 for Person { def clone(person: *Person) -> Person { return copy person } }
 
-for person: Person   def forget() -> Void do _ = person;
-for person: Person { def forget() -> Void do _ = person; }
-for person: Person { def forget() -> Void {  _ = person } }
+for person: Person   def forget() -> Void do return;
+for person: Person { def forget() -> Void do return; }
+for person: Person { def forget() -> Void {  return } }
 
 for person: *Person   def greet() -> Void do print(person.name);
 for person: *Person { def greet() -> Void do print(person.name); }
@@ -309,26 +329,26 @@ for person: &Person   def rename(name: *String) -> Void do &person.name = copy n
 for person: &Person { def rename(name: *String) -> Void do &person.name = copy name; }
 for person: &Person { def rename(name: *String) -> Void {  &person.name = copy name } }
 
-for DynList(alloc: A: Allocator, L: List(T: Type)) {
-    def new() -> DynList(a, L) {
-        return DynList(a, L) {alloc.alloc(L.new_empty()}
+for DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
+    def new() -> D {
+        return D.{alloc.alloc(L.new_empty()}
     }
 }
 
-for self: DynList(alloc: A: Allocator, L: List(T: Type)) {
+for self: DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
     def delete() -> Void {
         alloc.dealloc(&self.list)
         _ = self
     }
 }
 
-for self: *DynList(alloc: A: Allocator, L: List(T: Type)) {
+for self: *DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
     def get(index: UInt) -> T {
         return self.get(index)
     }
 }
 
-for self: &DynList(alloc: A: Allocator, L: List(T: Type)) {
+for self: &DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
     def resize(capacity: UInt) -> Void {
         &self.list = alloc.realloc(self.list, capacity * sizeof T)
     }
