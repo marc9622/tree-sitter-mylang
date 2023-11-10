@@ -137,6 +137,11 @@ module.exports = grammar({
             t.paren_type,
         ),
 
+        _param_type_or_id: t => choice(
+            t.type_id,
+            t.param_type,
+        ),
+
         _type_not_func: t => choice(
             t.type_id,
             t.namespaced_type,
@@ -934,13 +939,17 @@ module.exports = grammar({
         ),
 
         alias_decl: t => seq(
-            opt('pub'), 'alias', choice(t.type_id, t.param_type),
+            opt('pub'), 'alias', t._param_type_or_id,
             '=', t._type, ';',
         ),
 
         newtype_decl: t => seq(
-            opt('pub'), 'newtype', choice(t.type_id, t.param_type),
+            opt('pub'), 'newtype', t._param_type_or_id,
             '=', t._type, ';',
+        ),
+
+        local_alias: t => seq(
+            'as', t._param_type_or_id
         ),
 
         struct_inner_decl: t => choice(
@@ -954,7 +963,8 @@ module.exports = grammar({
 
         struct_decl: t => seq(
             opt('pub'), 'struct',
-            choice(t.type_id, t.param_type),
+            t._param_type_or_id,
+            opt(t.local_alias),
             '{',
             repeat(choice(
                 seq(
@@ -969,7 +979,9 @@ module.exports = grammar({
         ),
 
         union_decl: t => seq(
-            opt('pub'), 'union', choice(t.type_id, t.param_type),
+            opt('pub'), 'union',
+            t._param_type_or_id,
+            opt(t.local_alias),
             '{',
             opt(
                 separate(
@@ -982,7 +994,7 @@ module.exports = grammar({
 
         enum_decl: t => seq(
             opt('pub'), 'enum', t.type_id,
-            ':', choice(t.type_id, t.param_type),
+            ':', t._param_type_or_id,
             '{',
             repeat(choice(
                 seq(t.type_id, '=', t._expr, ','),
@@ -993,8 +1005,8 @@ module.exports = grammar({
 
         trait_decl: t => seq(
             opt('pub'), 'trait',
-            opt(choice(t.type_id, t.param_type), ':'),
-            choice(t.type_id, t.param_type),
+            opt(t._param_type_or_id, ':'),
+            t._param_type_or_id,
             opt('for', choice(t.type_id, t.param_type, t._param_decl)),
             choice(
                 seq(
@@ -1011,6 +1023,7 @@ module.exports = grammar({
 
         for_decl: t => seq(
             'for', t._for_param,
+            opt(t.local_alias),
             opt(opt('pub'), 'impl', t._impl_list),
             choice(
                 //t.value_decl,
@@ -1029,6 +1042,7 @@ module.exports = grammar({
         impl_decl: t => seq(
             opt('pub'), 'impl', t._impl_list,
             opt('for', t._for_param),
+            opt(t.local_alias),
             choice(
                 //t.value_decl,
                 t._decl_list,
