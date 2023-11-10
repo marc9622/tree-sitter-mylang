@@ -26,7 +26,7 @@ module.exports = grammar({
         
         // In the case of 'id . id .' we could either be accessing
         // a namespace_path or a member.
-        //[t.namespace_path, t.dot_expr],
+        //[t.namespace_path, t.member_expr],
 
         // In the case of '& id . id .' we could either be accessing
         // a namespaced type or a member.
@@ -248,10 +248,14 @@ module.exports = grammar({
             '(', t._type, ')',
         ),
 
+        capture_modifier: _ => choice(
+            '*', '&', 'copy', 'move',
+        ),
+
         capture_block: t => seq(
             '|',
             opt(separate(
-                seq(choice('*', '&', 'copy', 'move'), t.value_id),
+                seq(t.capture_modifier, t.value_id),
                 ','
             )),
             '|',
@@ -282,7 +286,6 @@ module.exports = grammar({
             t.panic_expr,
             t.sizeof_expr,
             t.move_expr,
-            t.copy_expr,
             t.negate_expr,
             t.muldiv_expr,
             t.addsub_expr,
@@ -446,7 +449,7 @@ module.exports = grammar({
                 //'null',
                 //t.construct_expr,
                 //t.sizeof_expr,
-                //t.copy_expr,
+                //t.move_expr,
                 //t.negate_expr,
                 //t.muldiv_expr,
                 //t.addsub_expr,
@@ -458,8 +461,7 @@ module.exports = grammar({
                 //t.cast_expr,
                 //t.func_call,
                 //t.paren_expr,
-                //t.dot_expr,
-                //t.dot_func_call,
+                //t.member_expr,
             ),
         ),
 
@@ -469,8 +471,7 @@ module.exports = grammar({
                 //t.value_id,
                 //t.func_call,
                 //t.paren_expr,
-                //t.dot_expr,
-                //t.dot_func_call,
+                //t.member_expr,
             ),
         ),
 
@@ -485,23 +486,17 @@ module.exports = grammar({
             ),
         ),
 
-        move_expr: t => seq(
-            'move', choice(
-                t._literal,
-                t.value_id,
-                //t.as_expr,
-                //t.dot_expr,
-            ),
+        move_operator: _ => choice(
+            'move', 'copy',
         ),
 
-        copy_expr: t => seq(
-            'copy', choice(
+        move_expr: t => seq(
+            t.move_operator, choice(
                 t._literal,
                 t.value_id,
                 //t.as_expr,
                 t.func_call,
-                //t.dot_expr,
-                //t.dot_func_call,
+                t.member_expr,
             ),
         ),
 
@@ -594,7 +589,6 @@ module.exports = grammar({
             t.panic_expr,
             t.sizeof_expr,
             t.move_expr,
-            t.copy_expr,
             t.negate_expr,
             t.muldiv_expr,
             t.addsub_expr,
@@ -791,8 +785,7 @@ module.exports = grammar({
                 //t.ref_expr,
                 //t.func_call,
                 //t.paren_expr,
-                //t.dot_expr,
-                //t.dot_func_call,
+                //t.member_expr,
             ),
             t.assign_operator,
             t._expr,
@@ -849,8 +842,7 @@ module.exports = grammar({
                 //t.panic_expr,
                 t.func_call,
                 //t.paren_expr,
-                //t.dot_expr,
-                //t.dot_func_call,
+                //t.member_expr,
             ),
         ),
         //#endregion Statements
@@ -870,7 +862,7 @@ module.exports = grammar({
         ),
 
         decl_keyword: _ => choice(
-            'var', 'def', 'virt', 'extern',
+            'var', 'def', 'virt', 'extern', 'intern',
         ),
 
         value_decl: t => seq(
@@ -969,7 +961,7 @@ module.exports = grammar({
                     opt('pub'), t.value_id,
                     ':',
                     t._type,
-                    opt(field('exposed', 'exposed'), opt(t.with_block)),
+                    opt(t.with_block),
                     ',',
                 ),
             )),

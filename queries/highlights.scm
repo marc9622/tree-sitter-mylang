@@ -9,7 +9,7 @@
 
 (type_id) @type
 (value_id) @field
-[(macro_id) "macro"] @function.macro
+;[(macro_id) "macro"] @macro
 
 (func_call func_id: (value_id) @function)
 (param_value_decl decl_id: (value_id) @function (func_type))
