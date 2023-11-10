@@ -3421,6 +3421,10 @@
         }
       ]
     },
+    "macro": {
+      "type": "STRING",
+      "value": "macro"
+    },
     "empty_decl": {
       "type": "SEQ",
       "members": [
@@ -3431,8 +3435,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "macro"
+                  "type": "SYMBOL",
+                  "name": "macro"
                 }
               ]
             },
@@ -3470,8 +3474,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "macro"
+                  "type": "SYMBOL",
+                  "name": "macro"
                 }
               ]
             },
@@ -3517,8 +3521,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "macro"
+                  "type": "SYMBOL",
+                  "name": "macro"
                 }
               ]
             },
@@ -3712,8 +3716,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "macro"
+                  "type": "SYMBOL",
+                  "name": "macro"
                 },
                 {
                   "type": "FIELD",

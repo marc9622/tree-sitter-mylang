@@ -882,8 +882,11 @@ module.exports = grammar({
             ),
         ),
 
+        macro: _ =>
+            'macro',
+
         empty_decl: t => seq(
-            opt('macro'),
+            opt(t.macro),
             choice(
                 t._id,
                 t._param_decl,
@@ -891,7 +894,7 @@ module.exports = grammar({
         ),
 
         assign_decl: t => seq(
-            opt('macro'),
+            opt(t.macro),
             choice(
                 t._id,
                 t._param_decl,
@@ -900,7 +903,7 @@ module.exports = grammar({
         ),
 
         block_decl: t => seq(
-            opt('macro'),
+            opt(t.macro),
             choice(
                 t._id,
                 t._param_decl,
@@ -917,7 +920,7 @@ module.exports = grammar({
                     '(', opt(separate(t._param_decl, ',')), ')',
                 ),
                 seq(
-                    'macro',
+                    t.macro,
                     field('decl_id', t.value_id),
                     opt('[', separate(t._param_decl, ','), ']'),
                     opt(choice(

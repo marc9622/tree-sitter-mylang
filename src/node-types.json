@@ -414,6 +414,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "member_expr",
           "named": true
         },
@@ -958,6 +962,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "param_type_decl",
           "named": true
         },
@@ -1499,9 +1507,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "macro",
+          "named": true
+        },
         {
           "type": "param_type_decl",
           "named": true
@@ -2104,6 +2116,10 @@
         },
         {
           "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "macro",
           "named": true
         },
         {
@@ -5210,7 +5226,7 @@
   },
   {
     "type": "macro",
-    "named": false
+    "named": true
   },
   {
     "type": "move",
