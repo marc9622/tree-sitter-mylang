@@ -1,4 +1,79 @@
 
-struct Thing {
-}
+// Hello
+/* Hello */
 
+def a = 10;
+def a = 10.00;
+def a = "";
+def a = A;
+def a = a;
+
+def a = a();
+def a: () -> Void { return }
+def a() -> Void { return }
+
+var a = a + a;
+var a = a - a;
+var a = a * a;
+var a = a / a;
+var a = a % a;
+var a = ! a;
+var a = & a;
+var a = a ^;
+var a: ?A = a;
+var a = a :: A;
+var a = a ..= a;
+var a = a =.. a;
+var a = a ..< a;
+var a = a <.. a;
+var a = a ..> a;
+var a = a >.. a;
+var a {
+    a += a;
+    a -= a;
+    a *= a;
+    a /= a;
+    if a == a do return;
+    if a != a do return;
+    if a <= a do return;
+    if a >= a do return;
+    if a < a do return;
+    if a > a do return;
+    if a <> a do return;
+}
+var a: () -> A;
+var a = a . a;
+var a: A = a;
+var a: []A = a;
+var a: () -> || { break a }
+
+var a = true;
+var a = false;
+var a = uninit;
+var a = null;
+var a = void;
+var a = ();
+
+import A with A
+alias A = A;
+newtype A = A;
+struct A {}
+union A {}
+enum A: A {}
+trait A {}
+impl A for A { pub virt a() -> Void; }
+
+extern a;
+intern a;
+macro a;
+def a {
+    if true and (false or true) do return;
+    switch {
+        true do return;
+    }
+    for a at a range 0..=0 in a do return;
+    return;
+    break;
+    continue;
+    defer a();
+}

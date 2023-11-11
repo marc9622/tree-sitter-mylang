@@ -799,6 +799,7 @@ module.exports = grammar({
         import_stmt: t => seq(
             'import',
             t.import_body,
+            ';',
         ),
 
         import_body: t => seq(
