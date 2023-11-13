@@ -83,6 +83,7 @@ void: ["(" ")"]
 "for"
 "pub"
 "var"
+"let"
 "def"
 "virt"
 "extern"

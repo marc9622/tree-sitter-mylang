@@ -868,7 +868,7 @@ module.exports = grammar({
         ),
 
         decl_keyword: _ => choice(
-            'var', 'def', 'virt', 'extern', 'intern',
+            'var', 'let', 'def', 'virt', 'extern', 'intern',
         ),
 
         value_decl: t => seq(
