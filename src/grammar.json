@@ -3046,6 +3046,10 @@
         {
           "type": "SYMBOL",
           "name": "import_body"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -3338,6 +3342,10 @@
         {
           "type": "STRING",
           "value": "var"
+        },
+        {
+          "type": "STRING",
+          "value": "let"
         },
         {
           "type": "STRING",
