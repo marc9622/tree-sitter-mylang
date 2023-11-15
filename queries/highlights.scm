@@ -9,13 +9,11 @@
 
 (type_id) @type
 (value_id) @variable
-(member_value "member" (value_id) @property)
-;[(macro_id) "macro"] @macro
+(member_value member: (value_id) @property)
 
 (func_call func_id: (value_id) @function)
 (param_value_decl decl_id: (value_id) @function (func_type))
 (func_decl decl_id: (value_id) @function)
-;(func_decl "macro" decl_id: (value_id) @macro)
 
 [
 "+"
