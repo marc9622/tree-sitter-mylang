@@ -2813,8 +2813,12 @@
           "value": "."
         },
         {
-          "type": "SYMBOL",
-          "name": "value_id"
+          "type": "FIELD",
+          "name": "member",
+          "content": {
+            "type": "SYMBOL",
+            "name": "value_id"
+          }
         }
       ]
     },
@@ -2830,8 +2834,12 @@
           "value": "."
         },
         {
-          "type": "SYMBOL",
-          "name": "func_call"
+          "type": "FIELD",
+          "name": "member",
+          "content": {
+            "type": "SYMBOL",
+            "name": "func_call"
+          }
         }
       ]
     },

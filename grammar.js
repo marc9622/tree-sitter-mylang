@@ -735,13 +735,13 @@ module.exports = grammar({
         member_value: t => seq(
             t._member_operand,
             '.',
-            t.value_id,
+            field('member', t.value_id),
         ),
 
         member_func_call: t => seq(
             t._member_operand,
             '.',
-            t.func_call,
+            field('member', t.func_call),
         ),
 
         _member_expr: t => choice(
