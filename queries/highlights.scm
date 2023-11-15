@@ -8,7 +8,8 @@
 (str_literal) @string
 
 (type_id) @type
-(value_id) @field
+(value_id) @variable
+(member_value (value_id) @property)
 ;[(macro_id) "macro"] @macro
 
 (func_call func_id: (value_id) @function)

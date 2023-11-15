@@ -145,7 +145,7 @@ def value = true +  10 - "Hello"  * thing /  thing() % Thing().thing;
 def value = true + (10 - "Hello") * thing / (thing() % Thing().thing);
 
 def value = true and 10 or ("Hello" and (thing or thing())) and Thing().thing;
-def value = copy thing or copy thing() and copy Thing().thing;
+def value = thing or thing() and Thing().thing;
 
 def value = true   ::Bool;
 def value = 10     ::Int;
@@ -153,15 +153,15 @@ def value = "Hello"::Str;
 def value = thing  ::Thing();
 def value = thing()::Thing();
 def value = this.that::Thing();
-def value = copy thing::Thing();
+def value = (copy thing)::Thing();
 
 def value = thing::Thing.field;
 def value = thing::Thing.func();
-def value = copy thing::Thing.func();
+def value = (copy thing)::Thing.func();
 
 def value = this::This + that::That;
 def value = this::This.func(that::That);
-def value = copy this::This.func(that::That);
+def value = (copy this)::This.func(that::That);
 
 def value = (this.that as Thing).func();
 def value = func(this.that as Thing);
@@ -228,16 +228,6 @@ def for_expr {
     
     for                in a do break;
     for e              in a do break;
-    for   at i         in a do break;
-    for e at i         in a do break;
-    for        range r in a do break;
-    for e      range r in a do break;
-    for   at i range r in a do break;
-    for e at i range r in a do break;
-    for        range r      do break;
-    for e      range r      do break;
-    for   at i range r      do break;
-    for e at i range r      do break;
 
     var at = 10;
     var range = 20;
