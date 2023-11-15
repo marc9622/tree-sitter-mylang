@@ -1717,10 +1717,6 @@
           "named": true
         },
         {
-          "type": "range_expr",
-          "named": true
-        },
-        {
           "type": "value_id",
           "named": true
         }
@@ -2514,29 +2510,6 @@
     }
   },
   {
-    "type": "import_body",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "import_namespace",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "with_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "import_namespace",
     "named": true,
     "fields": {},
@@ -2560,7 +2533,7 @@
       "required": true,
       "types": [
         {
-          "type": "import_body",
+          "type": "import_namespace",
           "named": true
         }
       ]
@@ -3797,6 +3770,10 @@
           "named": true
         },
         {
+          "type": "local_alias",
+          "named": true
+        },
+        {
           "type": "namespaced_type",
           "named": true
         },
@@ -4411,10 +4388,6 @@
         {
           "type": "value_id",
           "named": true
-        },
-        {
-          "type": "with_block",
-          "named": true
         }
       ]
     }
@@ -4954,29 +4927,6 @@
     }
   },
   {
-    "type": "with_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "import_body",
-          "named": true
-        },
-        {
-          "type": "import_namespace",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "!",
     "named": false
   },
@@ -5141,10 +5091,6 @@
     "named": false
   },
   {
-    "type": "at",
-    "named": false
-  },
-  {
     "type": "block_comment",
     "named": true
   },
@@ -5265,10 +5211,6 @@
     "named": false
   },
   {
-    "type": "range",
-    "named": false
-  },
-  {
     "type": "return",
     "named": false
   },
@@ -5322,10 +5264,6 @@
   },
   {
     "type": "void",
-    "named": false
-  },
-  {
-    "type": "with",
     "named": false
   },
   {

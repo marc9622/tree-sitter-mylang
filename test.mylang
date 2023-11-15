@@ -1,12 +1,4 @@
-
 import Lib.Utils.Thing.Thing
-import Lib.Utils.This as That
-import Lib.Utils.Thing with Outer.Inner
-
-import Lib.Utils.Thing with { Outer.Inner, Inner.Outer }
-import Lib.Utils.Thing with { This as That, This as That }
-
-import A with { B as B, C with D as D, E with { F as F }, G }
 
 var value             = uninit;
 var value:            = uninit;

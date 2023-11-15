@@ -210,6 +210,7 @@ module.exports = grammar({
                 t.param_type_decl,
                 t.func_type,
             )),
+            opt(t.local_alias),
         ),
 
         param_type_decl: t => seq(
@@ -333,7 +334,7 @@ module.exports = grammar({
             field('void', choice('void', seq('(', ')'))),
         ),
 
-        line_branches: t => choice(
+        line_branches: t => prec.right(choice(
             seq(
                 'do', t._expr_or_control_stmt,
                 opt(opt(';'), 'else', 'do', t._expr_or_control_stmt),
@@ -342,7 +343,7 @@ module.exports = grammar({
                 t.block_expr,
                 'else', 'do', t._expr_or_control_stmt,
             ),
-        ),
+        )),
 
         block_branches: t => choice(
             seq(
@@ -378,17 +379,13 @@ module.exports = grammar({
         for_line_expr: t => prec.right(seq(
             'for',
             opt(t.value_id),
-            opt('at', t.value_id),
-            opt('range', choice(t.value_id, t.range_expr)),
-            opt('in', t.value_id),
+            opt('in', choice(t.value_id, t.range_expr)),
             t.line_branches,
         )),
 
         for_block_expr: t => prec.right(seq(
             'for',
             opt(t.value_id),
-            opt('at', t.value_id),
-            opt('range', choice(t.value_id, t.range_expr)),
             opt('in', t.value_id),
             t.block_branches,
         )),
@@ -798,31 +795,8 @@ module.exports = grammar({
 
         import_stmt: t => seq(
             'import',
-            t.import_body,
-            ';',
-        ),
-
-        import_body: t => seq(
             t.import_namespace,
-            opt(choice(
-                seq('as', t.type_id),
-                t.with_block,
-            )),
-        ),
-
-        with_block: t => seq(
-            'with',
-            choice(
-                seq(
-                    t.import_namespace,
-                    opt('as', t.type_id),
-                ),
-                seq(
-                    '{',
-                    separate(t.import_body, ','),
-                    '}',
-                ),
-            ),
+            ';',
         ),
 
         import_namespace: t => seq(
@@ -975,7 +949,6 @@ module.exports = grammar({
                     opt('pub'), t.value_id,
                     ':',
                     t._type,
-                    opt(t.with_block),
                     ',',
                 ),
             )),
@@ -1027,7 +1000,6 @@ module.exports = grammar({
 
         for_decl: t => seq(
             'for', t._for_param,
-            opt(t.local_alias),
             opt(opt('pub'), 'impl', t._impl_list),
             choice(
                 //t.value_decl,
@@ -1046,7 +1018,6 @@ module.exports = grammar({
         impl_decl: t => seq(
             opt('pub'), 'impl', t._impl_list,
             opt('for', t._for_param),
-            opt(t.local_alias),
             choice(
                 //t.value_decl,
                 t._decl_list,
@@ -1055,10 +1026,15 @@ module.exports = grammar({
         ),
 
         _for_param: t => choice(
-            t.type_id,
-            t.param_type,
-            t.arr_type,
-            t.att_type,
+            seq(
+                choice(
+                    t.type_id,
+                    t.param_type,
+                    t.arr_type,
+                    t.att_type,
+                ),
+                t.local_alias,
+            ),
             t._param_decl,
         ),
 
