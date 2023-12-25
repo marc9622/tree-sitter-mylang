@@ -1397,12 +1397,12 @@
     }
   },
   {
-    "type": "context",
+    "type": "context_decl",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "value_id",
@@ -1412,34 +1412,15 @@
     }
   },
   {
-    "type": "context_decl",
+    "type": "context_id",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "value_decl",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "context_param",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "context",
-          "named": true
-        },
-        {
-          "type": "context_decl",
+          "type": "value_id",
           "named": true
         }
       ]
@@ -2057,7 +2038,11 @@
           "named": true
         },
         {
-          "type": "context_param",
+          "type": "context_decl",
+          "named": true
+        },
+        {
+          "type": "context_id",
           "named": true
         },
         {
@@ -2216,7 +2201,11 @@
           "named": true
         },
         {
-          "type": "context_param",
+          "type": "context_decl",
+          "named": true
+        },
+        {
+          "type": "context_id",
           "named": true
         },
         {

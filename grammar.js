@@ -244,7 +244,7 @@ module.exports = grammar({
             ),
         ),
 
-        context: t => choice(
+        context_id: t => choice(
             t.value_id,
             'pure',
             'nopanic',
@@ -253,17 +253,17 @@ module.exports = grammar({
         ),
 
         context_decl: t => seq(
-            t.value_decl, ':', 'context',
+            t.value_id, ':', opt('context'),
         ),
 
-        context_param: t => choice(
-            t.context, t.context_decl,
+        _context_param: t => choice(
+            t.context_id, t.context_decl,
         ),
 
         func_type: t => seq(
             opt('[', separate(t._param_decl, ','), ']'),
             '(', opt(separate(t._param_decl, ',')), ')',
-            opt(t.context_param), '->',
+            opt(t._context_param), '->',
             opt(choice(t._type, t.param_type_decl)),
         ),
 
@@ -914,7 +914,7 @@ module.exports = grammar({
                 opt('[', separate(t._param_decl, ','), ']'),
                 '(', opt(separate(t._param_decl, ',')), ')',
             ),
-            opt(t.context_param), '->',
+            opt(t._context_param), '->',
             opt(t._type),
             seq(
                 choice(

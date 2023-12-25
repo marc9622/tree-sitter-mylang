@@ -85,6 +85,7 @@ void: ["(" ")"]
 "virt"
 "extern"
 "intern"
+"context"
 "if"
 "switch"
 "in"

@@ -45,10 +45,10 @@ var value:        |*a, &b, copy c, move d| { break uninit }
 var value  () ->  |*a, &b, copy c, move d| { break uninit }
 var value: () ->  |*a, &b, copy c, move d| { break uninit }
 
-var func() ->        do uninit;
-var func() -> Int    do uninit;
-var func() ->     || do uninit;
-var func() -> Int || do uninit;
+var func() ->     do uninit;
+var func() -> Int do uninit;
+var func() ->     do uninit;
+var func() -> Int do uninit;
 
 var func(a: Int        ) -> do uninit;
 var func(a: Int, b: Int) -> do uninit;
