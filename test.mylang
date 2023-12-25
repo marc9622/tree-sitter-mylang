@@ -1,4 +1,4 @@
-import Lib.Utils.Thing.Thing
+import Lib.Utils.Thing.Thing;
 
 var value             = uninit;
 var value:            = uninit;
@@ -191,8 +191,8 @@ def if_expr {
 
     if true do if true do a else do b;
 
-    if true do { break a };
-    if true do a else do { break b };
+    if true do { break a }
+    if true do a else do { break b }
 
     /*
     switch {
@@ -250,45 +250,47 @@ alias Vector(n: UInt) = Lib.Vector(n);
 newtype IntVector     = Lib.Vector(Int);
 
 struct DynArr {
-    size: UInt,
-    cap: UInt,
-    arr: &[]Int,
+    size: UInt;
+    cap: UInt;
+    arr: &[]Int;
 }
 struct DynList(alloc: A: *Alloc, L: List(T: Any)) {
-    list: &L,
+    list: &L;
 }
 
 struct Just(T: Type) { value: T }
 struct Nothing {}
-struct Nothing;
 union Never {}
-union Never;
 
 union Maybe(T: Type) {
-    Just(T),
-    Nothing,
+    Just(T);
+    Nothing;
 }
 
 struct LinkedList(T: Any) as LL {
-    next: &LL,
+    next: &LL;
 }
 
 union LinkedList(T: Any) as LL {
-    &LL,
+    &LL;
+}
+
+enum LinkedList(T: Any) as LL {
+    ll = uninit;
 }
 
 union Union {
-    struct Struct {},
+    struct Struct {}
     union Union {
-        struct A {},
-        struct B {},
-    },
+        struct A {}
+        struct B {}
+    }
 }
 struct Struct {
-    field: struct Struct {},
+    field: struct Struct {};
     field: union Union {
-        struct A {},
-        struct B {},
+        struct A {};
+        struct B {};
     },
 }
 

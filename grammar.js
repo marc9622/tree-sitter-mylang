@@ -244,10 +244,27 @@ module.exports = grammar({
             ),
         ),
 
+        context: t => choice(
+            t.value_id,
+            'pure',
+            'nopanic',
+            'base',
+            'async',
+        ),
+
+        context_decl: t => seq(
+            t.value_decl, ':', 'context',
+        ),
+
+        context_param: t => choice(
+            t.context, t.context_decl,
+        ),
+
         func_type: t => seq(
             opt('[', separate(t._param_decl, ','), ']'),
             '(', opt(separate(t._param_decl, ',')), ')',
-            '->', opt(choice(t._type, t.param_type_decl)),
+            opt(t.context_param), '->',
+            opt(choice(t._type, t.param_type_decl)),
         ),
 
         paren_type: t => seq(
@@ -300,7 +317,7 @@ module.exports = grammar({
             t.and_expr,
             t.or_expr,
             t.as_expr,
-            t.cast_expr,
+            t.hint_expr,
             t.func_call,
             t.paren_expr,
             t.block_expr,
@@ -321,7 +338,7 @@ module.exports = grammar({
             t.is_expr,
             t.and_expr,
             t.or_expr,
-            t.cast_expr,
+            t.hint_expr,
             t.func_call,
             t.paren_expr,
             t.block_expr,
@@ -356,13 +373,13 @@ module.exports = grammar({
             ),
         ),
 
-        if_cond_line_expr: t => prec.right(seq(
+        if_cond_line_expr: t => seq(
             'if', t._cond_expr, t.line_branches,
-        )),
+        ),
 
-        if_cond_block_expr: t => prec.right(seq(
+        if_cond_block_expr: t => seq(
             'if', t._cond_expr, t.block_branches,
-        )),
+        ),
 
         switch_branch: t => choice(
             seq('do', t._expr_or_control_stmt, ';'),
@@ -376,19 +393,19 @@ module.exports = grammar({
             '}',
         ),
 
-        for_line_expr: t => prec.right(seq(
+        for_line_expr: t => seq(
             'for',
             opt(t.value_id),
             opt('in', choice(t.value_id, t.range_expr)),
             t.line_branches,
-        )),
+        ),
 
-        for_block_expr: t => prec.right(seq(
+        for_block_expr: t => seq(
             'for',
             opt(t.value_id),
             opt('in', t.value_id),
             t.block_branches,
-        )),
+        ),
 
         range_operator: _ => choice(
             '..=', '..<', '..>',
@@ -460,7 +477,7 @@ module.exports = grammar({
                 //t.and_expr,
                 //t.or_expr,
                 //t.as_expr,
-                //t.cast_expr,
+                //t.hint_expr,
                 //t.func_call,
                 //t.paren_expr,
                 //t._member_expr,
@@ -496,6 +513,7 @@ module.exports = grammar({
             t.move_operator, choice(
                 t._literal,
                 t.value_id,
+                t.ref_expr,
                 //t.as_expr,
                 t.func_call,
                 t._member_expr,
@@ -509,7 +527,7 @@ module.exports = grammar({
             'uninit',
             t.construct_expr,
             t.sizeof_expr,
-            t.cast_expr,
+            t.hint_expr,
             t.func_call,
             t.paren_expr,
             t.block_expr,
@@ -597,7 +615,7 @@ module.exports = grammar({
             t.comp_expr,
             t.is_expr,
             t.as_expr,
-            t.cast_expr,
+            t.hint_expr,
             t.func_call,
             t.paren_expr,
             t.block_expr,
@@ -645,8 +663,9 @@ module.exports = grammar({
             //t.arr_type,
             //t.func_type,
             t.construct_expr,
-            //t.cast_expr,
+            t.hint_expr,
             t.paren_expr,
+            t._member_expr,
         ),
 
         as_expr: t => seq(
@@ -659,7 +678,7 @@ module.exports = grammar({
             ),
         ),
 
-        cast_operand: t => choice(
+        hint_operand: t => choice(
             t._literal,
             t.value_id,
             'uninit',
@@ -671,8 +690,8 @@ module.exports = grammar({
             t._member_expr,
         ),
 
-        cast_expr: t => seq(
-            t.cast_operand,
+        hint_expr: t => seq(
+            t.hint_operand,
             '::',
             t._type_not_func,
         ),
@@ -687,15 +706,15 @@ module.exports = grammar({
         ),
 
         block_expr: t => seq(
+            opt(t.capture_block),
             '{',
-            repeat(t._stmt),
+            repeat(t.stmt),
             opt(t._line_stmt),
             '}',
         ),
 
         lambda_expr: t => seq(
             t.func_type,
-            opt(t.capture_block),
             choice(
                 seq('do', t._expr),
                 t.block_expr,
@@ -720,7 +739,7 @@ module.exports = grammar({
             t.construct_expr,
             t.ref_expr,
             //t.param_type,
-            t.cast_expr,
+            t.hint_expr,
             t.func_call,
             t.paren_expr,
             t.block_expr,
@@ -751,7 +770,7 @@ module.exports = grammar({
         //#endregion Expressions
 
         //#region Statements
-        _stmt: t => choice(
+        stmt: t => choice(
             seq(t._line_stmt, ';'),
             t._block_stmt,
         ),
@@ -885,31 +904,19 @@ module.exports = grammar({
                 t._id,
                 t._param_decl,
             ),
-            opt(t.capture_block),
             t.block_expr,
         ),
 
         func_decl: t => seq(
-            choice(
-                seq(
-                    field('decl_id', t.value_id),
-                    opt('[', separate(t._param_decl, ','), ']'),
-                    '(', opt(separate(t._param_decl, ',')), ')',
-                ),
-                seq(
-                    t.macro,
-                    field('decl_id', t.value_id),
-                    opt('[', separate(t._param_decl, ','), ']'),
-                    opt(choice(
-                        seq('(', opt(separate(t._param_decl, ',')), ')'),
-                        t._param_decl,
-                    )),
-                ),
+            seq(
+                opt(t.macro),
+                field('decl_id', t.value_id),
+                opt('[', separate(t._param_decl, ','), ']'),
+                '(', opt(separate(t._param_decl, ',')), ')',
             ),
-            '->',
+            opt(t.context_param), '->',
             opt(t._type),
             seq(
-                opt(t.capture_block),
                 choice(
                     seq('do', t._expr, ';'),
                     t.block_expr,
@@ -951,7 +958,7 @@ module.exports = grammar({
                     opt('pub'), t.value_id,
                     ':',
                     t._type,
-                    ',',
+                    ';',
                 ),
             )),
             '}',
@@ -965,7 +972,7 @@ module.exports = grammar({
             opt(
                 separate(
                     t._type,
-                    ',',
+                    ';',
                 ),
             ),
             '}',
@@ -976,7 +983,7 @@ module.exports = grammar({
             ':', t._param_type_or_id,
             '{',
             repeat(choice(
-                seq(t.type_id, '=', t._expr, ','),
+                seq(t.type_id, '=', t._expr, ';'),
                 seq(t.type_id, '{', repeat(t.control_stmt), '}'),
             )),
             '}',
@@ -1023,8 +1030,13 @@ module.exports = grammar({
             choice(
                 //t.value_decl,
                 t._decl_list,
-                //';',
+                ';',
             ),
+        ),
+
+        where_decl: t => seq(
+            'where',
+            separate(t.param_type_decl, ','),
         ),
 
         _for_param: t => choice(
