@@ -436,13 +436,13 @@ module.exports = grammar({
         ),
 
         construct_expr: t => seq(
-            choice(
+            opt(choice(
                 t.type_id,
                 t.namespaced_type,
                 t.param_type,
                 t.att_type,
                 t.arr_type,
-            ),
+            )),
             t.struct_expr,
         ),
 

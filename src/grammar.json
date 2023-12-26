@@ -1780,24 +1780,37 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "type_id"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "type_id"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "namespaced_type"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "param_type"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "att_type"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "arr_type"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "type": "SYMBOL",
-              "name": "namespaced_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "param_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "att_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "arr_type"
+              "type": "BLANK"
             }
           ]
         },
