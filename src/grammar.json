@@ -3440,7 +3440,7 @@
         },
         {
           "type": "STRING",
-          "value": "intern"
+          "value": "builtin"
         }
       ]
     },
@@ -3489,23 +3489,6 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "pure"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
               "type": "SYMBOL",
               "name": "empty_decl"
             },
@@ -3528,6 +3511,61 @@
     "macro": {
       "type": "STRING",
       "value": "macro"
+    },
+    "destruct": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "value_id"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "value_id"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
     },
     "empty_decl": {
       "type": "SEQ",
@@ -3559,6 +3597,10 @@
             {
               "type": "SYMBOL",
               "name": "_param_decl"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "destruct"
             }
           ]
         },
@@ -3598,6 +3640,10 @@
             {
               "type": "SYMBOL",
               "name": "_param_decl"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "destruct"
             }
           ]
         },
@@ -3645,6 +3691,10 @@
             {
               "type": "SYMBOL",
               "name": "_param_decl"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "destruct"
             }
           ]
         },

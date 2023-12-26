@@ -437,6 +437,10 @@
           "named": true
         },
         {
+          "type": "destruct",
+          "named": true
+        },
+        {
           "type": "for_block_expr",
           "named": true
         },
@@ -1053,6 +1057,10 @@
           "named": true
         },
         {
+          "type": "destruct",
+          "named": true
+        },
+        {
           "type": "macro",
           "named": true
         },
@@ -1502,6 +1510,21 @@
     }
   },
   {
+    "type": "destruct",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "value_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "empty_decl",
     "named": true,
     "fields": {},
@@ -1509,6 +1532,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "destruct",
+          "named": true
+        },
         {
           "type": "macro",
           "named": true
@@ -5729,6 +5756,10 @@
     "named": false
   },
   {
+    "type": "builtin",
+    "named": false
+  },
+  {
     "type": "context",
     "named": false
   },
@@ -5790,10 +5821,6 @@
   },
   {
     "type": "in",
-    "named": false
-  },
-  {
-    "type": "intern",
     "named": false
   },
   {

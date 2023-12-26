@@ -890,14 +890,13 @@ module.exports = grammar({
         ),
 
         decl_keyword: _ => choice(
-            'var', 'let', 'def', 'virt', 'extern', 'intern',
+            'var', 'let', 'def', 'virt', 'extern', 'builtin',
         ),
 
         value_decl: t => seq(
             opt(t.where_decl),
             opt('pub'),
             t.decl_keyword,
-            opt('pure'),
             choice(
                 t.empty_decl,
                 t.assign_decl,
@@ -909,11 +908,16 @@ module.exports = grammar({
         macro: _ =>
             'macro',
 
+        destruct: t => seq(
+            '{', separate(t.value_id, ','), '}',
+        ),
+
         empty_decl: t => seq(
             opt(t.macro),
             choice(
                 t._id,
                 t._param_decl,
+                t.destruct,
             ), ';',
         ),
 
@@ -922,6 +926,7 @@ module.exports = grammar({
             choice(
                 t._id,
                 t._param_decl,
+                t.destruct,
             ),
             '=', t._expr, ';',
         ),
@@ -931,6 +936,7 @@ module.exports = grammar({
             choice(
                 t._id,
                 t._param_decl,
+                t.destruct,
             ),
             t.block_expr,
         ),
