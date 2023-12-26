@@ -228,11 +228,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -493,11 +497,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -681,11 +689,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -823,7 +835,11 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -958,11 +974,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -1096,6 +1116,10 @@
           "named": true
         },
         {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
           "type": "stmt",
           "named": true
         }
@@ -1216,11 +1240,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -1617,11 +1645,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -1924,11 +1956,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -2118,11 +2154,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -2323,6 +2363,14 @@
           "named": true
         },
         {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
+          "named": true
+        },
+        {
           "type": "paren_expr",
           "named": true
         },
@@ -2406,7 +2454,11 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -2497,7 +2549,11 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -2769,11 +2825,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -2932,11 +2992,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -3107,11 +3171,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -3189,25 +3257,6 @@
     }
   },
   {
-    "type": "member",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "member_func_call",
     "named": true,
     "fields": {
@@ -3260,6 +3309,14 @@
         },
         {
           "type": "member_value",
+          "named": true
+        },
+        {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -3337,6 +3394,14 @@
           "named": true
         },
         {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
+          "named": true
+        },
+        {
           "type": "paren_expr",
           "named": true
         },
@@ -3389,6 +3454,14 @@
         },
         {
           "type": "move_operator",
+          "named": true
+        },
+        {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -3497,7 +3570,7 @@
     }
   },
   {
-    "type": "namespaced_expr",
+    "type": "namespaced_func_call",
     "named": true,
     "fields": {},
     "children": {
@@ -3505,11 +3578,7 @@
       "required": true,
       "types": [
         {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "member",
+          "type": "func_call",
           "named": true
         },
         {
@@ -3537,6 +3606,25 @@
         },
         {
           "type": "type_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespaced_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace_path",
+          "named": true
+        },
+        {
+          "type": "value_id",
           "named": true
         }
       ]
@@ -3782,11 +3870,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -4054,11 +4146,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -4346,11 +4442,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -4566,6 +4666,10 @@
           "named": true
         },
         {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
           "type": "newtype_decl",
           "named": true
         },
@@ -4753,11 +4857,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -4928,11 +5036,15 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
           "named": true
         },
         {
           "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {
@@ -5051,7 +5163,11 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
           "named": true
         },
         {

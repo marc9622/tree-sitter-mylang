@@ -22,7 +22,7 @@ module.exports = grammar({
 
         // In the case of '[] Type .' we could either be accessing
         // a namespaced type or starting a construction expression.
-        [t.namespace_path, t.construct_expr, t.namespaced_expr],
+        [t.namespace_path, t.construct_expr, t._namespaced_expr],
         [t.namespace_path, t.construct_expr],
 
         // In the case of 'value :: Type .' we coule either be
@@ -175,15 +175,13 @@ module.exports = grammar({
             t.param_type,
         ),
 
-        namespace_path: t => seq(
-            choice(
+        namespace_path: t => choice(
+            t.namespace,
+            t.arr_type,
+            seq(
+                t.namespace_path,
+                '.',
                 t.namespace,
-                t.arr_type,
-                seq(
-                    t.namespace_path,
-                    '.',
-                    t.namespace,
-                ),
             ),
         ),
 
@@ -305,7 +303,7 @@ module.exports = grammar({
             t._literal,
             t.value_id,
             t._type_not_paren,
-            t.namespaced_expr,
+            t._namespaced_expr,
             t.if_cond_line_expr,
             t.if_cond_block_expr,
             t.switch_expr,
@@ -332,13 +330,14 @@ module.exports = grammar({
             t.paren_expr,
             t.block_expr,
             t.lambda_expr,
+            t._namespaced_expr,
             t._member_expr,
         ),
 
         _cond_expr: t => choice(
             t._literal,
             t.value_id,
-            t.namespaced_expr,
+            t._namespaced_expr,
             'uninit',
             'null',
             t.negate_expr,
@@ -352,6 +351,7 @@ module.exports = grammar({
             t.func_call,
             t.paren_expr,
             t.block_expr,
+            t._namespaced_expr,
             t._member_expr,
         ),
 
@@ -526,6 +526,7 @@ module.exports = grammar({
                 t.ref_expr,
                 //t.as_expr,
                 t.func_call,
+                t._namespaced_expr,
                 t._member_expr,
             ),
         ),
@@ -533,7 +534,7 @@ module.exports = grammar({
         base_operand: t => choice(
             t._literal,
             t.value_id,
-            t.namespaced_expr,
+            t._namespaced_expr,
             'uninit',
             t.construct_expr,
             t.sizeof_expr,
@@ -541,6 +542,7 @@ module.exports = grammar({
             t.func_call,
             t.paren_expr,
             t.block_expr,
+            t._namespaced_expr,
             t._member_expr,
         ),
 
@@ -607,7 +609,7 @@ module.exports = grammar({
             t._literal,
             t._id,
             t.namespaced_type,
-            t.namespaced_expr,
+            t._namespaced_expr,
             t.param_type,
             t.att_type,
             t.arr_type,
@@ -629,6 +631,7 @@ module.exports = grammar({
             t.func_call,
             t.paren_expr,
             t.block_expr,
+            t._namespaced_expr,
             t._member_expr,
         ),
 
@@ -697,6 +700,7 @@ module.exports = grammar({
             t.ref_expr,
             t.func_call,
             t.paren_expr,
+            t._namespaced_expr,
             t._member_expr,
         ),
 
@@ -731,13 +735,21 @@ module.exports = grammar({
             ),
         ),
 
-        namespaced_expr: t => seq(
-            choice(
-                t.namespace_path,
-                t.arr_type,
-            ),
+        namespaced_value: t => seq(
+            t.namespace_path,
             '.',
-            t.member,
+            t.value_id,
+        ),
+
+        namespaced_func_call: t => seq(
+            t.namespace_path,
+            '.',
+            t.func_call,
+        ),
+
+        _namespaced_expr: t => choice(
+            t.namespaced_value,
+            t.namespaced_func_call,
         ),
 
         _member_operand: t => choice(
@@ -749,12 +761,8 @@ module.exports = grammar({
             t.func_call,
             t.paren_expr,
             t.block_expr,
+            t._namespaced_expr,
             t._member_expr,
-        ),
-
-        member: t => choice(
-            t.value_id,
-            t.func_call,
         ),
 
         member_value: t => seq(
@@ -785,6 +793,7 @@ module.exports = grammar({
             t.if_cond_line_expr,
             t.for_line_expr,
             t.func_call,
+            t.namespaced_func_call,
             t.member_func_call,
             t.control_stmt,
             t.assign_stmt,
@@ -814,6 +823,7 @@ module.exports = grammar({
                 t.ref_expr,
                 t.func_call,
                 t.paren_expr,
+                t._namespaced_expr,
                 t._member_expr,
             ),
             t.assign_operator,
