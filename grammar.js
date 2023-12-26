@@ -15,10 +15,15 @@ module.exports = grammar({
     conflicts: t => [
         // In the case of '[] Type .' we could either be accessing
         // a namespaced type or starting a construction expression.
-        [t.namespace_path, t.arr_type],
+        //[t.namespace_path, t.arr_type],
 
         // Same with '[] * Type .'
         [t.namespace_path, t.att_type],
+
+        // In the case of '[] Type .' we could either be accessing
+        // a namespaced type or starting a construction expression.
+        [t.namespace_path, t.construct_expr, t.namespaced_expr],
+        [t.namespace_path, t.construct_expr],
 
         // In the case of 'value :: Type .' we coule either be
         // accessing a namespaced type or a member.
@@ -41,7 +46,7 @@ module.exports = grammar({
         // looking ahead.
         [t.line_branches, t.block_branches],
 
-        [t.namespace_path, t.namespaced_type],
+        //[t.namespace_path, t.namespaced_type],
 
         // In the case of 'Type .'  we could either be accessing
         // from a namespace_path or making a construct_expr.
@@ -52,7 +57,7 @@ module.exports = grammar({
         [t.namespace, t.att_type],
 
         // In the case of '[] Type .'
-        [t.namespace, t.arr_type],
+        //[t.namespace, t.arr_type],
 
         // In the case of 'value :: Type .'
         [t.namespace, t._type_not_func],
@@ -60,7 +65,7 @@ module.exports = grammar({
         // In the case of '{ Type .' we could either be assigning
         // to a namespaced value, starting a construct_expr, or
         // calling a namespaced function.
-        [t.namespace, t.construct_expr, t._member_operand],
+        //[t.namespace, t.construct_expr, t._member_operand],
     ],
 
     rules: {
@@ -173,6 +178,7 @@ module.exports = grammar({
         namespace_path: t => seq(
             choice(
                 t.namespace,
+                t.arr_type,
                 seq(
                     t.namespace_path,
                     '.',
@@ -241,7 +247,6 @@ module.exports = grammar({
             ']',
             choice(
                 t.type_id,
-                t.namespaced_type,
                 t.param_type,
                 t.att_type,
                 t.arr_type,
@@ -738,12 +743,8 @@ module.exports = grammar({
         _member_operand: t => choice(
             t._literal,
             t.value_id,
-            t.type_id,
-            //t.param_type,
-            //t.arr_type,
             t.construct_expr,
             t.ref_expr,
-            //t.param_type,
             t.hint_expr,
             t.func_call,
             t.paren_expr,

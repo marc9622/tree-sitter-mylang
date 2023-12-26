@@ -287,6 +287,10 @@
               "name": "namespace"
             },
             {
+              "type": "SYMBOL",
+              "name": "arr_type"
+            },
+            {
               "type": "SEQ",
               "members": [
                 {
@@ -671,10 +675,6 @@
             {
               "type": "SYMBOL",
               "name": "type_id"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "namespaced_type"
             },
             {
               "type": "SYMBOL",
@@ -2855,10 +2855,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "type_id"
-        },
-        {
-          "type": "SYMBOL",
           "name": "construct_expr"
         },
         {
@@ -4603,11 +4599,16 @@
   "conflicts": [
     [
       "namespace_path",
-      "arr_type"
+      "att_type"
     ],
     [
       "namespace_path",
-      "att_type"
+      "construct_expr",
+      "namespaced_expr"
+    ],
+    [
+      "namespace_path",
+      "construct_expr"
     ],
     [
       "namespace_path",
@@ -4616,10 +4617,6 @@
     [
       "line_branches",
       "block_branches"
-    ],
-    [
-      "namespace_path",
-      "namespaced_type"
     ],
     [
       "namespace",
@@ -4635,16 +4632,7 @@
     ],
     [
       "namespace",
-      "arr_type"
-    ],
-    [
-      "namespace",
       "_type_not_func"
-    ],
-    [
-      "namespace",
-      "construct_expr",
-      "_member_operand"
     ]
   ],
   "precedences": [],

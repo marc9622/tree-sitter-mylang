@@ -138,6 +138,10 @@ def value = Lib(1, a).Utils(2, b).Thing(3, b);
 def value = a.a.a().a(a).a.a().a().a;
 def value = ((((a).a).a()).a);
 
+def value =           Thing.thing();
+def value = Lib.Utils.Thing.thing();
+def value = Lib.Utils.thing.thing();
+
 def value: Lib      .Utils      .Thing       = uninit;
 def value: Lib(1, a).Utils(2, b).Thing(3, c) = uninit;
 

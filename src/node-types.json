@@ -3275,10 +3275,6 @@
           "named": true
         },
         {
-          "type": "type_id",
-          "named": true
-        },
-        {
           "type": "value_id",
           "named": true
         }
@@ -3350,10 +3346,6 @@
         },
         {
           "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "type_id",
           "named": true
         },
         {
@@ -3489,6 +3481,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "arr_type",
+          "named": true
+        },
         {
           "type": "namespace",
           "named": true
