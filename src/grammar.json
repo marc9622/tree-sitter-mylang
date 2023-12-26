@@ -530,8 +530,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "type_id"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_id"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "arr_type"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -633,8 +642,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "_expr"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_expr"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_param_decl"
+                    }
+                  ]
                 }
               ]
             },
@@ -2837,7 +2855,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "namespaced_expr"
+          "name": "type_id"
         },
         {
           "type": "SYMBOL",
@@ -3064,6 +3082,22 @@
             {
               "type": "SYMBOL",
               "name": "value_id"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ref_expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "func_call"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "paren_expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_member_expr"
             }
           ]
         },
@@ -3266,6 +3300,23 @@
     "value_decl": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "where_decl"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "CHOICE",
           "members": [
@@ -4589,6 +4640,11 @@
     [
       "namespace",
       "_type_not_func"
+    ],
+    [
+      "namespace",
+      "construct_expr",
+      "_member_operand"
     ]
   ],
   "precedences": [],

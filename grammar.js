@@ -56,6 +56,11 @@ module.exports = grammar({
 
         // In the case of 'value :: Type .'
         [t.namespace, t._type_not_func],
+
+        // In the case of '{ Type .' we could either be assigning
+        // to a namespaced value, starting a construct_expr, or
+        // calling a namespaced function.
+        [t.namespace, t.construct_expr, t._member_operand],
     ],
 
     rules: {
@@ -214,7 +219,7 @@ module.exports = grammar({
         ),
 
         param_type_decl: t => seq(
-            t.type_id, ':',
+            choice(t.type_id, t.arr_type), ':',
             t._type_not_func, opt('+', t._impl_list),
         ),
 
@@ -232,7 +237,7 @@ module.exports = grammar({
 
         arr_type: t => seq(
             '[',
-            opt(t._expr),
+            opt(choice(t._expr, t._param_decl)),
             ']',
             choice(
                 t.type_id,
@@ -733,7 +738,7 @@ module.exports = grammar({
         _member_operand: t => choice(
             t._literal,
             t.value_id,
-            t.namespaced_expr,
+            t.type_id,
             //t.param_type,
             //t.arr_type,
             t.construct_expr,
@@ -805,10 +810,10 @@ module.exports = grammar({
         assign_stmt: t => seq(
             choice(
                 t.value_id,
-                //t.ref_expr,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
+                t.ref_expr,
+                t.func_call,
+                t.paren_expr,
+                t._member_expr,
             ),
             t.assign_operator,
             t._expr,
@@ -867,6 +872,7 @@ module.exports = grammar({
         ),
 
         value_decl: t => seq(
+            opt(t.where_decl),
             opt('pub'),
             t.decl_keyword,
             opt('pure'),

@@ -252,6 +252,14 @@
           "named": true
         },
         {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
           "type": "paren_expr",
           "named": true
         },
@@ -3255,10 +3263,6 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
           "type": "paren_expr",
           "named": true
         },
@@ -3268,6 +3272,10 @@
         },
         {
           "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "type_id",
           "named": true
         },
         {
@@ -3333,10 +3341,6 @@
           "named": true
         },
         {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
           "type": "paren_expr",
           "named": true
         },
@@ -3346,6 +3350,10 @@
         },
         {
           "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "type_id",
           "named": true
         },
         {
@@ -5181,6 +5189,25 @@
         },
         {
           "type": "func_decl",
+          "named": true
+        },
+        {
+          "type": "where_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "param_type_decl",
           "named": true
         }
       ]
