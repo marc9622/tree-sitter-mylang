@@ -119,7 +119,7 @@ void: ["(" ")"]
 "virt"
 "extern"
 "builtin"
-"macro"
+; "macro"
 "context"
 "pure"
 "nopanic"
