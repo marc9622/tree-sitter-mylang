@@ -38,15 +38,15 @@
 "->"
 ] @operator
 
-; [
-; "sizeof"
-; "is"
-; "and"
-; "or"
-; "not"
-; "move"
-; "copy"
-; ] @keyword.operator
+[
+"sizeof"
+"is"
+"and"
+"or"
+"not"
+"move"
+"copy"
+] @keyword.operator
 
 [
 "."
@@ -77,18 +77,18 @@
 void: ["(" ")"]
 ] @constant.builtin
 
-; [
-; "import"
-; ;"module"
-; ] @include
+[
+"import"
+;"module"
+] @include
 
-; [
-; "if"
-; "else"
-; "switch"
-; ] @conditional
+[
+"if"
+"else"
+"switch"
+] @conditional
 
-; "return" @keyword.return
+"return" @keyword.return
 
 ; (for_line_expr: "for" @repeat)
 ; (for_block_expr: "for" @repeat)
@@ -96,11 +96,11 @@ void: ["(" ")"]
 ; "in"
 ; "break"
 ; "continue"
-; ]@repeat
+; ] @repeat
 
-; "panic" @exception
+"panic" @exception
 
-; "pub" @type.qualifier
+"pub" @type.qualifier
 
 [
 "as"
@@ -124,6 +124,9 @@ void: ["(" ")"]
 "nopanic"
 "base"
 "async"
+"in"
+"break"
+"continue"
 "panic"
 "defer"
 "do"
