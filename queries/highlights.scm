@@ -38,15 +38,15 @@
 "->"
 ] @operator
 
-[
-"sizeof"
-"is"
-"and"
-"or"
-"not"
-"move"
-"copy"
-] @keyword.operator
+; [
+; "sizeof"
+; "is"
+; "and"
+; "or"
+; "not"
+; "move"
+; "copy"
+; ] @keyword.operator
 
 [
 "."
@@ -77,30 +77,30 @@
 void: ["(" ")"]
 ] @constant.builtin
 
-[
-"import"
-;"module"
-] @include
+; [
+; "import"
+; ;"module"
+; ] @include
 
-[
-"if"
-"else"
-"switch"
-] @conditional
+; [
+; "if"
+; "else"
+; "switch"
+; ] @conditional
 
-"return" @keyword.return
+; "return" @keyword.return
 
-(for_line_expr: "for" @repeat)
-(for_block_expr: "for" @repeat)
-[
-"in"
-"break"
-"continue"
-]@repeat
+; (for_line_expr: "for" @repeat)
+; (for_block_expr: "for" @repeat)
+; [
+; "in"
+; "break"
+; "continue"
+; ]@repeat
 
-"panic" @exception
+; "panic" @exception
 
-"pub" @type.qualifier
+; "pub" @type.qualifier
 
 [
 "as"
