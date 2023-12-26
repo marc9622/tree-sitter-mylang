@@ -710,9 +710,20 @@ module.exports = grammar({
             t._type_not_func,
         ),
 
-        func_call: t => seq(
-            field('func_id', t.value_id),
-            '(', opt(separate(t._expr, ',')), ')',
+        func_call: t => choice(
+            seq(
+                field('func_id', t.value_id),
+                '(', opt(separate(t._expr, ',')), ')',
+            ),
+            seq(
+                t.macro_id,
+                opt('(', opt(t.macro_params), ')'),
+            ),
+        ),
+
+        macro_params: t => separate(
+            choice(t._expr, t._decl),
+            ',',
         ),
 
         paren_expr: t => seq(
