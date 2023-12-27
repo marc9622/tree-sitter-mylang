@@ -66,6 +66,8 @@ module.exports = grammar({
         // to a namespaced value, starting a construct_expr, or
         // calling a namespaced function.
         //[t.namespace, t.construct_expr, t._member_operand],
+        
+        [t.if_line_branches, t.if_block_branches],
     ],
 
     rules: {
@@ -304,8 +306,8 @@ module.exports = grammar({
             t.value_id,
             t._type_not_paren,
             t._namespaced_expr,
-            t.if_cond_line_expr,
-            t.if_cond_block_expr,
+            t.if_line_expr,
+            t.if_block_expr,
             // t.switch_expr,
             t.loop_line_expr,
             t.loop_block_expr,
@@ -373,7 +375,7 @@ module.exports = grammar({
             ),
         ),
 
-        if_line_branches: t => prec.right(choice(
+        if_line_branches: t => choice(
             seq(
                 t._expr_or_control_stmt,
                 opt(
@@ -387,9 +389,9 @@ module.exports = grammar({
                 repeat(t.elif_branch),
                 'else', t._expr_or_control_stmt,
             ),
-        )),
+        ),
 
-        if_block_branches: t => prec.right(choice(
+        if_block_branches: t => choice(
             seq(
                 t._expr_or_control_stmt,
                 opt(';'),
@@ -400,14 +402,16 @@ module.exports = grammar({
                 t.stmt_block,
                 opt(repeat(t.elif_branch), 'else', t.stmt_block),
             ),
-        )),
-
-        if_cond_line_expr: t => seq(
-            'if', '(', t._cond_expr, ')', t.if_line_branches,
         ),
 
-        if_cond_block_expr: t => seq(
-            'if', '(', t._cond_expr, ')', t.if_block_branches,
+        if_line_expr: t => seq(
+            'if', '(', t._cond_expr, ')',
+            t.if_line_branches,
+        ),
+
+        if_block_expr: t => seq(
+            'if', '(', t._cond_expr, ')',
+            t.if_block_branches,
         ),
 
         // switch_branch: t => choice(
@@ -504,51 +508,18 @@ module.exports = grammar({
         static_expr: t => seq(
             'static', choice(
                 t._literal,
-                //t.value_id,
-                //t.if_cond_single_expr,
-                //t.if_cond_block_expr,
-                //t.if_match_block_expr,
-                //t.for_single_expr,
-                //t.for_block_expr,
-                //t.range_expr,
-                //'uninit',
-                //'null',
-                //t.construct_expr,
-                //t.sizeof_expr,
-                //t.move_expr,
-                //t.negate_expr,
-                //t.muldiv_expr,
-                //t.addsub_expr,
-                //t.comp_expr,
-                //t.is_expr,
-                //t.and_expr,
-                //t.or_expr,
-                //t.as_expr,
-                //t.hint_expr,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
             ),
         ),
 
         panic_expr: t => seq(
             'panic', choice(
                 t.str_literal,
-                //t.value_id,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
             ),
         ),
 
         sizeof_expr: t => seq(
             'sizeof', choice(
                 t.type_id,
-                //t.namespaced_type,
-                //t.param_type,
-                //t.att_type,
-                //t.arr_type,
-                //t.paren_type,
             ),
         ),
 
@@ -842,7 +813,7 @@ module.exports = grammar({
         ),
 
         _line_stmt: t => choice(
-            t.if_cond_line_expr,
+            t.if_line_expr,
             t.loop_line_expr,
             t.while_line_expr,
             // t.for_line_expr,
@@ -855,7 +826,7 @@ module.exports = grammar({
         ),
 
         _block_stmt: t => choice(
-            t.if_cond_block_expr,
+            t.if_block_expr,
             // t.switch_expr,
             t.loop_block_expr,
             t.while_block_expr,
@@ -906,16 +877,7 @@ module.exports = grammar({
 
         defer_stmt: t => seq(
             'defer', choice(
-                //t.if_cond_single_expr,
-                //t.if_cond_block_expr,
-                //t.if_match_block_expr,
-                //t.for_single_expr,
-                //t.for_block_expr,
-                //t.assign_stmt,
-                //t.panic_expr,
                 t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
             ),
         ),
         //#endregion Statements
