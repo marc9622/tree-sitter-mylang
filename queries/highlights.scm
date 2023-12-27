@@ -94,7 +94,7 @@ void: ["(" ")"]
 ; (for_line_expr: "for" @repeat)
 ; (for_block_expr: "for" @repeat)
 [
-"in"
+; "in"
 "break"
 "continue"
 "loop"
