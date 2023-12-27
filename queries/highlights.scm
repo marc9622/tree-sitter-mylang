@@ -84,8 +84,9 @@ void: ["(" ")"]
 
 [
 "if"
+"elif"
 "else"
-"switch"
+; "switch"
 ] @conditional
 
 "return" @keyword.return
