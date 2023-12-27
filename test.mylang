@@ -45,28 +45,28 @@ var value:        |*a, &b, copy c, move d| { break uninit }
 var value  () ->  |*a, &b, copy c, move d| { break uninit }
 var value: () ->  |*a, &b, copy c, move d| { break uninit }
 
-var func() ->     do uninit;
-var func() -> Int do uninit;
-var func() ->     do uninit;
-var func() -> Int do uninit;
+var func() ->     return uninit;
+var func() -> Int return uninit;
+var func() ->     return uninit;
+var func() -> Int return uninit;
 
-var func(a: Int        ) -> do uninit;
-var func(a: Int, b: Int) -> do uninit;
+var func(a: Int        ) -> return uninit;
+var func(a: Int, b: Int) -> return uninit;
 
-def func(a:    Int        ) -> do uninit;
-def func(a: T: Any        ) -> do uninit;
-def func(a: T: Any, b: Int) -> do uninit;
+def func(a:    Int        ) -> return uninit;
+def func(a: T: Any        ) -> return uninit;
+def func(a: T: Any, b: Int) -> return uninit;
 
-def func(a: &Int    ) -> do uninit;
-def func(a:  Int    ) -> do uninit;
-def func(a: T: &Type) -> do uninit;
-def func(a: T:  Type) -> do uninit;
-def func(a: &[]Int  ) -> do uninit;
-def func(a:  []Int  ) -> do uninit;
+def func(a: &Int    ) -> return uninit;
+def func(a:  Int    ) -> return uninit;
+def func(a: T: &Type) -> return uninit;
+def func(a: T:  Type) -> return uninit;
+def func(a: &[]Int  ) -> return uninit;
+def func(a:  []Int  ) -> return uninit;
 
-var ownfn(a:  Int) ->  Int do move a;
-var imrfn(a: *Int) -> *Int do a;
-var murfn(a: &Int) -> &Int do &a;
+var ownfn(a:  Int) ->  Int return move a;
+var imrfn(a: *Int) -> *Int return a;
+var murfn(a: &Int) -> &Int return &a;
 
 // Owned r-values can be used for anything
 // Owned l-values must be moved or copied to be used as owned values
@@ -185,60 +185,50 @@ def value = &value;
 def value = value^;
 def value = copy &value;
 
-def if_expr {
-    if true do print(a);
+def statements {
+    if (true) print(a);
 
-    if true do a;
-    if true do a else do b;
-    if true { break a } else do b;
+    if (true) print(a);
 
-    if true { break a }
-    if true { break a } else { break b }
-    if true do a else { break b }
+    if (true) a;
+    if (true) a else b;
+    if (true) { break a } else (b);
 
-    if true do if true do a else do b;
+    if (true) { break a }
+    if (true) { break a } else { break b }
+    if (true) a else { break b }
 
-    if true do { break a }
-    if true do a else do { break b }
+    if (true) if (true) a else b;
 
-    /*
-    switch {
-        a == 1 do a;
-        a == 2 { break b }
-        else do c;
+    if (true) { break a }
+    if (true) a else { break b }
+
+    if   (a == 1) a;
+    elif (a == 2) { break b }
+    else c;
+
+    if (maybe is Some value and value.check()) value.print();
+    else return uninit;
+
+    maybe is {
+        (Value value and value.check()) value.print()
+        else return uninit;
     }
 
-    switch {
-        maybe is Just.{inner} and true {
-            break inner.woah()
-        }
-        else {
-            return;
-        }
-    }
-
-    switch maybe is {
-        Just.{inner} and true do a;
-        else do uninit;
-    }
-    */
-}
-
-def for_expr {
-    for do a;
-    for do a else do b;
-    for { break a } else do b;
-
-    for { break a }
-    for { break a } else { break b }
-    for do a else { break b }
+    loop   print(1);
+    loop { print(1) }
     
-    for                in a do break;
-    for e              in a do break;
+    for (list)   print(1);
+    for (list) { print(1) }
 
-    var at = 10;
-    var range = 20;
-    var in = 30;
+    for (elem          in list) print(1);
+    for (elem at index in list) print(1);
+
+    while (condition)   print(1);
+    while (condition) { print(1) }
+
+    do   print(1)   while (condition)
+    do { print(1) } while (condition)
 }
 
 def range = 0..=5;
@@ -358,7 +348,7 @@ trait Self: DeepClone for self: *Self {
 trait Self: DeepClone {
     for Self {
         def clone_of(alloc: A: &Allocator, value: *Self) -> Self {
-            return value.clone(alloc)
+            return value.clone(alloc);
         }
     }
     for self: *Self {
@@ -387,8 +377,8 @@ impl DeepClone {
 }
 
 trait Self: ShallowCopy {
-    for Self def copy_of(value: *Self) -> Self return value.copy()
-    for self: *Self virt copy() -> Self return copy self
+    for Self def copy_of(value: *Self) -> Self return value.copy();
+    for self: *Self virt copy() -> Self return copy self;
 }
 
 trait ImplicitCopy for Self: of ShallowCopy
@@ -396,31 +386,31 @@ trait ImplicitCopy for Self: of ShallowCopy
 trait Left: Add(Right: Type) {
     for left: *Left virt add(right: *Right) -> Left
     for left: &Left def add_assign(right: *Right) -> Void {
-        &left = left + right
+        &left = left + right;
     }
 }
 
 trait Left: Multiply(Right: Type) {
     for left: *Left virt multiply(right: *Right) -> Left
     for left: &Left def multiply_assign(right: *Right) -> Left {
-        &left = left * right
+        &left = left * right;
     }
 }
 
 for left: Left: *Add(Right: Into(Int)) {
     impl Multiply(Right) {
         virt add(right: *Right) -> Left {
-            var result = copy left
+            var result = copy left;
             for range 0..<right.into() do
-                &result += left
-            return result
+                &result += left;
+            return result;
         }
     }
 }
 
 for left: Left: *Add(Right: Into(Int)) impl Multiply(Right) virt add(right: *Right) -> Left {
-    var result = copy left
+    var result = copy left;
     for range 0..<right.into() do
-        &result += left
-    return result
+        &result += left;
+    return result;
 }

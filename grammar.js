@@ -25,7 +25,7 @@ module.exports = grammar({
         [t.namespace_path, t.construct_expr, t._namespaced_expr],
         [t.namespace_path, t.construct_expr],
 
-        // In the case of 'value :: Type .' we coule either be
+        // In the case of 'value :: Type .' we could either be
         // accessing a namespaced type or a member.
         [t.namespace_path, t._type_not_func],
         
@@ -44,7 +44,7 @@ module.exports = grammar({
         // When writing a for expression, the parser cannot tell
         // whether it will be a line branch or block branch without
         // looking ahead.
-        [t.line_branches, t.block_branches],
+        //[t.line_branches, t.block_branches],
 
         //[t.namespace_path, t.namespaced_type],
 
@@ -295,8 +295,8 @@ module.exports = grammar({
 
         //#region Expressions
         _expr_or_control_stmt: t => choice(
-            t._expr,
             t.control_stmt,
+            t._expr,
         ),
 
         _expr: t => choice(
@@ -306,9 +306,13 @@ module.exports = grammar({
             t._namespaced_expr,
             t.if_cond_line_expr,
             t.if_cond_block_expr,
-            t.switch_expr,
-            t.for_line_expr,
-            t.for_block_expr,
+            // t.switch_expr,
+            t.loop_line_expr,
+            t.loop_block_expr,
+            t.while_line_expr,
+            t.while_block_expr,
+            // t.for_line_expr,
+            // t.for_block_expr,
             t.range_expr,
             t.builtin,
             t.construct_expr,
@@ -328,7 +332,7 @@ module.exports = grammar({
             t.hint_expr,
             t.func_call,
             t.paren_expr,
-            t.block_expr,
+            t.do_block_expr,
             t.lambda_expr,
             t._namespaced_expr,
             t._member_expr,
@@ -350,7 +354,7 @@ module.exports = grammar({
             t.hint_expr,
             t.func_call,
             t.paren_expr,
-            t.block_expr,
+            t.do_block_expr,
             t._namespaced_expr,
             t._member_expr,
         ),
@@ -361,61 +365,94 @@ module.exports = grammar({
             field('void', choice('void', seq('(', ')'))),
         ),
 
-        line_branches: t => prec.right(choice(
+        elif_branch: t => seq(
+            'elif', '(', t._cond_expr, ')',
+            choice(
+                seq(t._expr_or_control_stmt, opt(';')),
+                seq(t.stmt_block),
+            ),
+        ),
+
+        if_line_branches: t => prec.right(choice(
             seq(
-                'do', t._expr_or_control_stmt,
-                opt(opt(';'), 'else', 'do', t._expr_or_control_stmt),
+                t._expr_or_control_stmt,
+                opt(
+                    opt(';'),
+                    repeat(t.elif_branch),
+                    'else', t._expr_or_control_stmt
+                ),
             ),
             seq(
-                t.block_expr,
-                'else', 'do', t._expr_or_control_stmt,
+                t.stmt_block,
+                repeat(t.elif_branch),
+                'else', t._expr_or_control_stmt,
             ),
         )),
 
-        block_branches: t => choice(
+        if_block_branches: t => prec.right(choice(
             seq(
-                t.block_expr,
-                opt('else', t.block_expr),
+                t._expr_or_control_stmt,
+                opt(';'),
+                repeat(t.elif_branch),
+                'else', t.stmt_block,
             ),
             seq(
-                'do', t._expr_or_control_stmt,
-                opt(';'), 'else', t.block_expr,
+                t.stmt_block,
+                opt(repeat(t.elif_branch), 'else', t.stmt_block),
             ),
-        ),
+        )),
 
         if_cond_line_expr: t => seq(
-            'if', t._cond_expr, t.line_branches,
+            'if', '(', t._cond_expr, ')', t.if_line_branches,
         ),
 
         if_cond_block_expr: t => seq(
-            'if', t._cond_expr, t.block_branches,
+            'if', '(', t._cond_expr, ')', t.if_block_branches,
         ),
 
-        switch_branch: t => choice(
-            seq('do', t._expr_or_control_stmt, ';'),
-            t.block_expr,
+        // switch_branch: t => choice(
+        //     seq('do', t._expr_or_control_stmt, ';'),
+        //     t.do_block_expr,
+        // ),
+
+        // switch_expr: t => seq(
+        //     'switch', '{',
+        //     repeat(seq(t._cond_expr, t.switch_branch)),
+        //     opt('else', t.switch_branch),
+        //     '}',
+        // ),
+
+        loop_line_expr: t => seq(
+            'loop', t._expr_or_control_stmt,
         ),
 
-        switch_expr: t => seq(
-            'switch', '{',
-            repeat(seq(t._cond_expr, t.switch_branch)),
-            opt('else', t.switch_branch),
-            '}',
+        loop_block_expr: t => seq(
+            'loop', t.stmt_block,
         ),
 
-        for_line_expr: t => seq(
-            'for',
-            opt(t.value_id),
-            opt('in', choice(t.value_id, t.range_expr)),
-            t.line_branches,
+        while_line_expr: t => seq(
+            'while', '(', t._cond_expr, ')',
+            t._expr_or_control_stmt, ';',
         ),
 
-        for_block_expr: t => seq(
-            'for',
-            opt(t.value_id),
-            opt('in', t.value_id),
-            t.block_branches,
+        while_block_expr: t => seq(
+            'while', '(', t._cond_expr, ')',
+            t.stmt_block,
         ),
+
+        // for_line_expr: t => seq(
+        //     'for',
+        //     opt(t.value_id),
+        //     opt('in', choice(t.value_id, t.range_expr)),
+        //     t.line_branches,
+        // ),
+
+        // for_block_expr: t => seq(
+        //     'for',
+        //     opt(t.value_id),
+        //     opt('in', t.value_id),
+        //     t.block_branches,
+        // ),
 
         range_operator: _ => choice(
             '..=', '..<', '..>',
@@ -541,7 +578,7 @@ module.exports = grammar({
             t.hint_expr,
             t.func_call,
             t.paren_expr,
-            t.block_expr,
+            t.do_block_expr,
             t._namespaced_expr,
             t._member_expr,
         ),
@@ -630,7 +667,7 @@ module.exports = grammar({
             t.hint_expr,
             t.func_call,
             t.paren_expr,
-            t.block_expr,
+            t.do_block_expr,
             t._namespaced_expr,
             t._member_expr,
         ),
@@ -730,7 +767,11 @@ module.exports = grammar({
             '(', t._expr, ')',
         ),
 
-        block_expr: t => seq(
+        do_block_expr: t => seq(
+            'do', t.stmt_block,
+        ),
+
+        stmt_block: t => seq(
             opt(t.capture_block),
             '{',
             repeat(t.stmt),
@@ -741,8 +782,8 @@ module.exports = grammar({
         lambda_expr: t => seq(
             t.func_type,
             choice(
-                seq('do', t._expr),
-                t.block_expr,
+                t.return_stmt,
+                t.stmt_block,
             ),
         ),
 
@@ -771,7 +812,7 @@ module.exports = grammar({
             t.hint_expr,
             t.func_call,
             t.paren_expr,
-            t.block_expr,
+            t.do_block_expr,
             t._namespaced_expr,
             t._member_expr,
         ),
@@ -802,7 +843,9 @@ module.exports = grammar({
 
         _line_stmt: t => choice(
             t.if_cond_line_expr,
-            t.for_line_expr,
+            t.loop_line_expr,
+            t.while_line_expr,
+            // t.for_line_expr,
             t.func_call,
             t.namespaced_func_call,
             t.member_func_call,
@@ -813,8 +856,10 @@ module.exports = grammar({
 
         _block_stmt: t => choice(
             t.if_cond_block_expr,
-            t.switch_expr,
-            t.for_block_expr,
+            // t.switch_expr,
+            t.loop_block_expr,
+            t.while_block_expr,
+            // t.for_block_expr,
             t._decl,
         ),
 
@@ -938,7 +983,7 @@ module.exports = grammar({
                 t._param_decl,
                 t.destruct,
             ),
-            t.block_expr,
+            t.stmt_block,
         ),
 
         func_decl: t => seq(
@@ -952,8 +997,8 @@ module.exports = grammar({
             opt(t._type),
             seq(
                 choice(
-                    seq('do', t._expr, ';'),
-                    t.block_expr,
+                    seq(t.return_stmt, ';'),
+                    t.stmt_block,
                     ';',
                 ),
             ),
@@ -987,45 +1032,40 @@ module.exports = grammar({
             t._param_type_or_id,
             opt(t.local_alias),
             '{',
-            repeat(choice(
+            opt(repeat(choice(
                 seq(
                     opt('pub'), t.value_id,
-                    ':',
-                    t._type,
-                    ';',
+                    ':', t._type, ';',
                 ),
-            )),
+            ))),
             '}',
         ),
 
         union_decl: t => seq(
             opt('pub'), 'union',
             t._param_type_or_id,
+            'tagged', opt(t._param_type_or_id),
             opt(t.local_alias),
             '{',
-            opt(
-                separate(
-                    t._type,
-                    ';',
-                ),
-            ),
+            opt(repeat(choice(
+                seq(t._type, ';'),
+            ))),
             '}',
         ),
 
         enum_decl: t => seq(
-            opt('pub'), 'enum', t.type_id,
+            opt('pub'), 'enum', t._param_type_or_id,
             ':', t._param_type_or_id,
             '{',
-            repeat(choice(
+            opt(repeat(choice(
                 seq(t.type_id, '=', t._expr, ';'),
-                seq(t.type_id, '{', repeat(t.control_stmt), '}'),
-            )),
+                seq(t.type_id, t.stmt_block),
+            ))),
             '}',
         ),
 
         trait_decl: t => seq(
             opt('pub'), 'trait',
-            opt(t._param_type_or_id, ':'),
             t._param_type_or_id,
             opt('for', choice(t.type_id, t.param_type, t._param_decl)),
             choice(

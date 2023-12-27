@@ -92,11 +92,13 @@ void: ["(" ")"]
 
 ; (for_line_expr: "for" @repeat)
 ; (for_block_expr: "for" @repeat)
-; [
-; "in"
-; "break"
-; "continue"
-; ] @repeat
+[
+"in"
+"break"
+"continue"
+"loop"
+"while"
+] @repeat
 
 "panic" @exception
 
@@ -108,6 +110,7 @@ void: ["(" ")"]
 "newtype"
 "struct"
 "union"
+"tagged"
 "enum"
 "trait"
 "impl"
@@ -125,9 +128,6 @@ void: ["(" ")"]
 "nopanic"
 "base"
 "async"
-"in"
-"break"
-"continue"
 "panic"
 "defer"
 "do"
