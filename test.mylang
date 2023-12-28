@@ -282,31 +282,31 @@ union Union {
     }
 }
 struct Struct {
-    field: struct Struct {};
+    field: struct Struct {}
     field: union Union {
         struct A {};
         struct B {};
-    },
+    }
 }
 
 struct Struct as S {}
 
-for Person   def new (name: *String, age: *UInt)  -> Person       do Person.{copy name, copy age};
+for Person   def new (name: *String, age: *UInt)  -> Person   return Person.{copy name, copy age};
 for Person   def twin(name: *String, to: *Person) -> Person { return Person.{copy name, copy to.age} }
-for Person { def clone(person: *Person) -> Person       do copy person; }
+for Person { def clone(person: *Person) -> Person   return copy person; }
 for Person { def clone(person: *Person) -> Person { return copy person } }
 
-for person: Person   def forget() -> Void do return;
-for person: Person { def forget() -> Void do return; }
-for person: Person { def forget() -> Void {  return } }
+for person: Person   def forget() -> Void   return;
+for person: Person { def forget() -> Void   return; }
+for person: Person { def forget() -> Void { return } }
 
-for person: *Person   def greet() -> Void do print(person.name);
-for person: *Person { def greet() -> Void do print(person.name); }
-for person: *Person { def greet() -> Void {  print(person.name) } }
+for person: *Person   def greet() -> Void return print(person.name);
+for person: *Person { def greet() -> Void return print(person.name); }
+for person: *Person { def greet() -> Void {      print(person.name) } }
 
-for person: &Person   def rename(name: *String) -> Void do &person.name = copy name;
-for person: &Person { def rename(name: *String) -> Void do &person.name = copy name; }
-for person: &Person { def rename(name: *String) -> Void {  &person.name = copy name } }
+for person: &Person   def rename(name: *String) -> Void return &person.name = copy name;
+for person: &Person { def rename(name: *String) -> Void return &person.name = copy name; }
+for person: &Person { def rename(name: *String) -> Void {      &person.name = copy name } }
 
 for DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
     def new() -> D {
@@ -399,7 +399,7 @@ for left: Left: *Add(Right: Into(Int)) {
     impl Multiply(Right) {
         virt add(right: *Right) -> Left {
             var result = copy left;
-            for range 0..<right.into() do
+            for (range 0..<right.into())
                 &result += left;
             return result;
         }
@@ -408,7 +408,7 @@ for left: Left: *Add(Right: Into(Int)) {
 
 for left: Left: *Add(Right: Into(Int)) impl Multiply(Right) virt add(right: *Right) -> Left {
     var result = copy left;
-    for range 0..<right.into() do
+    for (range 0..<right.into())
         &result += left;
     return result;
 }

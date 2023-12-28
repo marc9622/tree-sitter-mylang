@@ -1006,7 +1006,7 @@ module.exports = grammar({
         union_decl: t => seq(
             opt('pub'), 'union',
             t._param_type_or_id,
-            'tagged', opt(t._param_type_or_id),
+            opt('tagged', opt(t._param_type_or_id)),
             opt(t.local_alias),
             '{',
             opt(repeat(choice(
@@ -1017,7 +1017,7 @@ module.exports = grammar({
 
         enum_decl: t => seq(
             opt('pub'), 'enum', t._param_type_or_id,
-            ':', t._param_type_or_id,
+            opt(':', t._param_type_or_id),
             '{',
             opt(repeat(choice(
                 seq(t.type_id, '=', t._expr, ';'),
