@@ -2979,6 +2979,10 @@
         {
           "type": "type_id",
           "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
         }
       ]
     }

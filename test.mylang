@@ -188,8 +188,6 @@ def value = copy &value;
 def statements {
     if (true) print(a);
 
-    if (true) print(a);
-
     if (true) a;
     if (true) a else b;
     if (true) { break a } else (b);
@@ -210,25 +208,25 @@ def statements {
     if (maybe is Some value and value.check()) value.print();
     else return uninit;
 
-    maybe is {
-        (Value value and value.check()) value.print()
-        else return uninit;
-    }
+    // maybe is {
+    //     (Value value and value.check()) value.print()
+    //     else return uninit;
+    // }
 
     loop   print(1);
     loop { print(1) }
     
-    for (list)   print(1);
-    for (list) { print(1) }
+    // for (list)   print(1);
+    // for (list) { print(1) }
 
-    for (elem          in list) print(1);
-    for (elem at index in list) print(1);
+    // for (elem          in list) print(1);
+    // for (elem at index in list) print(1);
 
     while (condition)   print(1);
     while (condition) { print(1) }
 
-    do   print(1)   while (condition)
-    do { print(1) } while (condition)
+    // do   print(1)   while (condition)
+    // do { print(1) } while (condition)
 }
 
 def range = 0..=5;

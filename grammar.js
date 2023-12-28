@@ -647,7 +647,7 @@ module.exports = grammar({
             t.is_operand,
             'is',
             choice(
-                t._type,
+                seq(t._type, opt(t.value_id)),
                 t.construct_expr,
             ),
         ),
