@@ -271,7 +271,7 @@ module.exports = grammar({
         ),
 
         func_type: t => seq(
-            opt('[', separate(t._param_decl, ','), ']'),
+            //opt('[', separate(t._param_decl, ','), ']'),
             '(', opt(separate(t._param_decl, ',')), ')',
             opt(t._context_param), '->',
             opt(choice(t._type, t.param_type_decl)),
@@ -371,7 +371,7 @@ module.exports = grammar({
             'elif', '(', t._cond_expr, ')',
             choice(
                 seq(t._expr_or_control_stmt, opt(';')),
-                seq(t.stmt_block),
+                t.stmt_block,
             ),
         ),
 
@@ -751,10 +751,19 @@ module.exports = grammar({
         ),
 
         lambda_expr: t => seq(
-            t.func_type,
+            // t.func_type,
+            '(', opt(separate(t._param_decl, ',')), ')',
+            opt(t._context_param), '->',
+            opt(choice(t._type, t.param_type_decl)),
             choice(
-                t.return_stmt,
-                t.stmt_block,
+                seq('return', opt(t._expr)),
+                seq(
+                    opt(t.capture_block),
+                    '{',
+                    repeat(t.stmt),
+                    opt(t._line_stmt),
+                    '}',
+                ),
             ),
         ),
 

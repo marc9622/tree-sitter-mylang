@@ -3132,18 +3132,214 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "addsub_expr",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "arr_type",
+          "named": true
+        },
+        {
+          "type": "as_expr",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "att_type",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "builtin",
+          "named": true
+        },
+        {
+          "type": "capture_block",
+          "named": true
+        },
+        {
+          "type": "comp_expr",
+          "named": true
+        },
+        {
+          "type": "construct_expr",
+          "named": true
+        },
+        {
+          "type": "context_decl",
+          "named": true
+        },
+        {
+          "type": "context_id",
+          "named": true
+        },
+        {
+          "type": "control_stmt",
+          "named": true
+        },
+        {
+          "type": "dec_literal",
+          "named": true
+        },
+        {
+          "type": "defer_stmt",
+          "named": true
+        },
+        {
+          "type": "do_block_expr",
+          "named": true
+        },
+        {
+          "type": "func_call",
+          "named": true
+        },
         {
           "type": "func_type",
           "named": true
         },
         {
-          "type": "return_stmt",
+          "type": "hint_expr",
           "named": true
         },
         {
-          "type": "stmt_block",
+          "type": "if_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_line_expr",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "is_expr",
+          "named": true
+        },
+        {
+          "type": "lambda_expr",
+          "named": true
+        },
+        {
+          "type": "loop_block_expr",
+          "named": true
+        },
+        {
+          "type": "loop_line_expr",
+          "named": true
+        },
+        {
+          "type": "member_func_call",
+          "named": true
+        },
+        {
+          "type": "member_value",
+          "named": true
+        },
+        {
+          "type": "move_expr",
+          "named": true
+        },
+        {
+          "type": "muldiv_expr",
+          "named": true
+        },
+        {
+          "type": "namespaced_func_call",
+          "named": true
+        },
+        {
+          "type": "namespaced_type",
+          "named": true
+        },
+        {
+          "type": "namespaced_value",
+          "named": true
+        },
+        {
+          "type": "negate_expr",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "panic_expr",
+          "named": true
+        },
+        {
+          "type": "param_type",
+          "named": true
+        },
+        {
+          "type": "param_type_decl",
+          "named": true
+        },
+        {
+          "type": "param_value_decl",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "paren_type",
+          "named": true
+        },
+        {
+          "type": "range_expr",
+          "named": true
+        },
+        {
+          "type": "ref_expr",
+          "named": true
+        },
+        {
+          "type": "sizeof_expr",
+          "named": true
+        },
+        {
+          "type": "static_expr",
+          "named": true
+        },
+        {
+          "type": "stmt",
+          "named": true
+        },
+        {
+          "type": "str_literal",
+          "named": true
+        },
+        {
+          "type": "type_id",
+          "named": true
+        },
+        {
+          "type": "value_id",
+          "named": true
+        },
+        {
+          "type": "while_block_expr",
+          "named": true
+        },
+        {
+          "type": "while_line_expr",
           "named": true
         }
       ]
