@@ -48,7 +48,7 @@
 "]"
 "{"
 "}"
-] @punctuation.delimiter
+] @punctuation.bracket
 
 [
 "let"
