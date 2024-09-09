@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import Std;
 use Namespace.Inner.Type;
 use Namespace.Inner.Type as T;
+=======
+import Lib.Utils.Thing.Thing;
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
 
 var value             = uninit;
 var value:            = uninit;
@@ -47,26 +51,33 @@ var value:       |*a, &b, copy c, move d| { yield uninit }
 var value  () -> |*a, &b, copy c, move d| { yield uninit }
 var value: () -> |*a, &b, copy c, move d| { yield uninit }
 
+<<<<<<< HEAD
 var func() ->        do uninit;
 var func() -> Int    do uninit;
+=======
+var func() ->     return uninit;
+var func() -> Int return uninit;
+var func() ->     return uninit;
+var func() -> Int return uninit;
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
 
-var func(a: Int        ) -> do uninit;
-var func(a: Int, b: Int) -> do uninit;
+var func(a: Int        ) -> return uninit;
+var func(a: Int, b: Int) -> return uninit;
 
-def func(a:    Int        ) -> do uninit;
-def func(a: T: Any        ) -> do uninit;
-def func(a: T: Any, b: Int) -> do uninit;
+def func(a:    Int        ) -> return uninit;
+def func(a: T: Any        ) -> return uninit;
+def func(a: T: Any, b: Int) -> return uninit;
 
-def func(a: &Int    ) -> do uninit;
-def func(a:  Int    ) -> do uninit;
-def func(a: T: &Type) -> do uninit;
-def func(a: T:  Type) -> do uninit;
-def func(a: &[]Int  ) -> do uninit;
-def func(a:  []Int  ) -> do uninit;
+def func(a: &Int    ) -> return uninit;
+def func(a:  Int    ) -> return uninit;
+def func(a: T: &Type) -> return uninit;
+def func(a: T:  Type) -> return uninit;
+def func(a: &[]Int  ) -> return uninit;
+def func(a:  []Int  ) -> return uninit;
 
-var ownfn(a:  Int) ->  Int do move a;
-var imrfn(a: *Int) -> *Int do a;
-var murfn(a: &Int) -> &Int do &a;
+var ownfn(a:  Int) ->  Int return move a;
+var imrfn(a: *Int) -> *Int return a;
+var murfn(a: &Int) -> &Int return &a;
 
 // Owned r-values can be used for anything
 // Owned l-values must be moved or copied to be used as owned values
@@ -138,6 +149,13 @@ def value = Lib(1, a).Utils(2, b).Thing(3, b);
 def value = a.a.a().a(a).a.a().a().a;
 def value = ((((a).a).a()).a);
 
+def value =           Thing.thing();
+def value = Lib.Utils.Thing.thing();
+def value = Lib.Utils.thing.thing();
+def value = lib.utils.thing.thing();
+def value = Lib.Utils.thing;
+def value = lib.utils.thing;
+
 def value: Lib      .Utils      .Thing       = uninit;
 def value: Lib(1, a).Utils(2, b).Thing(3, c) = uninit;
 
@@ -178,9 +196,10 @@ def value = &value;
 def value = value^;
 def value = copy value;
 
-def if_expr {
-    if true do print(a);
+def statements {
+    if (true) print(a);
 
+<<<<<<< HEAD
     if true do a;
     if true do a else do b;
     if true { yield a } else do b;
@@ -188,9 +207,19 @@ def if_expr {
     if true { yield a }
     if true { yield a } else { yield b }
     if true do a else { yield b }
+=======
+    if (true) a;
+    if (true) a else b;
+    if (true) { break a } else (b);
 
-    if true do if true do a else do b;
+    if (true) { break a }
+    if (true) { break a } else { break b }
+    if (true) a else { break b }
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
 
+    if (true) if (true) a else b;
+
+<<<<<<< HEAD
     if true do { yield a };
     if true do a else do { yield b };
 
@@ -209,14 +238,24 @@ def if_expr {
             return;
         }
     }
+=======
+    if (true) { break a }
+    if (true) a else { break b }
 
-    switch maybe is {
-        Just.{inner} and true do a;
-        else do uninit;
-    }
-    */
-}
+    if   (a == 1) a;
+    elif (a == 2) { break b }
+    else c;
 
+    if (maybe is Some value and value.check()) value.print();
+    else return uninit;
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
+
+    // maybe is {
+    //     (Value value and value.check()) value.print()
+    //     else return uninit;
+    // }
+
+<<<<<<< HEAD
 def for_expr {
     for do a;
     for do a else do b;
@@ -225,13 +264,22 @@ def for_expr {
     for { yield a }
     for { yield a } else { yield b }
     for do a else { yield b }
+=======
+    loop   print(1);
+    loop { print(1) }
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
     
-    for                in a do break;
-    for e              in a do break;
+    // for (list)   print(1);
+    // for (list) { print(1) }
 
-    var at = 10;
-    var range = 20;
-    var in = 30;
+    // for (elem          in list) print(1);
+    // for (elem at index in list) print(1);
+
+    while (condition)   print(1);
+    while (condition) { print(1) }
+
+    // do   print(1)   while (condition)
+    // do { print(1) } while (condition)
 }
 
 def range = 0..=5;
@@ -250,6 +298,7 @@ def Vector(n: UInt) = Lib.Vector(n);
 use Lib.Vector(Int)    as IntVector;
 use Lib.Vector(Int, n) as IntVector(n);
 
+<<<<<<< HEAD
 def DynArr struct {
     size: UInt,
     cap: UInt,
@@ -292,21 +341,71 @@ def Struct struct {
 }
 
 for Person   def new (name: *String, age: *UInt)  -> Person       do Person.{copy name, copy age};
+=======
+struct DynArr {
+    size: UInt;
+    cap: UInt;
+    arr: &[]Int;
+}
+struct DynList(alloc: A: *Alloc, L: List(T: Any)) {
+    list: &L;
+}
+
+struct Just(T: Type) { value: T }
+struct Nothing {}
+union Never {}
+
+union Maybe(T: Type) {
+    Just(T);
+    Nothing;
+}
+
+struct LinkedList(T: Any) as LL {
+    next: &LL;
+}
+
+union LinkedList(T: Any) as LL {
+    &LL;
+}
+
+enum LinkedList(T: Any) as LL {
+    ll = uninit;
+}
+
+union Union {
+    struct Struct {}
+    union Union {
+        struct A {}
+        struct B {}
+    }
+}
+struct Struct {
+    field: struct Struct {}
+    field: union Union {
+        struct A {};
+        struct B {};
+    }
+}
+
+struct Struct as S {}
+
+for Person   def new (name: *String, age: *UInt)  -> Person   return Person.{copy name, copy age};
+>>>>>>> 0a9ebb3e13697d78b31965b693045d30a3a24275
 for Person   def twin(name: *String, to: *Person) -> Person { return Person.{copy name, copy to.age} }
-for Person { def clone(person: *Person) -> Person       do copy person; }
+for Person { def clone(person: *Person) -> Person   return copy person; }
 for Person { def clone(person: *Person) -> Person { return copy person } }
 
-for person: Person   def forget() -> Void do return;
-for person: Person { def forget() -> Void do return; }
-for person: Person { def forget() -> Void {  return } }
+for person: Person   def forget() -> Void   return;
+for person: Person { def forget() -> Void   return; }
+for person: Person { def forget() -> Void { return } }
 
-for person: *Person   def greet() -> Void do print(person.name);
-for person: *Person { def greet() -> Void do print(person.name); }
-for person: *Person { def greet() -> Void {  print(person.name) } }
+for person: *Person   def greet() -> Void return print(person.name);
+for person: *Person { def greet() -> Void return print(person.name); }
+for person: *Person { def greet() -> Void {      print(person.name) } }
 
-for person: &Person   def rename(name: *String) -> Void do &person.name = copy name;
-for person: &Person { def rename(name: *String) -> Void do &person.name = copy name; }
-for person: &Person { def rename(name: *String) -> Void {  &person.name = copy name } }
+for person: &Person   def rename(name: *String) -> Void return &person.name = copy name;
+for person: &Person { def rename(name: *String) -> Void return &person.name = copy name; }
+for person: &Person { def rename(name: *String) -> Void {      &person.name = copy name } }
 
 for DynList(alloc: A: Allocator, L: List(T: Type)) as DL {
     def new() -> D {
@@ -346,7 +445,7 @@ trait Self: DeepClone for self: *Self {
 trait Self: DeepClone {
     for Self {
         def clone_of(alloc: A: &Allocator, value: *Self) -> Self {
-            return value.clone(alloc)
+            return value.clone(alloc);
         }
     }
     for self: *Self {
@@ -375,8 +474,8 @@ impl DeepClone {
 }
 
 trait Self: ShallowCopy {
-    for Self def copy_of(value: *Self) -> Self return value.copy()
-    for self: *Self virt copy() -> Self return copy self
+    for Self def copy_of(value: *Self) -> Self return value.copy();
+    for self: *Self virt copy() -> Self return copy self;
 }
 
 trait ImplicitCopy for Self: of ShallowCopy
@@ -384,31 +483,31 @@ trait ImplicitCopy for Self: of ShallowCopy
 trait Left: Add(Right: Type) {
     for left: *Left virt add(right: *Right) -> Left
     for left: &Left def add_assign(right: *Right) -> Void {
-        &left = left + right
+        &left = left + right;
     }
 }
 
 trait Left: Multiply(Right: Type) {
     for left: *Left virt multiply(right: *Right) -> Left
     for left: &Left def multiply_assign(right: *Right) -> Left {
-        &left = left * right
+        &left = left * right;
     }
 }
 
 for left: Left: *Add(Right: Into(Int)) {
     impl Multiply(Right) {
         virt add(right: *Right) -> Left {
-            var result = copy left
-            for range 0..<right.into() do
-                &result += left
-            return result
+            var result = copy left;
+            for (range 0..<right.into())
+                &result += left;
+            return result;
         }
     }
 }
 
 for left: Left: *Add(Right: Into(Int)) impl Multiply(Right) virt add(right: *Right) -> Left {
-    var result = copy left
-    for range 0..<right.into() do
-        &result += left
-    return result
+    var result = copy left;
+    for (range 0..<right.into())
+        &result += left;
+    return result;
 }
