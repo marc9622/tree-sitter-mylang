@@ -1,6 +1,6 @@
 [
   {
-    "type": "addsub_expr",
+    "type": "addsub_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -8,18 +8,90 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_operand",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "addsub_operator",
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "addsub_operand",
+    "type": "alias",
     "named": true,
     "fields": {},
     "children": {
@@ -27,23 +99,50 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "muldiv_operand",
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "addsub_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "alias_decl",
+    "type": "and_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -51,38 +150,102 @@
       "required": true,
       "types": [
         {
-          "type": "arr_type",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "namespaced_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "and_expr",
+    "type": "arr_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -90,89 +253,47 @@
       "required": true,
       "types": [
         {
-          "type": "and_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "and_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "and_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "comp_operand",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "is_expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "arr_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -184,71 +305,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -256,105 +349,51 @@
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "typed_ident",
           "named": true
         },
         {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "as_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "as_operand",
+          "type": "unary_oper",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "uninit",
           "named": true
         },
         {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "as_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "bool_literal",
+          "type": "union_type",
           "named": true
         },
         {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -366,54 +405,54 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "control_type_expr",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -425,83 +464,47 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "if_type_expr",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "macro",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -509,44 +512,55 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "typed_ident",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "assign_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "assign_stmt",
@@ -557,55 +571,47 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "assign_operator",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -617,71 +623,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -689,200 +667,70 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "att_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "base_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "sizeof_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "block_branches",
+    "type": "block",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "assign_stmt",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "control_stmt",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "control_expr",
           "named": true
         },
         {
@@ -894,107 +742,27 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "value_block_decl",
           "named": true
         },
         {
-          "type": "is_expr",
-          "named": true
-        },
-        {
-          "type": "lambda_expr",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "range_expr",
-          "named": true
-        },
-        {
-          "type": "ref_expr",
-          "named": true
-        },
-        {
-          "type": "sizeof_expr",
-          "named": true
-        },
-        {
-          "type": "static_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "switch_expr",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
+          "type": "value_line_decl",
           "named": true
         }
       ]
@@ -1009,46 +777,62 @@
       "required": true,
       "types": [
         {
-          "type": "block_expr",
+          "type": "block",
           "named": true
         },
         {
-          "type": "capture_block",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "macro",
+          "type": "typed_ident",
           "named": true
         },
         {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "block_expr",
+    "type": "bool_lit",
     "named": true,
-    "fields": {},
+    "fields": {}
+  },
+  {
+    "type": "call_oper",
+    "named": true,
+    "fields": {
+      "func_ident": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "alias_decl",
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
           "named": true
         },
         {
@@ -1056,139 +840,35 @@
           "named": true
         },
         {
-          "type": "control_stmt",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "defer_stmt",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "enum_decl",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "for_block_expr",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "for_decl",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "for_line_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
-          "named": true
-        },
-        {
-          "type": "if_cond_line_expr",
-          "named": true
-        },
-        {
-          "type": "impl_decl",
-          "named": true
-        },
-        {
-          "type": "import_stmt",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "newtype_decl",
-          "named": true
-        },
-        {
-          "type": "struct_decl",
-          "named": true
-        },
-        {
-          "type": "switch_expr",
-          "named": true
-        },
-        {
-          "type": "trait_decl",
-          "named": true
-        },
-        {
-          "type": "union_decl",
-          "named": true
-        },
-        {
-          "type": "value_decl",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bool_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "break_stmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -1200,71 +880,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -1272,66 +924,59 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "builtin",
+    "type": "char_lit",
     "named": true,
-    "fields": {
-      "void": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "void",
-            "named": false
-          }
-        ]
-      }
-    }
+    "fields": {}
   },
   {
-    "type": "capture_block",
+    "type": "compound_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -1339,321 +984,51 @@
       "required": false,
       "types": [
         {
-          "type": "capture_modifier",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "capture_modifier",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "cast_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "cast_operand",
+          "type": "assign_stmt",
           "named": true
         },
         {
-          "type": "namespaced_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cast_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "bool_literal",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "ref_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comp_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "comp_operand",
-          "named": true
-        },
-        {
-          "type": "comp_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comp_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_operand",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comp_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "construct_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "struct_expr",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "control_stmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "break_stmt",
-          "named": true
-        },
-        {
-          "type": "return_stmt",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "defer_stmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "func_call",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "empty_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "macro",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "enum_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "control_stmt",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -1665,71 +1040,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -1737,35 +1084,495 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "control_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_line_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "switch_block_expr",
+          "named": true
+        },
+        {
+          "type": "switch_line_expr",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "control_type_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_type_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "deref_oper",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "equal_oper",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -1780,11 +1587,151 @@
       "required": true,
       "types": [
         {
-          "type": "block_branches",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_line_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "switch_block_expr",
+          "named": true
+        },
+        {
+          "type": "switch_line_expr",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -1799,19 +1746,55 @@
       "required": true,
       "types": [
         {
-          "type": "alias_decl",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "alias",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "enum_decl",
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
           "named": true
         },
         {
@@ -1819,55 +1802,107 @@
           "named": true
         },
         {
-          "type": "impl_decl",
+          "type": "for_line_expr",
           "named": true
         },
         {
-          "type": "import_stmt",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "local_alias",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "newtype_decl",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "param_type_decl",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "param_value_decl",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "struct_decl",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "trait_decl",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "order_oper",
           "named": true
         },
         {
-          "type": "union_decl",
+          "type": "paren_expr",
           "named": true
         },
         {
-          "type": "value_decl",
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "switch_block_expr",
+          "named": true
+        },
+        {
+          "type": "switch_line_expr",
+          "named": true
+        },
+        {
+          "type": "typed_ident",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        },
+        {
+          "type": "value_block_decl",
+          "named": true
+        },
+        {
+          "type": "value_line_decl",
           "named": true
         }
       ]
@@ -1882,85 +1917,55 @@
       "required": true,
       "types": [
         {
-          "type": "line_branches",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "func_call",
-    "named": true,
-    "fields": {
-      "func_id": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "value_id",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "addsub_expr",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "assign_stmt",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "block",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -1972,71 +1977,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -2044,35 +2021,47 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -2082,12 +2071,16 @@
     "type": "func_decl",
     "named": true,
     "fields": {
-      "decl_id": {
+      "func_ident": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "value_id",
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
             "named": true
           }
         ]
@@ -2095,58 +2088,284 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "block",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "capture_block",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "control_type_expr",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_type_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "typed_ident",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hint_oper",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_block_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -2158,83 +2377,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "macro",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -2242,93 +2421,54 @@
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "unary_oper",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "func_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "if_cond_block_expr",
+    "type": "if_line_expr",
     "named": true,
     "fields": {},
     "children": {
@@ -2336,537 +2476,55 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "block_branches",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "assign_stmt",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "block",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "if_cond_line_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "is_expr",
-          "named": true
-        },
-        {
-          "type": "line_branches",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "impl_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "alias_decl",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "enum_decl",
-          "named": true
-        },
-        {
-          "type": "for_decl",
-          "named": true
-        },
-        {
-          "type": "impl_decl",
-          "named": true
-        },
-        {
-          "type": "import_stmt",
-          "named": true
-        },
-        {
-          "type": "local_alias",
-          "named": true
-        },
-        {
-          "type": "newtype_decl",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "struct_decl",
-          "named": true
-        },
-        {
-          "type": "trait_decl",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "union_decl",
-          "named": true
-        },
-        {
-          "type": "value_decl",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_namespace",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_stmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "import_namespace",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "is_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "is_operand",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "is_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "is_expr",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "range_expr",
-          "named": true
-        },
-        {
-          "type": "ref_expr",
-          "named": true
-        },
-        {
-          "type": "sizeof_expr",
-          "named": true
-        },
-        {
-          "type": "static_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "lambda_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "capture_block",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -2878,71 +2536,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -2950,42 +2580,54 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "line_branches",
+    "type": "if_type_expr",
     "named": true,
     "fields": {},
     "children": {
@@ -2993,55 +2635,55 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "block",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "control_type_expr",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "control_stmt",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -3053,71 +2695,47 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "if_type_expr",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "move_expr",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -3125,236 +2743,54 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "local_alias",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "member",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "member_func_call",
-    "named": true,
-    "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "func_call",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "ref_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "member_value",
-    "named": true,
-    "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "value_id",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "ref_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "move_expr",
+    "type": "index_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -3362,361 +2798,47 @@
       "required": true,
       "types": [
         {
-          "type": "bool_literal",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "move_operator",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "move_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "muldiv_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "muldiv_operand",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "muldiv_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "muldiv_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "muldiv_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "negate_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "muldiv_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "namespace",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "namespace_path",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "namespace_path",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "namespaced_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "member",
-          "named": true
-        },
-        {
-          "type": "namespace_path",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "namespaced_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "namespace_path",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "negate_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "negate_operand",
-          "named": true
-        },
-        {
-          "type": "negate_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "negate_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "base_operand",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "negate_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "newtype_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "or_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "or_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "or_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "and_operand",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "panic_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "str_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "param_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "as_expr",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "builtin",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -3728,79 +2850,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -3808,42 +2894,59 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "param_type_decl",
+    "type": "int_lit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "member_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -3851,85 +2954,352 @@
       "required": true,
       "types": [
         {
-          "type": "arr_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "namespaced_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "param_value_decl",
+    "type": "muldiv_oper",
     "named": true,
-    "fields": {
-      "decl_id": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "value_id",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "arr_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "local_alias",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "namespaced_type",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "param_type_decl",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "or_oper",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "order_oper",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -3944,51 +3314,47 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "control_expr",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -4000,71 +3366,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -4072,42 +3410,54 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "paren_type",
+    "type": "ptr_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -4115,38 +3465,78 @@
       "required": true,
       "types": [
         {
-          "type": "arr_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "namespaced_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "param_type",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "paren_type",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "range_expr",
+    "type": "range_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -4154,209 +3544,71 @@
       "required": true,
       "types": [
         {
-          "type": "range_operand",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "range_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "range_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "bool_literal",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "paren_expr",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "range_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ref_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "return_stmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "addsub_expr",
+          "type": "equal_oper",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "construct_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "for_block_expr",
-          "named": true
-        },
-        {
-          "type": "for_line_expr",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "if_cond_block_expr",
-          "named": true
-        },
-        {
-          "type": "if_cond_line_expr",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "is_expr",
-          "named": true
-        },
-        {
-          "type": "lambda_expr",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -4364,50 +3616,27 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "unary_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "uninit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "union_type",
           "named": true
         },
         {
-          "type": "switch_expr",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "sizeof_expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_id",
+          "type": "upper_ident",
           "named": true
         }
       ]
@@ -4422,50 +3651,30 @@
       "required": false,
       "types": [
         {
-          "type": "alias_decl",
-          "named": true
-        },
-        {
-          "type": "enum_decl",
-          "named": true
-        },
-        {
           "type": "for_decl",
           "named": true
         },
         {
-          "type": "impl_decl",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "import_stmt",
+          "type": "union_type",
           "named": true
         },
         {
-          "type": "newtype_decl",
+          "type": "value_block_decl",
           "named": true
         },
         {
-          "type": "struct_decl",
-          "named": true
-        },
-        {
-          "type": "trait_decl",
-          "named": true
-        },
-        {
-          "type": "union_decl",
-          "named": true
-        },
-        {
-          "type": "value_decl",
+          "type": "value_line_decl",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "static_expr",
+    "type": "static_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -4473,78 +3682,115 @@
       "required": true,
       "types": [
         {
-          "type": "bool_literal",
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "str_literal",
+    "type": "str_lit",
     "named": true,
     "fields": {}
   },
   {
-    "type": "struct_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "local_alias",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "struct_expr",
+    "type": "struct_type",
     "named": true,
     "fields": {},
     "children": {
@@ -4552,51 +3798,78 @@
       "required": false,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "typed_ident",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_block_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "alias",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "and_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "arr_oper",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "assign_stmt",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "block",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -4608,71 +3881,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -4680,42 +3925,352 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "switch_branch",
+    "type": "switch_line_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "alias",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "assign_stmt",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "for_block_expr",
+          "named": true
+        },
+        {
+          "type": "for_line_expr",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_block_expr",
+          "named": true
+        },
+        {
+          "type": "if_line_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "switch_block_expr",
+          "named": true
+        },
+        {
+          "type": "switch_line_expr",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typed_ident",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "alias",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_type_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
+          "named": true
+        },
+        {
+          "type": "hint_oper",
+          "named": true
+        },
+        {
+          "type": "if_type_expr",
+          "named": true
+        },
+        {
+          "type": "index_oper",
+          "named": true
+        },
+        {
+          "type": "int_lit",
+          "named": true
+        },
+        {
+          "type": "lower_ident",
+          "named": true
+        },
+        {
+          "type": "member_oper",
+          "named": true
+        },
+        {
+          "type": "muldiv_oper",
+          "named": true
+        },
+        {
+          "type": "or_oper",
+          "named": true
+        },
+        {
+          "type": "order_oper",
+          "named": true
+        },
+        {
+          "type": "paren_expr",
+          "named": true
+        },
+        {
+          "type": "ptr_oper",
+          "named": true
+        },
+        {
+          "type": "range_oper",
+          "named": true
+        },
+        {
+          "type": "static_oper",
+          "named": true
+        },
+        {
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unary_oper",
     "named": true,
     "fields": {},
     "children": {
@@ -4723,55 +4278,135 @@
       "required": true,
       "types": [
         {
-          "type": "addsub_expr",
+          "type": "bool_lit",
           "named": true
         },
         {
-          "type": "and_expr",
+          "type": "call_oper",
           "named": true
         },
         {
-          "type": "arr_type",
+          "type": "char_lit",
           "named": true
         },
         {
-          "type": "as_expr",
+          "type": "compound_oper",
           "named": true
         },
         {
-          "type": "att_type",
+          "type": "dec_lit",
           "named": true
         },
         {
-          "type": "block_expr",
+          "type": "deref_oper",
           "named": true
         },
         {
-          "type": "bool_literal",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "builtin",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "cast_expr",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "comp_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "construct_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "control_stmt",
+          "type": "paren_expr",
           "named": true
         },
         {
-          "type": "dec_literal",
+          "type": "str_lit",
+          "named": true
+        },
+        {
+          "type": "struct_type",
+          "named": true
+        },
+        {
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "uninit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "union_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addsub_oper",
+          "named": true
+        },
+        {
+          "type": "and_oper",
+          "named": true
+        },
+        {
+          "type": "arr_oper",
+          "named": true
+        },
+        {
+          "type": "bool_lit",
+          "named": true
+        },
+        {
+          "type": "call_oper",
+          "named": true
+        },
+        {
+          "type": "char_lit",
+          "named": true
+        },
+        {
+          "type": "compound_oper",
+          "named": true
+        },
+        {
+          "type": "control_expr",
+          "named": true
+        },
+        {
+          "type": "dec_lit",
+          "named": true
+        },
+        {
+          "type": "deref_oper",
+          "named": true
+        },
+        {
+          "type": "equal_oper",
           "named": true
         },
         {
@@ -4783,71 +4418,43 @@
           "named": true
         },
         {
-          "type": "func_call",
+          "type": "hint_oper",
           "named": true
         },
         {
-          "type": "func_type",
+          "type": "if_block_expr",
           "named": true
         },
         {
-          "type": "if_cond_block_expr",
+          "type": "if_line_expr",
           "named": true
         },
         {
-          "type": "if_cond_line_expr",
+          "type": "index_oper",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "int_lit",
           "named": true
         },
         {
-          "type": "is_expr",
+          "type": "lower_ident",
           "named": true
         },
         {
-          "type": "lambda_expr",
+          "type": "member_oper",
           "named": true
         },
         {
-          "type": "member_func_call",
+          "type": "muldiv_oper",
           "named": true
         },
         {
-          "type": "member_value",
+          "type": "or_oper",
           "named": true
         },
         {
-          "type": "move_expr",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "panic_expr",
-          "named": true
-        },
-        {
-          "type": "param_type",
+          "type": "order_oper",
           "named": true
         },
         {
@@ -4855,235 +4462,81 @@
           "named": true
         },
         {
-          "type": "range_expr",
+          "type": "ptr_oper",
           "named": true
         },
         {
-          "type": "ref_expr",
+          "type": "range_oper",
           "named": true
         },
         {
-          "type": "sizeof_expr",
+          "type": "static_oper",
           "named": true
         },
         {
-          "type": "static_expr",
+          "type": "str_lit",
           "named": true
         },
         {
-          "type": "str_literal",
+          "type": "struct_type",
           "named": true
         },
         {
-          "type": "switch_expr",
+          "type": "switch_block_expr",
           "named": true
         },
         {
-          "type": "type_id",
+          "type": "switch_line_expr",
           "named": true
         },
         {
-          "type": "value_id",
+          "type": "unary_oper",
+          "named": true
+        },
+        {
+          "type": "uninit",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        },
+        {
+          "type": "upper_ident",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "switch_expr",
+    "type": "value_block_decl",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "addsub_expr",
-          "named": true
-        },
-        {
-          "type": "and_expr",
-          "named": true
-        },
-        {
-          "type": "block_expr",
-          "named": true
-        },
-        {
-          "type": "bool_literal",
-          "named": true
-        },
-        {
-          "type": "cast_expr",
-          "named": true
-        },
-        {
-          "type": "comp_expr",
-          "named": true
-        },
-        {
-          "type": "dec_literal",
-          "named": true
-        },
-        {
-          "type": "func_call",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "is_expr",
-          "named": true
-        },
-        {
-          "type": "member_func_call",
-          "named": true
-        },
-        {
-          "type": "member_value",
-          "named": true
-        },
-        {
-          "type": "muldiv_expr",
-          "named": true
-        },
-        {
-          "type": "namespaced_expr",
-          "named": true
-        },
-        {
-          "type": "negate_expr",
-          "named": true
-        },
-        {
-          "type": "or_expr",
-          "named": true
-        },
-        {
-          "type": "paren_expr",
-          "named": true
-        },
-        {
-          "type": "str_literal",
-          "named": true
-        },
-        {
-          "type": "switch_branch",
-          "named": true
-        },
-        {
-          "type": "value_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "trait_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "for_decl",
-          "named": true
-        },
-        {
-          "type": "impl_decl",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "param_type_decl",
-          "named": true
-        },
-        {
-          "type": "param_value_decl",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "union_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "arr_type",
-          "named": true
-        },
-        {
-          "type": "att_type",
-          "named": true
-        },
-        {
-          "type": "func_type",
-          "named": true
-        },
-        {
-          "type": "local_alias",
-          "named": true
-        },
-        {
-          "type": "namespaced_type",
-          "named": true
-        },
-        {
-          "type": "param_type",
-          "named": true
-        },
-        {
-          "type": "paren_type",
-          "named": true
-        },
-        {
-          "type": "type_id",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "value_decl",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "assign_decl",
-          "named": true
-        },
         {
           "type": "block_decl",
           "named": true
         },
         {
-          "type": "decl_keyword",
-          "named": true
-        },
-        {
-          "type": "empty_decl",
-          "named": true
-        },
-        {
           "type": "func_decl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "value_line_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assign_decl",
           "named": true
         }
       ]
@@ -5110,6 +4563,10 @@
     "named": false
   },
   {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -5122,15 +4579,7 @@
     "named": false
   },
   {
-    "type": "*=",
-    "named": false
-  },
-  {
     "type": "+",
-    "named": false
-  },
-  {
-    "type": "+=",
     "named": false
   },
   {
@@ -5142,10 +4591,6 @@
     "named": false
   },
   {
-    "type": "-=",
-    "named": false
-  },
-  {
     "type": "->",
     "named": false
   },
@@ -5154,23 +4599,15 @@
     "named": false
   },
   {
-    "type": "..<",
+    "type": "..",
     "named": false
   },
   {
-    "type": "..=",
-    "named": false
-  },
-  {
-    "type": "..>",
+    "type": ".{",
     "named": false
   },
   {
     "type": "/",
-    "named": false
-  },
-  {
-    "type": "/=",
     "named": false
   },
   {
@@ -5190,23 +4627,11 @@
     "named": false
   },
   {
-    "type": "<..",
-    "named": false
-  },
-  {
     "type": "<=",
     "named": false
   },
   {
-    "type": "<>",
-    "named": false
-  },
-  {
     "type": "=",
-    "named": false
-  },
-  {
-    "type": "=..",
     "named": false
   },
   {
@@ -5218,15 +4643,7 @@
     "named": false
   },
   {
-    "type": ">..",
-    "named": false
-  },
-  {
     "type": ">=",
-    "named": false
-  },
-  {
-    "type": "?",
     "named": false
   },
   {
@@ -5239,10 +4656,6 @@
   },
   {
     "type": "^",
-    "named": false
-  },
-  {
-    "type": "alias",
     "named": false
   },
   {
@@ -5262,15 +4675,19 @@
     "named": false
   },
   {
+    "type": "case",
+    "named": false
+  },
+  {
+    "type": "constant",
+    "named": false
+  },
+  {
     "type": "continue",
     "named": false
   },
   {
-    "type": "copy",
-    "named": false
-  },
-  {
-    "type": "dec_literal",
+    "type": "dec_lit",
     "named": true
   },
   {
@@ -5278,7 +4695,11 @@
     "named": false
   },
   {
-    "type": "defer",
+    "type": "default",
+    "named": false
+  },
+  {
+    "type": "deinit",
     "named": false
   },
   {
@@ -5287,14 +4708,6 @@
   },
   {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "enum",
-    "named": false
-  },
-  {
-    "type": "extern",
     "named": false
   },
   {
@@ -5310,23 +4723,15 @@
     "named": false
   },
   {
-    "type": "impl",
-    "named": false
-  },
-  {
-    "type": "import",
-    "named": false
-  },
-  {
     "type": "in",
     "named": false
   },
   {
-    "type": "intern",
+    "type": "init",
     "named": false
   },
   {
-    "type": "is",
+    "type": "len",
     "named": false
   },
   {
@@ -5338,47 +4743,19 @@
     "named": true
   },
   {
-    "type": "macro",
+    "type": "lower_ident",
     "named": true
-  },
-  {
-    "type": "move",
-    "named": false
-  },
-  {
-    "type": "newtype",
-    "named": false
-  },
-  {
-    "type": "not",
-    "named": false
-  },
-  {
-    "type": "null",
-    "named": false
   },
   {
     "type": "or",
     "named": false
   },
   {
-    "type": "panic",
-    "named": false
-  },
-  {
-    "type": "pub",
-    "named": false
-  },
-  {
-    "type": "pure",
+    "type": "own",
     "named": false
   },
   {
     "type": "return",
-    "named": false
-  },
-  {
-    "type": "sizeof",
     "named": false
   },
   {
@@ -5394,16 +4771,8 @@
     "named": false
   },
   {
-    "type": "trait",
-    "named": false
-  },
-  {
     "type": "true",
     "named": false
-  },
-  {
-    "type": "type_id",
-    "named": true
   },
   {
     "type": "uninit",
@@ -5414,27 +4783,19 @@
     "named": false
   },
   {
-    "type": "value_id",
+    "type": "upper_ident",
     "named": true
   },
   {
-    "type": "var",
+    "type": "view",
     "named": false
   },
   {
-    "type": "virt",
-    "named": false
-  },
-  {
-    "type": "void",
+    "type": "yield",
     "named": false
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   },
   {

@@ -1,0 +1,84 @@
+def main() -> Void {
+    if true do this = that else that = this;
+
+    let a: if true do Void else Void;
+
+    let value: U32 {
+        let temp = calc_temp();
+        do_thing(&temp);
+        yield value = temp;
+    }
+
+    def func() -> value: U32 {
+        let temp = calc_temp();
+        do_thing(&temp);
+        return value = temp;
+    }
+}
+
+// Inspired by:
+// https://tunglevo.com/note/an-optimization-thats-impossible-in-rust/
+
+union GermanString {
+    struct Empty {
+        len: 0;
+    };
+    struct Short {
+        len: 1..12+1;
+        buf: [12]Byte;
+    };
+    struct Long {
+        len: 13..U32.max+1;
+        prefix: [4]Byte;
+        ptr: ^own []Byte;
+    };
+}
+
+for GermanString as Self {
+    def new(str: Str, alloc: Alloc) -> german_string: Self {
+        switch str.len
+        case 0 do
+            return german_string = .{
+                len = 0,
+            };
+        case 1..12+1 as len do
+            return german_string = .{
+                len = len,
+                buf = str.ptr.with_len(len).memcpy(),
+            };
+        case 12..U32.max+1 as len {
+            let {ok, ptr} = alloc.dupe(str).ptr;
+            if !ok do panic("allocation failed");
+
+            return german_string = .{
+                len = len,
+                prefix = str.ptr.with_len(4).memcpy(),
+                ptr = ptr,
+            };
+        }
+        case U32.max+1..Usize.max+1 do
+            panic("string too long");
+    }
+}
+
+for gstr: ^view deinit GermanString as Self {
+    def delete(alloc: Alloc) -> Void {
+        switch gstr.len
+        case 0..12+1 do
+            return;
+        case 12..U32.max+1 as len do
+            alloc.free(gstr^.ptr.with_len(4));
+    }
+}
+
+for src: ^len []Byte {
+    def memcpy() -> dst: []Byte {
+        dst = uninit;
+        for i in 0..src.len do
+            dst[i] = src[i];
+    }
+}
+
+// Interesting test:
+// https://godbolt.org/z/bsYnc846E
+// https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(filename:'1',fontScale:14,fontUsePx:'0',j:1,lang:___c,selection:(endColumn:2,endLineNumber:44,positionColumn:2,positionLineNumber:44,selectionStartColumn:2,selectionStartLineNumber:44,startColumn:2,startLineNumber:44),source:'%23include+%3Cstddef.h%3E%0A%0A//+Using+a+fixed+count+of+128+instead+of+using+a+parameter+to+stop+clang%0A//+from+just+using+memcpy,+or+stop+it+from+inlining+its+long+and+opti-%0A//+mized+version+of+memcpy+when+using+no_builtin(%22memcpy%22),+which+will%0A//+still+be+the+same+for+both+functions.%0A%0A//%5B%5Bclang::no_builtin(%22memcpy%22)%5D%5D%0Avoid+*memcpy_out_param(char+*restrict+dst,+char+*restrict+src)+%7B%0A++++char+*ret+%3D+dst%3B%0A%0A++++int+count+%3D+0%3B%0A++++while+(count+%3C+128)+%7B%0A++++++++*dst+%3D+*src%3B%0A++++++++dst%2B%2B%3B%0A++++++++src%2B%2B%3B%0A++++++++count%2B%2B%3B%0A++++%7D%0A%0A++++return+ret%3B%0A%7D%0A%0A//+While+C+does+support+runtime+known+number+of+arguments+(varargs),%0A//+it+doesn!'t+support+return+types+with+runtime+known+size,+but+we+can%0A//+simulate+it+with+a+very+large+return+type.%0Atypedef+struct+%7B%0A++++char+buf%5B1000000000000000000%5D%3B%0A%7D+InfBuf%3B%0A%0A//%5B%5Bclang::no_builtin(%22memcpy%22)%5D%5D%0AInfBuf+memcpy_ret_value(char+*src)+%7B%0A++++InfBuf+ret%3B%0A++++char+*dst+%3D+ret.buf%3B%0A%0A++++int+count+%3D+0%3B%0A++++while+(count+%3C+128)+%7B%0A++++++++*dst+%3D+*src%3B%0A++++++++dst%2B%2B%3B%0A++++++++src%2B%2B%3B%0A++++++++count%2B%2B%3B%0A++++%7D%0A%0A++++return+ret%3B%0A%7D'),l:'5',n:'1',o:'C+source+%231',t:'0')),k:50.1832940560356,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((h:compiler,i:(compiler:cclang_trunk,filters:(b:'0',binary:'1',binaryObject:'1',commentOnly:'0',debugCalls:'1',demangle:'0',directives:'0',execute:'0',intel:'0',libraryCode:'1',trim:'1',verboseDemangling:'0'),flagsViewOpen:'1',fontScale:14,fontUsePx:'0',j:1,lang:___c,libs:!(),options:'-O1',overrides:!(),selection:(endColumn:1,endLineNumber:1,positionColumn:1,positionLineNumber:1,selectionStartColumn:1,selectionStartLineNumber:1,startColumn:1,startLineNumber:1),source:1),l:'5',n:'0',o:'+x86-64+clang+(trunk)+(Editor+%231)',t:'0')),k:49.81670594396439,l:'4',n:'0',o:'',s:0,t:'0')),l:'2',n:'0',o:'',t:'0')),version:4

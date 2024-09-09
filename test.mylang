@@ -1,4 +1,6 @@
-import Lib.Utils.Thing.Thing
+import Std;
+use Namespace.Inner.Type;
+use Namespace.Inner.Type as T;
 
 var value             = uninit;
 var value:            = uninit;
@@ -20,19 +22,19 @@ def value: []Thing()  = uninit;
 def value: *[]&String = uninit;
 def value: () -> Void = uninit;
 
-var value                { break uninit }
-var value:               { break uninit }
-var value: *[]&String    { break uninit }
-var value:            || { break uninit }
-var value: *[]&String || { break uninit }
-var value: () -> Void || { break uninit }
+var value                { yield uninit }
+var value:               { yield uninit }
+var value: *[]&String    { yield uninit }
+var value:            || { yield uninit }
+var value: *[]&String || { yield uninit }
+var value: () -> Void || { yield uninit }
 
-def value                { break uninit }
-def value:               { break uninit }
-def value: *[]&String    { break uninit }
-def value:            || { break uninit }
-def value: *[]&String || { break uninit }
-def value: () -> Void || { break uninit }
+def value                { yield uninit }
+def value:               { yield uninit }
+def value: *[]&String    { yield uninit }
+def value:            || { yield uninit }
+def value: *[]&String || { yield uninit }
+def value: () -> Void || { yield uninit }
 
 var func  () ->        { return uninit }
 var func: () ->        { return uninit }
@@ -40,15 +42,13 @@ var func: () -> Int    { return uninit }
 var func: () ->     || { return uninit }
 var func: () -> Int || { return uninit }
 
-var value         |*a, &b, copy c, move d| { break uninit }
-var value:        |*a, &b, copy c, move d| { break uninit }
-var value  () ->  |*a, &b, copy c, move d| { break uninit }
-var value: () ->  |*a, &b, copy c, move d| { break uninit }
+var value        |*a, &b, copy c, move d| { yield uninit }
+var value:       |*a, &b, copy c, move d| { yield uninit }
+var value  () -> |*a, &b, copy c, move d| { yield uninit }
+var value: () -> |*a, &b, copy c, move d| { yield uninit }
 
 var func() ->        do uninit;
 var func() -> Int    do uninit;
-var func() ->     || do uninit;
-var func() -> Int || do uninit;
 
 var func(a: Int        ) -> do uninit;
 var func(a: Int, b: Int) -> do uninit;
@@ -176,34 +176,34 @@ def value = Lib.Thing(      ).{};
 
 def value = &value;
 def value = value^;
-def value = copy &value;
+def value = copy value;
 
 def if_expr {
     if true do print(a);
 
     if true do a;
     if true do a else do b;
-    if true { break a } else do b;
+    if true { yield a } else do b;
 
-    if true { break a }
-    if true { break a } else { break b }
-    if true do a else { break b }
+    if true { yield a }
+    if true { yield a } else { yield b }
+    if true do a else { yield b }
 
     if true do if true do a else do b;
 
-    if true do { break a };
-    if true do a else do { break b };
+    if true do { yield a };
+    if true do a else do { yield b };
 
     /*
     switch {
         a == 1 do a;
-        a == 2 { break b }
+        a == 2 { yield b }
         else do c;
     }
 
     switch {
         maybe is Just.{inner} and true {
-            break inner.woah()
+            yield inner.woah()
         }
         else {
             return;
@@ -220,11 +220,11 @@ def if_expr {
 def for_expr {
     for do a;
     for do a else do b;
-    for { break a } else do b;
+    for { yield a } else do b;
 
-    for { break a }
-    for { break a } else { break b }
-    for do a else { break b }
+    for { yield a }
+    for { yield a } else { yield b }
+    for do a else { yield b }
     
     for                in a do break;
     for e              in a do break;
@@ -244,55 +244,52 @@ def range = 0<..5;
 def range = 5=..0;
 def range = 5<..0;
 
-alias Vector          = Lib.Vector;
-alias Vector(T: Type) = Lib.Vector(T);
-alias Vector(n: UInt) = Lib.Vector(n);
-newtype IntVector     = Lib.Vector(Int);
+def Vector          = Lib.Vector;
+def Vector(T: Type) = Lib.Vector(T);
+def Vector(n: UInt) = Lib.Vector(n);
+use Lib.Vector(Int)    as IntVector;
+use Lib.Vector(Int, n) as IntVector(n);
 
-struct DynArr {
+def DynArr struct {
     size: UInt,
     cap: UInt,
     arr: &[]Int,
 }
-struct DynList(alloc: A: *Alloc, L: List(T: Any)) {
+def DynList(alloc: A: *Alloc, L: List(T: Any)) struct {
     list: &L,
 }
 
-struct Just(T: Type) { value: T }
-struct Nothing {}
-struct Nothing;
-union Never {}
-union Never;
+def Just(T: Type) struct { value: T }
+def Nothing struct {}
+def Never union {}
 
-union Maybe(T: Type) {
+def Maybe(T: Type) union {
     Just(T),
     Nothing,
 }
 
-struct LinkedList(T: Any) as LL {
+def LinkedList(T: Any) struct {
     next: &LL,
 }
 
-union LinkedList(T: Any) as LL {
+def LinkedList(T: Any) union {
     &LL,
 }
 
-union Union {
-    struct Struct {},
-    union Union {
-        struct A {},
-        struct B {},
+def Union union {
+    def Struct struct {},
+    def Other union {
+        def A struct {},
+        def B struct {},
     },
 }
-struct Struct {
-    field: struct Struct {},
-    field: union Union {
-        struct A {},
-        struct B {},
+def Struct struct {
+    field: def Other struct {},
+    field: def Union union {
+        def A struct {},
+        def B struct {},
     },
 }
-
-struct Struct as S {}
 
 for Person   def new (name: *String, age: *UInt)  -> Person       do Person.{copy name, copy age};
 for Person   def twin(name: *String, to: *Person) -> Person { return Person.{copy name, copy to.age} }

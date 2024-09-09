@@ -2,20 +2,20 @@
 (line_comment) @comment
 (block_comment) @comment
 
-(int_literal) @number
-(dec_literal) @number
+(bool_lit) @boolean
+(int_lit) @number
+(dec_lit) @number
+(char_lit) @character
+(str_lit) @string
 
-(str_literal) @string
+(upper_ident) @type
+(lower_ident) @variable
 
-(type_id) @type
-(value_id) @variable
-(member_value member: (value_id) @property)
-
-(func_call func_id: (value_id) @function)
-(param_value_decl decl_id: (value_id) @function (func_type))
-(func_decl decl_id: (value_id) @function)
+(call_oper func_ident: (lower_ident) @function)
+(func_decl func_ident: (lower_ident) @function)
 
 [
+"="
 "+"
 "-"
 "*"
@@ -24,18 +24,14 @@
 "!"
 "&"
 "^"
-"?"
+"<"
+"<="
+"=="
+">="
+">"
+"!="
+".."
 "::"
-"..=" "=.."
-"..<" "<.."
-"..>" ">.."
-"="
-"+=" "-="
-"*=" "/="
-"==" "!="
-"<=" ">="
-"<" ">" "<>"
-"->"
 ] @operator
 
 [
@@ -52,55 +48,35 @@
 "]"
 "{"
 "}"
-"|"
-] @punctuation.bracket
+] @punctuation.delimiter
 
 [
-"true"
-"false"
-] @boolean
-
-[
-"uninit"
-"null"
-"void"
-void: ["(" ")"]
-] @constant.builtin
-
-[
-"import"
-"as"
-"alias"
-"newtype"
-"struct"
-"union"
-"enum"
-"trait"
-"impl"
-"for"
-"pub"
-"var"
 "let"
 "def"
-"virt"
-"extern"
-"intern"
-"if"
-"switch"
-"in"
-"else"
-"is"
-"and"
+"struct"
+"union"
+"as"
 "or"
-"not"
-"move"
-"copy"
-"sizeof"
-"panic"
-"return"
-"break"
-"continue"
-"defer"
+"and"
 "do"
+"if"
+"else"
+"switch"
+"case"
+"default"
+"for"
+"in"
+"continue"
+"break"
+"yield"
+"return"
+"uninit"
+"view"
+"len"
+"own"
+"init"
+"deinit"
+"static"
+"constant"
 ] @keyword
 

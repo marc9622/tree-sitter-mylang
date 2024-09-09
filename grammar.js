@@ -7,63 +7,27 @@ module.exports = grammar({
         t.block_comment,
     ],
 
-    //word: t => t.value_id,
+    word: t => t.lower_ident,
 
     inline: _ => [
     ],
 
     conflicts: t => [
-        // In the case of '[] Type .' we could either be accessing
-        // a namespaced type or starting a construction expression.
-        [t.namespace_path, t.arr_type],
-
-        // Same with '[] * Type .'
-        [t.namespace_path, t.att_type],
-
-        // In the case of 'value :: Type .' we coule either be
-        // accessing a namespaced type or a member.
-        [t.namespace_path, t._type_not_func],
-        
-        // In the case of 'id . id .' we could either be accessing
-        // a namespace_path or a member.
-        //[t.namespace_path, t._member_expr],
-
-        // In the case of '& id . id .' we could either be accessing
-        // a namespaced type or a member.
-        //[t.namespace_path, t.namespaced_type, t.ref_expr],
-        
-        // In the case of 'value = () -> Void' we could either be assigning
-        // a function type or a lambda expression.
-        //[t._expr, t.lambda_expr],
-        
-        // When writing a for expression, the parser cannot tell
-        // whether it will be a line branch or block branch without
-        // looking ahead.
-        [t.line_branches, t.block_branches],
-
-        [t.namespace_path, t.namespaced_type],
-
-        // In the case of 'Type .'  we could either be accessing
-        // from a namespace_path or making a construct_expr.
-        [t.namespace, t.namespaced_type],
-        [t.namespace, t.construct_expr],
-
-        // In the  case of '* Type .'
-        [t.namespace, t.att_type],
-
-        // In the case of '[] Type .'
-        [t.namespace, t.arr_type],
-
-        // In the case of 'value :: Type .'
-        [t.namespace, t._type_not_func],
+        [t.switch_line_expr],
+        [t.switch_block_expr],
+        [t.switch_line_expr, t.switch_block_expr],
     ],
 
     rules: {
-        source_file: t => repeat(choice(
-            t._decl,
+        source_file: t => rep(choice(
+            seq(t.value_line_decl, ';'),
+            t.value_block_decl,
+            t._type_value,
+            t.for_decl,
         )),
 
-        //#region Comments
+        // ---------- Comment ----------
+
         line_comment: _ => token(seq(
             '//',
             /.*/,
@@ -75,991 +39,784 @@ module.exports = grammar({
             /[^*]*\*+([^/*][^*]*\*+)*/,
             '/',
         )),
-        //#endregion Comments
 
-        //#region Literals
-        _literal: t => choice(
-            t.bool_literal,
-            t.str_literal,
-            t._num_literal,
-        ),
+        // ---------- Lit ----------
 
-        bool_literal: _ => choice(
+        bool_lit: _ => choice(
             'true', 'false',
         ),
 
-        str_literal: _ => seq(
-            '"',
-            /[^"]*/,
-            '"',
-        ),
-
-        _num_literal: t => choice(
-            t.int_literal,
-            t.dec_literal,
-        ),
-
-        int_literal: _ => choice(
+        int_lit: _ => choice(
             /\d[\d_]*[uUiI]?/,
             /0b[01_]+[uUiI]?/,
             /0o[0-7_]+[uUiI]?/,
             /0x[\da-fA-F_]+[uUiI]?/,
         ),
 
-        dec_literal: _ =>
+        dec_lit: _ =>
             /(\d*(\.\d+([\d_]+\d)?)[fF]?|\d+([\d_]+\d)?[fF])/,
-        //#endregion Literals
 
-        //#region Identifiers
-        _id: t => choice(
-            t.type_id,
-            t.value_id,
+        _num_lit: t => choice(
+            t.int_lit,
+            t.dec_lit,
         ),
 
-        type_id: _ =>
+        char_lit: _ => seq(
+            "'",
+            /./,
+            "'",
+        ),
+
+        str_lit: _ => seq(
+            '"',
+            /[^"]*/,
+            '"',
+        ),
+
+        _lit: t => choice(
+            t.bool_lit,
+            t._num_lit,
+            t.char_lit,
+            t.str_lit,
+        ),
+
+        // ---------- Ident ----------
+
+        upper_ident: _ =>
             /[A-Z][a-zA-Z@\d]*/,
 
-        value_id: _ =>
+        lower_ident: _ =>
             /[_a-z@][_a-zA-Z@\d]*/,
 
-        macro_id: _ =>
-            /#[_a-zA-Z@]*[_a-zA-Z@\d]*/,
-        //#endregion Identifiers
-
-        //#region Types
-        _type: t => choice(
-            t.type_id,
-            t.namespaced_type,
-            t.param_type,
-            t.att_type,
-            t.arr_type,
-            t.func_type,
-            t.paren_type,
+        _ident: t => choice(
+            t.upper_ident,
+            t.lower_ident,
         ),
 
-        _param_type_or_id: t => choice(
-            t.type_id,
-            t.param_type,
+        alias: t => seq(
+            'as', t._value,
         ),
 
-        _type_not_func: t => choice(
-            t.type_id,
-            t.namespaced_type,
-            t.param_type,
-            t.att_type,
-            t.arr_type,
-            t.paren_type,
+        typed_ident: t => seq(
+            t._ident,
+            ':', t._type_expr, opt(t.alias),
+            opt(':', t._type_expr, opt(t.alias)),
         ),
 
-        _type_not_paren: t => choice(
-            t.type_id,
-            t.namespaced_type,
-            t.param_type,
-            t.att_type,
-            t.arr_type,
-            t.func_type,
+        // ---------- Value ----------
+
+        uninit: _ => seq(
+            'uninit',
         ),
 
-        namespace: t => choice(
-            t.type_id,
-            t.param_type,
+        struct_type: t => seq(
+            'struct', opt(t.upper_ident),
+            '{', rep(t.typed_ident, ';'), '}',
         ),
 
-        namespace_path: t => seq(
+        union_type: t => seq(
+            'union', opt(t.upper_ident),
+            '{', rep(t._expr, ';'), '}',
+        ),
+
+        _type_value: t => choice(
+            t.struct_type,
+            t.union_type,
+        ),
+
+        _value: t => choice(
+            t._lit,
+            t._ident,
+            t.uninit,
+            t._type_value,
+        ),
+
+        // ---------- Oper ----------
+
+        static_oper: t => seq(
+            choice('static', 'constant'),
             choice(
-                t.namespace,
-                seq(
-                    t.namespace_path,
-                    '.',
-                    t.namespace,
-                ),
+                t._value,
+                t.static_oper,
+                t._math_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
             ),
         ),
 
-        namespaced_type: t => seq(
-            t.namespace_path,
+        or_oper: t => seq(
+            choice(
+                t._value,
+                t.or_oper,
+                t.and_oper,
+                t._cmp_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            'or',
+            choice(
+                t._value,
+                t.and_oper,
+                t.equal_oper,
+                t.order_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        and_oper: t => seq(
+            choice(
+                t._value,
+                t.and_oper,
+                t.equal_oper,
+                t.order_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            'and',
+            choice(
+                t._value,
+                t.equal_oper,
+                t.order_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        equal_oper: t => seq(
+            choice(
+                t._value,
+                t.equal_oper,
+                t.order_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            choice('==', '!='),
+            choice(
+                t._value,
+                t.order_oper,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        order_oper: t => seq(
+            choice(
+                t._value,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            choice('<', '<=', '>=', '>'),
+            choice(
+                t._value,
+                t._arith_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        _cmp_oper: t => choice(
+            t.equal_oper,
+            t.order_oper,
+        ),
+
+        addsub_oper: t => seq(
+            choice(
+                t._value,
+                t.addsub_oper,
+                t.muldiv_oper,
+                t.unary_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            choice('+', '-'),
+            choice(
+                t._value,
+                t.muldiv_oper,
+                t.unary_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        muldiv_oper: t => seq(
+            choice(
+                t._value,
+                t.muldiv_oper,
+                t.unary_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            choice('*', '/', '%'),
+            choice(
+                t._value,
+                t.unary_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        unary_oper: t => seq(
+            choice('-', '!', '&'),
+            choice(
+                t._value,
+                t.unary_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        _arith_oper: t => choice(
+            t.addsub_oper,
+            t.muldiv_oper,
+            t.unary_oper,
+        ),
+
+        _math_oper: t => choice(
+            t.or_oper,
+            t.and_oper,
+            t._cmp_oper,
+            t._arith_oper,
+        ),
+
+        range_oper: t => seq(
+            choice(
+                t._value,
+                t._math_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            '..',
+            choice(
+                t._value,
+                t._math_oper,
+                t.hint_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        hint_oper: t => seq(
+            choice(
+                t._value,
+                t.ptr_oper,
+                t.arr_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            '::',
+            choice(
+                t._value,
+                t.ptr_oper,
+                t.arr_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+        ),
+
+        ptr_oper: t => seq(
+            '^',
+            rep(choice(
+                'view',
+                'len',
+                'own',
+                'init',
+                'deinit',
+            )),
+            choice(
+                t._value,
+                t.ptr_oper,
+                t.arr_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+            ),
+        ),
+
+        arr_oper: t => seq(
+            '[', opt(choice(t._expr, t.typed_ident)), ']',
+            choice(
+                t._value,
+                t.ptr_oper,
+                t.arr_oper,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+            ),
+        ),
+
+        member_oper: t => seq(
+            choice(
+                t._value,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
             '.',
             choice(
-                t.type_id,
-                t.param_type,
+                t._ident,
+                t._load_oper,
+                t.call_oper,
+                t.compound_oper,
             ),
         ),
 
-        param_type: t => seq(
-            t.type_id,
+        index_oper: t => seq(
+            choice(
+                t._value,
+                t._load_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            '[', t._expr, ']',
+        ),
+
+        deref_oper: t => seq(
+            choice(
+                t._value,
+                t._load_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            '^',
+        ),
+
+        _load_oper: t => choice(
+            t.index_oper,
+            t.deref_oper,
+        ),
+
+        call_oper: t => seq(
+            choice(
+                field('func_ident', t._ident),
+                t._load_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
             '(',
-            opt(separate(
-                choice(
-                    t._param_decl,
-                    t._expr,
-                ),
-                ',',
-            )),
+            separate(t._expr_or_assign, ','),
             ')',
         ),
 
-        _param_decl: t => choice(
-            t.param_value_decl,
-            t.param_type_decl,
-        ),
-
-        param_value_decl: t => seq(
-            field('decl_id', t.value_id), ':',
+        compound_oper: t => seq(
             opt(choice(
-                seq(t._type_not_func, opt('+', t._impl_list)),
-                t.param_type_decl,
-                t.func_type,
+                t._ident,
+                t._type_value,
+                t._load_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
             )),
-            opt(t.local_alias),
-        ),
-
-        param_type_decl: t => seq(
-            t.type_id, ':',
-            t._type_not_func, opt('+', t._impl_list),
-        ),
-
-        att_type: t => seq(
-            choice('*', '&', '^', '?', /*'!'*/),
-            choice(
-                t.type_id,
-                t.namespaced_type,
-                t.param_type,
-                t.att_type,
-                t.arr_type,
-                t.paren_type,
-            ),
-        ),
-
-        arr_type: t => seq(
-            '[',
-            opt(t._expr),
-            ']',
-            choice(
-                t.type_id,
-                t.namespaced_type,
-                t.param_type,
-                t.att_type,
-                t.arr_type,
-                t.paren_type,
-            ),
-        ),
-
-        func_type: t => seq(
-            opt('[', separate(t._param_decl, ','), ']'),
-            '(', opt(separate(t._param_decl, ',')), ')',
-            '->', opt(choice(t._type, t.param_type_decl)),
-        ),
-
-        paren_type: t => seq(
-            '(', t._type, ')',
-        ),
-
-        capture_modifier: _ => choice(
-            '*', '&', 'copy', 'move',
-        ),
-
-        capture_block: t => seq(
-            '|',
-            opt(separate(
-                seq(t.capture_modifier, t.value_id),
-                ','
-            )),
-            '|',
-        ),
-        //#endregion Types
-
-        //#region Expressions
-        _expr_or_control_stmt: t => choice(
-            t._expr,
-            t.control_stmt,
-        ),
-
-        _expr: t => choice(
-            t._literal,
-            t.value_id,
-            t._type_not_paren,
-            t.namespaced_expr,
-            t.if_cond_line_expr,
-            t.if_cond_block_expr,
-            t.switch_expr,
-            t.for_line_expr,
-            t.for_block_expr,
-            t.range_expr,
-            t.builtin,
-            t.construct_expr,
-            t.ref_expr,
-            t.static_expr,
-            t.panic_expr,
-            t.sizeof_expr,
-            t.move_expr,
-            t.negate_expr,
-            t.muldiv_expr,
-            t.addsub_expr,
-            t.comp_expr,
-            t.is_expr,
-            t.and_expr,
-            t.or_expr,
-            t.as_expr,
-            t.cast_expr,
-            t.func_call,
-            t.paren_expr,
-            t.block_expr,
-            t.lambda_expr,
-            t._member_expr,
-        ),
-
-        _cond_expr: t => choice(
-            t._literal,
-            t.value_id,
-            t.namespaced_expr,
-            'uninit',
-            'null',
-            t.negate_expr,
-            t.muldiv_expr,
-            t.addsub_expr,
-            t.comp_expr,
-            t.is_expr,
-            t.and_expr,
-            t.or_expr,
-            t.cast_expr,
-            t.func_call,
-            t.paren_expr,
-            t.block_expr,
-            t._member_expr,
-        ),
-
-        builtin: _ => choice(
-            'uninit',
-            'null',
-            field('void', choice('void', seq('(', ')'))),
-        ),
-
-        line_branches: t => prec.right(choice(
-            seq(
-                'do', t._expr_or_control_stmt,
-                opt(opt(';'), 'else', 'do', t._expr_or_control_stmt),
-            ),
-            seq(
-                t.block_expr,
-                'else', 'do', t._expr_or_control_stmt,
-            ),
-        )),
-
-        block_branches: t => choice(
-            seq(
-                t.block_expr,
-                opt('else', t.block_expr),
-            ),
-            seq(
-                'do', t._expr_or_control_stmt,
-                opt(';'), 'else', t.block_expr,
-            ),
-        ),
-
-        if_cond_line_expr: t => prec.right(seq(
-            'if', t._cond_expr, t.line_branches,
-        )),
-
-        if_cond_block_expr: t => prec.right(seq(
-            'if', t._cond_expr, t.block_branches,
-        )),
-
-        switch_branch: t => choice(
-            seq('do', t._expr_or_control_stmt, ';'),
-            t.block_expr,
-        ),
-
-        switch_expr: t => seq(
-            'switch', '{',
-            repeat(seq(t._cond_expr, t.switch_branch)),
-            opt('else', t.switch_branch),
+            '.{',
+            separate(t._expr_or_assign, ','),
             '}',
         ),
 
-        for_line_expr: t => prec.right(seq(
-            'for',
-            opt(t.value_id),
-            opt('in', choice(t.value_id, t.range_expr)),
-            t.line_branches,
-        )),
-
-        for_block_expr: t => prec.right(seq(
-            'for',
-            opt(t.value_id),
-            opt('in', t.value_id),
-            t.block_branches,
-        )),
-
-        range_operator: _ => choice(
-            '..=', '..<', '..>',
-            '=..', '<..', '>..',
+        _oper: t => choice(
+            t.static_oper,
+            t._math_oper,
+            t.range_oper,
+            t.hint_oper,
+            t.ptr_oper,
+            t.arr_oper,
+            t._load_oper,
+            t.member_oper,
         ),
 
-        range_operand: t => choice(
-            t._literal,
-            t.value_id,
-            t.paren_expr,
-            t._member_expr,
-        ),
+        // ---------- Expr ----------
 
-        range_expr: t => seq(
-            t.range_operand,
-            t.range_operator,
-            t.range_operand,
-        ),
-
-        construct_expr: t => seq(
-            choice(
-                t.type_id,
-                t.namespaced_type,
-                t.param_type,
-                t.att_type,
-                t.arr_type,
-            ),
-            t.struct_expr,
-        ),
-
-        struct_expr: t => seq(
-            '.', '{',
-            opt(separate(
-                choice(
-                    t._expr,
-                    seq(t.value_id, '=', t._expr)),
-                ',')
-            ),
-            '}',
-        ),
-
-        ref_expr: t => seq(
-            choice(
-                seq('&', t.value_id),
-                seq(t.value_id, '^'),
-            )
-        ),
-
-        static_expr: t => seq(
-            'static', choice(
-                t._literal,
-                //t.value_id,
-                //t.if_cond_single_expr,
-                //t.if_cond_block_expr,
-                //t.if_match_block_expr,
-                //t.for_single_expr,
-                //t.for_block_expr,
-                //t.range_expr,
-                //'uninit',
-                //'null',
-                //t.construct_expr,
-                //t.sizeof_expr,
-                //t.move_expr,
-                //t.negate_expr,
-                //t.muldiv_expr,
-                //t.addsub_expr,
-                //t.comp_expr,
-                //t.is_expr,
-                //t.and_expr,
-                //t.or_expr,
-                //t.as_expr,
-                //t.cast_expr,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
-            ),
-        ),
-
-        panic_expr: t => seq(
-            'panic', choice(
-                t.str_literal,
-                //t.value_id,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
-            ),
-        ),
-
-        sizeof_expr: t => seq(
-            'sizeof', choice(
-                t.type_id,
-                //t.namespaced_type,
-                //t.param_type,
-                //t.att_type,
-                //t.arr_type,
-                //t.paren_type,
-            ),
-        ),
-
-        move_operator: _ => choice(
-            'move', 'copy',
-        ),
-
-        move_expr: t => seq(
-            t.move_operator, choice(
-                t._literal,
-                t.value_id,
-                //t.as_expr,
-                t.func_call,
-                t._member_expr,
-            ),
-        ),
-
-        base_operand: t => choice(
-            t._literal,
-            t.value_id,
-            t.namespaced_expr,
-            'uninit',
-            t.construct_expr,
-            t.sizeof_expr,
-            t.cast_expr,
-            t.func_call,
-            t.paren_expr,
-            t.block_expr,
-            t._member_expr,
-        ),
-
-        negate_operator: _ => choice(
-            '-', '!', 'not',
-        ),
-
-        negate_operand: t => choice(
-            t.base_operand,
-            t.negate_expr,
-        ),
-
-        negate_expr: t => seq(
-            t.negate_operator,
-            t.negate_operand,
-        ),
-
-        muldiv_operator: _ => choice(
-            '*', '/', '%',
-        ),
-
-        muldiv_operand: t => choice(
-            t.negate_operand,
-            t.muldiv_expr,
-        ),
-
-        muldiv_expr: t => prec.left(seq(
-            t.muldiv_operand,
-            t.muldiv_operator,
-            t.muldiv_operand,
-        )),
-
-        addsub_operator: _ => choice(
-            '+', '-',
-        ),
-
-        addsub_operand: t => choice(
-            t.muldiv_operand,
-            t.addsub_expr,
-        ),
-
-        addsub_expr: t => prec.left(seq(
-            t.addsub_operand,
-            t.addsub_operator,
-            t.addsub_operand,
-        )),
-
-        comp_operator: _ => choice(
-            '==', '!=', '<>', '<', '>', '<=', '>=',
-        ),
-
-        comp_operand: t => choice(
-            t.addsub_operand,
-            t.comp_expr,
-        ),
-
-        comp_expr: t => prec.left(seq(
-            t.comp_operand,
-            t.comp_operator,
-            t.comp_operand,
-        )),
-
-        is_operand: t => choice(
-            t._literal,
-            t._id,
-            t.namespaced_type,
-            t.namespaced_expr,
-            t.param_type,
-            t.att_type,
-            t.arr_type,
-            t.range_expr,
-            t.builtin,
-            t.construct_expr,
-            t.ref_expr,
-            t.static_expr,
-            t.panic_expr,
-            t.sizeof_expr,
-            t.move_expr,
-            t.negate_expr,
-            t.muldiv_expr,
-            t.addsub_expr,
-            t.comp_expr,
-            t.is_expr,
-            t.as_expr,
-            t.cast_expr,
-            t.func_call,
-            t.paren_expr,
-            t.block_expr,
-            t._member_expr,
-        ),
-
-        is_expr: t => seq(
-            t.is_operand,
-            'is',
-            choice(
-                t._type,
-                t.construct_expr,
-            ),
-        ),
-
-        and_operand: t => choice(
-            t.comp_operand,
-            t.is_expr,
-            t.and_expr,
-        ),
-
-        and_expr: t => prec.left(seq(
-            t.and_operand,
-            'and',
-            t.and_operand,
-        )),
-
-        or_operand: t => choice(
-            t.and_operand,
-            t.or_expr,
-        ),
-
-        or_expr: t => prec.left(seq(
-            t.or_operand,
-            'or',
-            t.or_operand,
-        )),
-
-        as_operand: t => choice(
-            t._literal,
-            t.value_id,
-            t.namespaced_type,
-            //t.param_type,
-            //t.att_type,
-            //t.arr_type,
-            //t.func_type,
-            t.construct_expr,
-            //t.cast_expr,
-            t.paren_expr,
-        ),
-
-        as_expr: t => seq(
-            t.as_operand,
-            'as',
-            choice(
-                t.type_id,
-                t.param_type,
-                //t.paren_expr,
-            ),
-        ),
-
-        cast_operand: t => choice(
-            t._literal,
-            t.value_id,
-            'uninit',
-            'null',
-            t.construct_expr,
-            t.ref_expr,
-            t.func_call,
-            t.paren_expr,
-            t._member_expr,
-        ),
-
-        cast_expr: t => seq(
-            t.cast_operand,
-            '::',
-            t._type_not_func,
-        ),
-
-        func_call: t => seq(
-            field('func_id', t.value_id),
-            '(', opt(separate(t._expr, ',')), ')',
+        control_expr: t => seq(
+            choice('return', 'yield', 'break', 'continue'),
+            opt(choice(
+                t._value,
+                t._oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+                t.if_line_expr,
+                t.if_block_expr,
+                t.switch_line_expr,
+                t.switch_block_expr,
+                t.for_line_expr,
+                t.for_block_expr,
+                t.assign_stmt,
+            )),
         ),
 
         paren_expr: t => seq(
             '(', t._expr, ')',
         ),
 
-        block_expr: t => seq(
+        if_line_expr: t => prec.right(seq(
+            'if', t._expr,
+            choice(
+                seq('do', t._expr_or_assign),
+                seq(
+                    choice(
+                        seq('do', t._expr_or_assign),
+                        t.block,
+                    ),
+                    'else', t._expr_or_assign,
+                ),
+            )
+        )),
+
+        if_block_expr: t => prec.right(seq(
+            'if', t._expr,
+            choice(
+                t.block,
+                seq(
+                    choice(
+                        seq('do', t._expr_or_assign),
+                        t.block,
+                    ),
+                    'else',
+                    t.block,
+                ),
+            )
+        )),
+
+        switch_line_expr: t => prec.right(seq(
+            'switch', t._expr,
+            repeat(choice(
+                seq(
+                    'case', t._expr, opt(t.alias),
+                    choice(
+                        seq('do', t._expr_or_assign, ';'),
+                        t.block,
+                    ),
+                ),
+                seq(
+                    'default', opt(t.alias),
+                    choice(
+                        seq(t._expr_or_assign, ';'),
+                        t.block,
+                    ),
+                ),
+            )),
+            choice(
+                seq(
+                    'case', t._expr, opt(t.alias),
+                    seq('do', t._expr_or_assign, ';'),
+                ),
+                seq(
+                    'default', opt(t.alias),
+                    seq(t._expr_or_assign, ';'),
+                ),
+            ),
+        )),
+
+        switch_block_expr: t => prec.right(seq(
+            'switch', t._expr,
+            repeat(choice(
+                seq(
+                    'case', t._expr, opt(t.alias),
+                    choice(
+                        seq('do', t._expr_or_assign, ';'),
+                        t.block,
+                    ),
+                ),
+                seq(
+                    'default', opt(t.alias),
+                    choice(
+                        seq(t._expr_or_assign, ';'),
+                        t.block,
+                    ),
+                ),
+            )),
+            choice(
+                seq(
+                    'case', t._expr, opt(t.alias),
+                    t.block,
+                ),
+                seq(
+                    'default', opt(t.alias),
+                    t.block,
+                ),
+            ),
+        )),
+
+        for_line_expr: t => prec.right(seq(
+            'for', opt(t._expr), 'in', t._expr,
+            choice(
+                seq('do', t._expr_or_assign),
+                seq(
+                    choice(
+                        seq('do', t._expr_or_assign),
+                        t.block,
+                    ),
+                    'else', t._expr_or_assign,
+                ),
+            ),
+        )),
+
+        for_block_expr: t => prec.right(seq(
+            'for', opt(t._expr), 'in', t._expr,
+            choice(
+                t.block,
+                seq(
+                    choice(
+                        seq('do', t._expr_or_assign),
+                        t.block,
+                    ),
+                    'else',
+                    t.block,
+                ),
+            )
+        )),
+
+        _expr: t => choice(
+            t._value,
+            t._oper,
+            t.control_expr,
+            t.paren_expr,
+            t.call_oper,
+            t.compound_oper,
+            t.if_line_expr,
+            t.if_block_expr,
+            t.switch_line_expr,
+            t.switch_block_expr,
+            t.for_line_expr,
+            t.for_block_expr,
+        ),
+
+        block: t => seq(
             '{',
-            repeat(t._stmt),
-            opt(t._line_stmt),
+            rep(choice(
+                seq(
+                    choice(
+                        t.call_oper,
+                        t.assign_stmt,
+                        t.control_expr,
+                        t.value_line_decl,
+                        t.if_line_expr,
+                        t.switch_line_expr,
+                        t.for_line_expr,
+                    ),
+                    ';',
+                ),
+                t.value_block_decl,
+                t.if_block_expr,
+                t.switch_block_expr,
+                t.for_block_expr,
+            )),
             '}',
         ),
 
-        lambda_expr: t => seq(
-            t.func_type,
-            opt(t.capture_block),
+        // ---------- Type Expr ----------
+
+        control_type_expr: t => seq(
+            choice('return', 'yield', 'break', 'continue'),
+            opt(choice(
+                t._value,
+                t._oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+                t.if_type_expr,
+            )),
+        ),
+
+        if_type_expr: t => seq(
+            'if', t._expr,
             choice(
-                seq('do', t._expr),
-                t.block_expr,
+                seq(
+                    'do',
+                    choice(
+                        t._type_expr,
+                    ),
+                ),
+                t.block,
+            ),
+            'else',
+            choice(
+                t._type_expr,
+                t.block,
             ),
         ),
 
-        namespaced_expr: t => seq(
-            choice(
-                t.namespace_path,
-                t.arr_type,
-            ),
-            '.',
-            t.member,
-        ),
-
-        _member_operand: t => choice(
-            t._literal,
-            t.value_id,
-            t.namespaced_expr,
-            //t.param_type,
-            //t.arr_type,
-            t.construct_expr,
-            t.ref_expr,
-            //t.param_type,
-            t.cast_expr,
-            t.func_call,
+        _type_expr: t => choice(
+            t._value,
+            t._oper,
+            t.control_type_expr,
             t.paren_expr,
-            t.block_expr,
-            t._member_expr,
+            t.call_oper,
+            t.compound_oper,
+            t.if_type_expr,
         ),
 
-        member: t => choice(
-            t.value_id,
-            t.func_call,
-        ),
-
-        member_value: t => seq(
-            t._member_operand,
-            '.',
-            field('member', t.value_id),
-        ),
-
-        member_func_call: t => seq(
-            t._member_operand,
-            '.',
-            field('member', t.func_call),
-        ),
-
-        _member_expr: t => choice(
-            t.member_value,
-            t.member_func_call,
-        ),
-        //#endregion Expressions
-
-        //#region Statements
-        _stmt: t => choice(
-            seq(t._line_stmt, ';'),
-            t._block_stmt,
-        ),
-
-        _line_stmt: t => choice(
-            t.if_cond_line_expr,
-            t.for_line_expr,
-            t.func_call,
-            t.member_func_call,
-            t.control_stmt,
-            t.assign_stmt,
-            t.defer_stmt,
-        ),
-
-        _block_stmt: t => choice(
-            t.if_cond_block_expr,
-            t.switch_expr,
-            t.for_block_expr,
-            t._decl,
-        ),
-
-        control_stmt: t => choice(
-            t.return_stmt,
-            t.break_stmt,
-            'continue',
-        ),
-
-        assign_operator: _ => choice(
-            '=', '+=', '-=', '*=', '/=',
-        ),
+        // ---------- Stmt ----------
 
         assign_stmt: t => seq(
-            choice(
-                t.value_id,
-                //t.ref_expr,
-                //t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
-            ),
-            t.assign_operator,
+            t._ident, '=', t._expr,
+        ),
+
+        _expr_or_assign: t => choice(
             t._expr,
+            t.assign_stmt,
         ),
 
-        import_stmt: t => seq(
-            'import',
-            t.import_namespace,
-            ';',
+        // ---------- Decl ----------
+
+        assign_decl: t => seq(
+            choice(
+                t._ident,
+                t.typed_ident,
+                seq(
+                    '{',
+                    separate(
+                        choice(
+                            t._ident,
+                            t.typed_ident,
+                        ),
+                        ',',
+                    ),
+                    '}',
+                    opt(':', t._type_expr),
+                ),
+            ),
+            opt('=', t._expr),
         ),
 
-        import_namespace: t => seq(
-            t.type_id, repeat(seq('.', t.type_id))
+        block_decl: t => seq(
+            choice(
+                t._ident,
+                t.typed_ident,
+            ),
+            t.block,
         ),
 
-        return_stmt: t => seq(
-            'return', opt(t._expr),
-        ),
-
-        break_stmt: t => seq(
-            'break', opt(t._expr),
-        ),
-
-        defer_stmt: t => seq(
-            'defer', choice(
-                //t.if_cond_single_expr,
-                //t.if_cond_block_expr,
-                //t.if_match_block_expr,
-                //t.for_single_expr,
-                //t.for_block_expr,
-                //t.assign_stmt,
-                //t.panic_expr,
-                t.func_call,
-                //t.paren_expr,
-                //t._member_expr,
+        // TODO: This needs to be split into line and block
+        func_decl: t => seq(
+            field('func_ident', t._ident),
+            '(', separate(t.typed_ident, ','), ')',
+            '->',
+            choice(
+                t._type_expr,
+                t.typed_ident,
+            ),
+            choice(
+                t.block,
+                seq('=', t.control_expr, ';'),
             ),
         ),
-        //#endregion Statements
 
-        //#region Declarations
-        _decl: t => choice(
-            t.import_stmt,
-            t.value_decl,
-            t.alias_decl,
-            t.newtype_decl,
-            t.struct_decl,
-            t.union_decl,
-            t.enum_decl,
-            t.trait_decl,
-            t.for_decl,
-            t.impl_decl,
-        ),
-
-        decl_keyword: _ => choice(
-            'var', 'let', 'def', 'virt', 'extern', 'intern',
-        ),
-
-        value_decl: t => seq(
-            opt('pub'),
-            t.decl_keyword,
-            opt('pure'),
+        value_line_decl: t => seq(
+            choice('let', 'def'),
             choice(
-                t.empty_decl,
                 t.assign_decl,
+            ),
+        ),
+
+        value_block_decl: t => seq(
+            choice('let', 'def'),
+            choice(
                 t.block_decl,
                 t.func_decl,
             ),
         ),
 
-        macro: _ =>
-            'macro',
-
-        empty_decl: t => seq(
-            opt(t.macro),
+        for_decl: t => seq(
+            'for',
             choice(
-                t._id,
-                t._param_decl,
-            ), ';',
-        ),
-
-        assign_decl: t => seq(
-            opt(t.macro),
-            choice(
-                t._id,
-                t._param_decl,
+                seq(t._expr, opt(t.alias)),
+                t.typed_ident,
             ),
-            '=', t._expr, ';',
-        ),
-
-        block_decl: t => seq(
-            opt(t.macro),
-            choice(
-                t._id,
-                t._param_decl,
-            ),
-            opt(t.capture_block),
-            t.block_expr,
-        ),
-
-        func_decl: t => seq(
-            choice(
+            '{',
+            rep(choice(
                 seq(
-                    field('decl_id', t.value_id),
-                    opt('[', separate(t._param_decl, ','), ']'),
-                    '(', opt(separate(t._param_decl, ',')), ')',
-                ),
-                seq(
-                    t.macro,
-                    field('decl_id', t.value_id),
-                    opt('[', separate(t._param_decl, ','), ']'),
-                    opt(choice(
-                        seq('(', opt(separate(t._param_decl, ',')), ')'),
-                        t._param_decl,
-                    )),
-                ),
-            ),
-            '->',
-            opt(t._type),
-            seq(
-                opt(t.capture_block),
-                choice(
-                    seq('do', t._expr, ';'),
-                    t.block_expr,
+                    t.value_line_decl,
                     ';',
                 ),
-            ),
-        ),
-
-        alias_decl: t => seq(
-            opt('pub'), 'alias', t._param_type_or_id,
-            '=', t._type, ';',
-        ),
-
-        newtype_decl: t => seq(
-            opt('pub'), 'newtype', t._param_type_or_id,
-            '=', t._type, ';',
-        ),
-
-        local_alias: t => seq(
-            'as', t._param_type_or_id
-        ),
-
-        struct_inner_decl: t => choice(
-            t.value_decl,
-            t.newtype_decl,
-            t.struct_decl,
-            t.union_decl,
-            t.for_decl,
-            t.impl_decl,
-        ),
-
-        struct_decl: t => seq(
-            opt('pub'), 'struct',
-            t._param_type_or_id,
-            opt(t.local_alias),
-            '{',
-            repeat(choice(
-                seq(
-                    opt('pub'), t.value_id,
-                    ':',
-                    t._type,
-                    ',',
-                ),
+                t.value_block_decl,
+                t._type_value,
+                t.for_decl,
             )),
             '}',
         ),
-
-        union_decl: t => seq(
-            opt('pub'), 'union',
-            t._param_type_or_id,
-            opt(t.local_alias),
-            '{',
-            opt(
-                separate(
-                    t._type,
-                    ',',
-                ),
-            ),
-            '}',
-        ),
-
-        enum_decl: t => seq(
-            opt('pub'), 'enum', t.type_id,
-            ':', t._param_type_or_id,
-            '{',
-            repeat(choice(
-                seq(t.type_id, '=', t._expr, ','),
-                seq(t.type_id, '{', repeat(t.control_stmt), '}'),
-            )),
-            '}',
-        ),
-
-        trait_decl: t => seq(
-            opt('pub'), 'trait',
-            opt(t._param_type_or_id, ':'),
-            t._param_type_or_id,
-            opt('for', choice(t.type_id, t.param_type, t._param_decl)),
-            choice(
-                seq(
-                    '{',
-                    repeat(choice(
-                        t.for_decl,
-                        t.impl_decl,
-                    )),
-                    '}'
-                ),
-                ';',
-            ),
-        ),
-
-        for_decl: t => seq(
-            'for', t._for_param,
-            opt(opt('pub'), 'impl', t._impl_list),
-            choice(
-                //t.value_decl,
-                //t.alias_decl,
-                //t.newtype_decl,
-                //t.struct_decl,
-                //t.union_decl,
-                //t.enum_decl,
-                //t.trait_decl,
-                //t.for_decl,
-                t._decl_list,
-                //';',
-            ),
-        ),
-
-        impl_decl: t => seq(
-            opt('pub'), 'impl', t._impl_list,
-            opt('for', t._for_param),
-            choice(
-                //t.value_decl,
-                t._decl_list,
-                //';',
-            ),
-        ),
-
-        _for_param: t => choice(
-            seq(
-                choice(
-                    t.type_id,
-                    t.param_type,
-                    t.arr_type,
-                    t.att_type,
-                ),
-                t.local_alias,
-            ),
-            t._param_decl,
-        ),
-
-        _impl_list: t => seq(
-            choice(
-                t.type_id,
-                t.param_type,
-                t.paren_type
-            ),
-            repeat(seq(
-                '+',
-                choice(
-                    t.type_id,
-                    t.param_type,
-                    t.paren_type
-                ),
-            )),
-        ),
-
-        _decl_list: t => seq(
-            '{', repeat(t._decl), '}',
-        ),
-        //#endregoin Declarations
     },
 });
 
@@ -1067,18 +824,26 @@ function opt(...rule) {
     return optional(seq(...rule));
 }
 
-function separate(rule, delimeter) {
+function rep(...rule) {
+    return repeat(seq(...rule));
+}
+
+function separate(rule, delimiter) {
+    return opt(separate1(rule, delimiter));
+}
+
+function separate1(rule, delimiter) {
     return seq(
         rule,
-        repeat(seq(delimeter, rule)),
-        opt(delimeter),
+        repeat(seq(delimiter, rule)),
+        opt(delimiter),
     );
 }
 
-function bi_expr(precedence, operand, operator) {
-    return prec.left(precedence, seq(
-        field('left', operand),
-        operator,
-        field('right', operand),
-    ));
-}
+// function bi_expr(precedence, operand, operator) {
+//     return prec.left(precedence, seq(
+//         field('left', operand),
+//         operator,
+//         field('right', operand),
+//     ));
+// }
