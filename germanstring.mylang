@@ -1,7 +1,7 @@
 def main() -> Void {
-    if true do this = that else that = this;
+    if true: this = that else: that = this;
 
-    let a: if true do Void else Void;
+    let a: if true: Void else: Void;
 
     let value: U32 {
         let temp = calc_temp();
@@ -14,6 +14,46 @@ def main() -> Void {
         do_thing(&temp);
         return value = temp;
     }
+
+
+
+
+    if condition == 0:
+        print("hello")
+    else if condition == 1:
+        print("world")
+    else:
+        print("!");
+
+    if condition == 0 {
+        print("hello");
+    }
+    else if condition == 1 {
+        print("world");
+    }
+    else {
+        print("!");
+    }
+
+    switch condition
+    case 0:
+        print("hello")
+    case 1:
+        print("world")
+    default:
+        print("!");
+
+    switch condition
+    case 0 {
+        print("hello");
+    }
+    case 1 {
+        print("world");
+    }
+    default {
+        print("!");
+    }
+
 }
 
 // Inspired by:
@@ -37,18 +77,18 @@ union GermanString {
 for GermanString as Self {
     def new(str: Str, alloc: Alloc) -> german_string: Self {
         switch str.len
-        case 0 do
+        case 0:
             return german_string = .{
                 len = 0,
-            };
-        case 1..12+1 as len do
+            }
+        case 1..12+1 as len:
             return german_string = .{
                 len = len,
                 buf = str.ptr.with_len(len).memcpy(),
-            };
+            }
         case 12..U32.max+1 as len {
             let {ok, ptr} = alloc.dupe(str).ptr;
-            if !ok do panic("allocation failed");
+            if !ok: panic("allocation failed");
 
             return german_string = .{
                 len = len,
@@ -56,7 +96,7 @@ for GermanString as Self {
                 ptr = ptr,
             };
         }
-        case U32.max+1..Usize.max+1 do
+        case U32.max+1..Usize.max+1:
             panic("string too long");
     }
 }
@@ -64,9 +104,9 @@ for GermanString as Self {
 for gstr: ^view deinit GermanString as Self {
     def delete(alloc: Alloc) -> Void {
         switch gstr.len
-        case 0..12+1 do
-            return;
-        case 12..U32.max+1 as len do
+        case 0..12+1:
+            return
+        case 12..U32.max+1 as len:
             alloc.free(gstr^.ptr.with_len(4));
     }
 }
@@ -74,7 +114,7 @@ for gstr: ^view deinit GermanString as Self {
 for src: ^len []Byte {
     def memcpy() -> dst: []Byte {
         dst = uninit;
-        for i in 0..src.len do
+        for i in 0..src.len:
             dst[i] = src[i];
     }
 }

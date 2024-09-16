@@ -530,49 +530,58 @@ module.exports = grammar({
             '(', t._expr, ')',
         ),
 
+        _if_rep: t => rep1(prec.right(seq(
+            choice(
+                seq(':', t._expr_or_assign),
+                t.block,
+            ),
+            'else', 'if', t._expr,
+        ))),
+
         if_line_expr: t => prec.right(seq(
             'if', t._expr,
+            opt(t._if_rep),
             choice(
-                seq('do', t._expr_or_assign),
+                seq(':', t._expr_or_assign),
                 seq(
                     choice(
-                        seq('do', t._expr_or_assign),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
-                    'else', t._expr_or_assign,
+                    'else', ':', t._expr_or_assign,
                 ),
-            )
+            ),
         )),
 
         if_block_expr: t => prec.right(seq(
             'if', t._expr,
+            opt(t._if_rep),
             choice(
                 t.block,
                 seq(
                     choice(
-                        seq('do', t._expr_or_assign),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
-                    'else',
-                    t.block,
+                    'else', t.block,
                 ),
-            )
+            ),
         )),
 
         switch_line_expr: t => prec.right(seq(
             'switch', t._expr,
-            repeat(choice(
+            rep(choice(
                 seq(
                     'case', t._expr, opt(t.alias),
                     choice(
-                        seq('do', t._expr_or_assign, ';'),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
                 ),
                 seq(
                     'default', opt(t.alias),
                     choice(
-                        seq(t._expr_or_assign, ';'),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
                 ),
@@ -580,11 +589,11 @@ module.exports = grammar({
             choice(
                 seq(
                     'case', t._expr, opt(t.alias),
-                    seq('do', t._expr_or_assign, ';'),
+                    ':', t._expr_or_assign,
                 ),
                 seq(
                     'default', opt(t.alias),
-                    seq(t._expr_or_assign, ';'),
+                    ':', t._expr_or_assign,
                 ),
             ),
         )),
@@ -595,14 +604,14 @@ module.exports = grammar({
                 seq(
                     'case', t._expr, opt(t.alias),
                     choice(
-                        seq('do', t._expr_or_assign, ';'),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
                 ),
                 seq(
                     'default', opt(t.alias),
                     choice(
-                        seq(t._expr_or_assign, ';'),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
                 ),
@@ -622,13 +631,13 @@ module.exports = grammar({
         for_line_expr: t => prec.right(seq(
             'for', opt(t._expr), 'in', t._expr,
             choice(
-                seq('do', t._expr_or_assign),
+                seq(':', t._expr_or_assign),
                 seq(
                     choice(
-                        seq('do', t._expr_or_assign),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
-                    'else', t._expr_or_assign,
+                    'else', ':', t._expr_or_assign,
                 ),
             ),
         )),
@@ -639,11 +648,10 @@ module.exports = grammar({
                 t.block,
                 seq(
                     choice(
-                        seq('do', t._expr_or_assign),
+                        seq(':', t._expr_or_assign),
                         t.block,
                     ),
-                    'else',
-                    t.block,
+                    'else', t.block,
                 ),
             )
         )),
@@ -700,20 +708,24 @@ module.exports = grammar({
             )),
         ),
 
+        _if_type_rep: t => rep1(prec.right(seq(
+            choice(
+                seq(':', t._type_expr),
+                t.block,
+            ),
+            'else', 'if', t._expr,
+        ))),
+
         if_type_expr: t => seq(
             'if', t._expr,
+            opt(t._if_type_rep),
             choice(
-                seq(
-                    'do',
-                    choice(
-                        t._type_expr,
-                    ),
-                ),
+                seq(':', t._type_expr),
                 t.block,
             ),
             'else',
             choice(
-                t._type_expr,
+                seq(':', t._type_expr),
                 t.block,
             ),
         ),
@@ -730,6 +742,7 @@ module.exports = grammar({
 
         // ---------- Stmt ----------
 
+        // TODO: Add assignment to other member and index operations
         assign_stmt: t => seq(
             t._ident, '=', t._expr,
         ),
@@ -826,6 +839,10 @@ function opt(...rule) {
 
 function rep(...rule) {
     return repeat(seq(...rule));
+}
+
+function rep1(...rule) {
+    return repeat1(seq(...rule));
 }
 
 function separate(rule, delimiter) {
