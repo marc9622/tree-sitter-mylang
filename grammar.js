@@ -105,6 +105,10 @@ module.exports = grammar({
 
         // ---------- Value ----------
 
+        addr_value: t => seq(
+          '&', t._ident,
+        ),
+
         null_value: _ => seq(
           'null',
         ),
@@ -131,6 +135,7 @@ module.exports = grammar({
         _value: t => choice(
             t._lit,
             t._ident,
+            t.addr_value,
             t.null_value,
             t.uninit_value,
             t._type_value,
@@ -321,7 +326,7 @@ module.exports = grammar({
         ),
 
         unary_oper: t => seq(
-            choice('-', '!', '&'),
+            choice('-', '!'),
             choice(
                 t._value,
                 t.unary_oper,
@@ -438,12 +443,12 @@ module.exports = grammar({
                 t.compound_oper,
             ),
             '.',
-            choice(
+            field('member', choice(
                 t._ident,
                 t._load_oper,
                 t.call_oper,
                 t.compound_oper,
-            ),
+            )),
         ),
 
         index_oper: t => seq(
@@ -507,8 +512,8 @@ module.exports = grammar({
             t.hint_oper,
             t.ptr_oper,
             t.arr_oper,
-            t._load_oper,
             t.member_oper,
+            t._load_oper,
         ),
 
         // ---------- Expr ----------
@@ -747,9 +752,14 @@ module.exports = grammar({
 
         // ---------- Stmt ----------
 
-        // TODO: Add assignment to other member and index operations
         assign_stmt: t => seq(
-            t._ident, '=', t._expr,
+            choice(
+                t._ident,
+                t.member_oper,
+                t._load_oper,
+            ),
+            '=',
+            t._expr,
         ),
 
         _expr_or_assign: t => choice(

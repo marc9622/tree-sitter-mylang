@@ -14,6 +14,8 @@
 (call_oper func_ident: (lower_ident) @function)
 (func_decl func_ident: (lower_ident) @function)
 
+(member_oper member: (lower_ident) @variable.member)
+
 [
 "null"
 "uninit"
