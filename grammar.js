@@ -44,8 +44,8 @@ module.exports = grammar({
         // TODO: Temporary
         markdown_block_comment: _ => seq(
           '```',
-          field('language', /[_a-zA-Z]*/),
-          field('code', /[^`]*/),
+          field('language', token(/[_a-zA-Z]*/)),
+          field('code', token(/[^`]*/)),
           '```',
         ),
 

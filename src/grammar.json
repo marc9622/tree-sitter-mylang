@@ -91,16 +91,22 @@
           "type": "FIELD",
           "name": "language",
           "content": {
-            "type": "PATTERN",
-            "value": "[_a-zA-Z]*"
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[_a-zA-Z]*"
+            }
           }
         },
         {
           "type": "FIELD",
           "name": "code",
           "content": {
-            "type": "PATTERN",
-            "value": "[^`]*"
+            "type": "TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[^`]*"
+            }
           }
         },
         {
