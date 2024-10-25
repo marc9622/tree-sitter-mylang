@@ -3208,6 +3208,11 @@
     "fields": {}
   },
   {
+    "type": "markdown_block_comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "member_oper",
     "named": true,
     "fields": {
@@ -4010,6 +4015,10 @@
       "types": [
         {
           "type": "for_decl",
+          "named": true
+        },
+        {
+          "type": "markdown_block_comment",
           "named": true
         },
         {
@@ -5062,6 +5071,10 @@
   },
   {
     "type": "^",
+    "named": false
+  },
+  {
+    "type": "```",
     "named": false
   },
   {

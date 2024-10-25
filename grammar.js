@@ -20,6 +20,7 @@ module.exports = grammar({
 
     rules: {
         source_file: t => rep(choice(
+            t.markdown_block_comment,
             seq(t.value_line_decl, ';'),
             t.value_block_decl,
             t._type_value,
@@ -39,6 +40,14 @@ module.exports = grammar({
             /[^*]*\*+([^/*][^*]*\*+)*/,
             '/',
         )),
+
+        // TODO: Temporary
+        markdown_block_comment: _ => seq(
+          '```',
+          field('language', /[_a-zA-Z]*/),
+          field('code', /[^`]*/),
+          '```',
+        ),
 
         // ---------- Lit ----------
 

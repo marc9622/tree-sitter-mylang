@@ -11,6 +11,10 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "SYMBOL",
+                "name": "markdown_block_comment"
+              },
+              {
                 "type": "SEQ",
                 "members": [
                   {
@@ -75,6 +79,35 @@
           }
         ]
       }
+    },
+    "markdown_block_comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "```"
+        },
+        {
+          "type": "FIELD",
+          "name": "language",
+          "content": {
+            "type": "PATTERN",
+            "value": "[_a-zA-Z]*"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "code",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^`]*"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "```"
+        }
+      ]
     },
     "bool_lit": {
       "type": "CHOICE",
