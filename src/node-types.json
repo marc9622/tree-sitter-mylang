@@ -2971,9 +2971,84 @@
   {
     "type": "index_oper",
     "named": true,
-    "fields": {},
+    "fields": {
+      "array": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "addr_value",
+            "named": true
+          },
+          {
+            "type": "bool_lit",
+            "named": true
+          },
+          {
+            "type": "call_oper",
+            "named": true
+          },
+          {
+            "type": "char_lit",
+            "named": true
+          },
+          {
+            "type": "compound_oper",
+            "named": true
+          },
+          {
+            "type": "dec_lit",
+            "named": true
+          },
+          {
+            "type": "deref_oper",
+            "named": true
+          },
+          {
+            "type": "index_oper",
+            "named": true
+          },
+          {
+            "type": "int_lit",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "null_value",
+            "named": true
+          },
+          {
+            "type": "paren_expr",
+            "named": true
+          },
+          {
+            "type": "str_lit",
+            "named": true
+          },
+          {
+            "type": "struct_type",
+            "named": true
+          },
+          {
+            "type": "uninit_value",
+            "named": true
+          },
+          {
+            "type": "union_type",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -3140,6 +3215,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "addr_value",
+            "named": true
+          },
           {
             "type": "call_oper",
             "named": true

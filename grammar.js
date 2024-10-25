@@ -445,6 +445,7 @@ module.exports = grammar({
             '.',
             field('member', choice(
                 t._ident,
+                t.addr_value,
                 t._load_oper,
                 t.call_oper,
                 t.compound_oper,
@@ -452,13 +453,13 @@ module.exports = grammar({
         ),
 
         index_oper: t => seq(
-            choice(
+            field('array', choice(
                 t._value,
                 t._load_oper,
                 t.paren_expr,
                 t.call_oper,
                 t.compound_oper,
-            ),
+            )),
             '[', t._expr, ']',
         ),
 
