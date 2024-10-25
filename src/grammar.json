@@ -88,26 +88,25 @@
           "value": "```"
         },
         {
-          "type": "FIELD",
-          "name": "language",
+          "type": "ALIAS",
           "content": {
-            "type": "TOKEN",
+            "type": "IMMEDIATE_TOKEN",
             "content": {
               "type": "PATTERN",
               "value": "[_a-zA-Z]*"
             }
-          }
+          },
+          "named": true,
+          "value": "inject_language"
         },
         {
-          "type": "FIELD",
-          "name": "code",
+          "type": "ALIAS",
           "content": {
-            "type": "TOKEN",
-            "content": {
-              "type": "PATTERN",
-              "value": "[^`]*"
-            }
-          }
+            "type": "PATTERN",
+            "value": "[^`]*"
+          },
+          "named": true,
+          "value": "inject_code"
         },
         {
           "type": "STRING",

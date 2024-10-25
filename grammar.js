@@ -42,10 +42,10 @@ module.exports = grammar({
         )),
 
         // TODO: Temporary
-        markdown_block_comment: _ => seq(
+        markdown_block_comment: t => seq(
           '```',
-          field('language', token(/[_a-zA-Z]*/)),
-          field('code', token(/[^`]*/)),
+          alias(token.immediate(/[_a-zA-Z]*/), t.inject_language),
+          alias(/[^`]*/, t.inject_code),
           '```',
         ),
 

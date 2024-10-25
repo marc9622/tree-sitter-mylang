@@ -3210,7 +3210,21 @@
   {
     "type": "markdown_block_comment",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "inject_code",
+          "named": true
+        },
+        {
+          "type": "inject_language",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "member_oper",
@@ -5144,6 +5158,14 @@
   {
     "type": "init",
     "named": false
+  },
+  {
+    "type": "inject_code",
+    "named": true
+  },
+  {
+    "type": "inject_language",
+    "named": true
   },
   {
     "type": "len",
