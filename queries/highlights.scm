@@ -1,6 +1,4 @@
 
-(markdown_block_comment (inject_language) @injection.language (inject_code) @injection.content) @comment
-
 (line_comment) @comment
 (block_comment) @comment
 
