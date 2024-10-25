@@ -1,6 +1,6 @@
 [
   {
-    "type": "addr_oper",
+    "type": "addr_value",
     "named": true,
     "fields": {},
     "children": {
@@ -26,6 +26,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "addsub_oper",
           "named": true
@@ -122,6 +126,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -176,6 +184,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "addsub_oper",
           "named": true
@@ -284,7 +296,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -447,7 +459,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -618,7 +630,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -879,7 +891,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -1047,7 +1059,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -1210,7 +1222,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -1369,7 +1381,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -1504,6 +1516,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -1578,6 +1594,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "addsub_oper",
           "named": true
@@ -1682,7 +1702,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -1849,7 +1869,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2028,7 +2048,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2210,7 +2230,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2361,6 +2381,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "arr_oper",
           "named": true
         },
@@ -2448,7 +2472,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2615,7 +2639,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2782,7 +2806,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -2953,7 +2977,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -3111,13 +3135,44 @@
   {
     "type": "member_oper",
     "named": true,
-    "fields": {},
+    "fields": {
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "call_oper",
+            "named": true
+          },
+          {
+            "type": "compound_oper",
+            "named": true
+          },
+          {
+            "type": "deref_oper",
+            "named": true
+          },
+          {
+            "type": "index_oper",
+            "named": true
+          },
+          {
+            "type": "lower_ident",
+            "named": true
+          },
+          {
+            "type": "upper_ident",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -3199,6 +3254,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "bool_lit",
           "named": true
@@ -3295,6 +3354,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "addsub_oper",
           "named": true
@@ -3407,6 +3470,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "addsub_oper",
           "named": true
         },
@@ -3502,7 +3569,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -3661,6 +3728,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "arr_oper",
           "named": true
         },
@@ -3743,6 +3814,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "addr_value",
+          "named": true
+        },
         {
           "type": "addsub_oper",
           "named": true
@@ -3886,6 +3961,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "addsub_oper",
           "named": true
         },
@@ -4025,7 +4104,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -4196,7 +4275,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -4367,7 +4446,7 @@
       "required": true,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {
@@ -4510,6 +4589,10 @@
       "required": true,
       "types": [
         {
+          "type": "addr_value",
+          "named": true
+        },
+        {
           "type": "bool_lit",
           "named": true
         },
@@ -4602,7 +4685,7 @@
       "required": false,
       "types": [
         {
-          "type": "addr_oper",
+          "type": "addr_value",
           "named": true
         },
         {

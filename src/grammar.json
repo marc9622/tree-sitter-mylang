@@ -288,6 +288,19 @@
         }
       ]
     },
+    "addr_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "&"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ident"
+        }
+      ]
+    },
     "null_value": {
       "type": "SEQ",
       "members": [
@@ -429,6 +442,10 @@
         {
           "type": "SYMBOL",
           "name": "_ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "addr_value"
         },
         {
           "type": "SYMBOL",
@@ -1540,24 +1557,6 @@
         }
       ]
     },
-    "addr_oper": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "&"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_ident"
-            }
-          ]
-        }
-      ]
-    },
     "member_oper": {
       "type": "SEQ",
       "members": [
@@ -1571,10 +1570,6 @@
             {
               "type": "SYMBOL",
               "name": "_load_oper"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "addr_oper"
             },
             {
               "type": "SYMBOL",
@@ -1599,29 +1594,29 @@
           "value": "."
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_ident"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_load_oper"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "addr_oper"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "call_oper"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "compound_oper"
-            }
-          ]
+          "type": "FIELD",
+          "name": "member",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_ident"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_load_oper"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "call_oper"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "compound_oper"
+              }
+            ]
+          }
         }
       ]
     },
@@ -1947,10 +1942,6 @@
         {
           "type": "SYMBOL",
           "name": "arr_oper"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "addr_oper"
         },
         {
           "type": "SYMBOL",
