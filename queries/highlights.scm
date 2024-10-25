@@ -15,6 +15,11 @@
 (func_decl func_ident: (lower_ident) @function)
 
 [
+"null"
+"uninit"
+] @constant
+
+[
 "="
 "+"
 "-"
@@ -69,7 +74,6 @@
 "break"
 "yield"
 "return"
-"uninit"
 "view"
 "len"
 "own"

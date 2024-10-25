@@ -105,6 +105,10 @@ module.exports = grammar({
 
         // ---------- Value ----------
 
+        null: _ => seq(
+            'null',
+        ),
+
         uninit: _ => seq(
             'uninit',
         ),
@@ -127,6 +131,7 @@ module.exports = grammar({
         _value: t => choice(
             t._lit,
             t._ident,
+            t.null,
             t.uninit,
             t._type_value,
         ),
