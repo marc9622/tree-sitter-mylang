@@ -1,24 +1,47 @@
 {
-    "name": "tree-sitter-mylang",
-    "version": "0.0.0",
-    "description": "",
-    "main": "bindings/node",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "tree-sitter": [
-        {
-            "scope": "source.mylang",
-            "file-types": [
-                "mylang"
-            ],
-            "highlights": "queries/highlights.scm",
-            "locals": "queries/locals.scm"
-        }
-    ],
-    "dependencies": {
-        "tree-sitter-cli": "^0.20.8"
+  "name": "tree-sitter-mylang",
+  "version": "0.0.0",
+  "description": "",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "author": "",
+  "license": "ISC",
+  "tree-sitter": [
+    {
+      "scope": "source.mylang",
+      "file-types": [
+        "mylang"
+      ],
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm"
     }
+  ],
+  "dependencies": {
+    "tree-sitter-cli": "^0.20.8",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.0"
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ]
 }

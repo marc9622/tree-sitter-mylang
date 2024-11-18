@@ -12,47 +12,47 @@ def a = a();
 def a: () -> Void { return }
 def a() -> Void { return }
 
-var a = a + a;
-var a = a - a;
-var a = a * a;
-var a = a / a;
-var a = a % a;
-var a = ! a;
-var a = & a;
-var a = a ^;
-var a: ?A = a;
-var a = a :: A;
-var a = a ..= a;
-var a = a =.. a;
-var a = a ..< a;
-var a = a <.. a;
-var a = a ..> a;
-var a = a >.. a;
-var a {
+let a = a + a;
+let a = a - a;
+let a = a * a;
+let a = a / a;
+let a = a % a;
+let a = ! a;
+let a = & a;
+let a = a ^;
+let a: ?A = a;
+let a = a :: A;
+let a = a ..= a;
+let a = a =.. a;
+let a = a ..< a;
+let a = a <.. a;
+let a = a ..> a;
+let a = a >.. a;
+let a {
     a += a;
     a -= a;
     a *= a;
     a /= a;
-    if a == a do return;
-    if a != a do return;
-    if a <= a do return;
-    if a >= a do return;
-    if a < a do return;
-    if a > a do return;
-    if a <> a do return;
+    if a == a: return;
+    if a != a: return;
+    if a <= a: return;
+    if a >= a: return;
+    if a < a: return;
+    if a > a: return;
+    if a <> a: return;
 }
-var a: () -> A;
-var a = a . a;
-var a: A = a;
-var a: []A = a;
-var a: () -> || { break a }
+let a: () -> A;
+let a = a . a;
+let a: A = a;
+let a: []A = a;
+let a: () -> || { break a }
 
-var a = true;
-var a = false;
-var a = uninit;
-var a = null;
-var a = void;
-var a = ();
+let a = true;
+let a = false;
+let a = uninit;
+let a = null;
+let a = void;
+let a = ();
 
 import A with A
 alias A = A;
@@ -67,11 +67,11 @@ extern a;
 intern a;
 macro a;
 def a {
-    if true and (false or true) do return;
-    switch {
-        true do return;
-    }
-    for a at a range 0..=0 in a do return;
+    if true and (false or true): return;
+    switch true
+    case true: return
+    default: return;
+    for a at a range 0..=0 in a: return;
     return;
     break;
     continue;

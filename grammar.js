@@ -20,7 +20,6 @@ module.exports = grammar({
 
     rules: {
         source_file: t => rep(choice(
-            t.markdown_block_comment,
             seq(t.value_line_decl, ';'),
             t.value_block_decl,
             t._type_value,
@@ -40,14 +39,6 @@ module.exports = grammar({
             /[^*]*\*+([^/*][^*]*\*+)*/,
             '/',
         )),
-
-        // TODO: Temporary
-        markdown_block_comment: t => seq(
-          '```',
-          alias(token.immediate(/[_a-zA-Z]*/), t.inject_language),
-          alias(/[^`]*/, t.inject_code),
-          '```',
-        ),
 
         // ---------- Lit ----------
 
@@ -442,25 +433,6 @@ module.exports = grammar({
             ),
         ),
 
-        member_oper: t => seq(
-            choice(
-                t._value,
-                t._load_oper,
-                t.member_oper,
-                t.paren_expr,
-                t.call_oper,
-                t.compound_oper,
-            ),
-            '.',
-            field('member', choice(
-                t._ident,
-                t.addr_value,
-                t._load_oper,
-                t.call_oper,
-                t.compound_oper,
-            )),
-        ),
-
         index_oper: t => seq(
             field('array', choice(
                 t._value,
@@ -486,6 +458,25 @@ module.exports = grammar({
         _load_oper: t => choice(
             t.index_oper,
             t.deref_oper,
+        ),
+
+        member_oper: t => seq(
+            choice(
+                t._value,
+                t._load_oper,
+                t.member_oper,
+                t.paren_expr,
+                t.call_oper,
+                t.compound_oper,
+            ),
+            '.',
+            choice(
+                t._ident,
+                t.addr_value,
+                t._load_oper,
+                t.call_oper,
+                t.compound_oper,
+            ),
         ),
 
         call_oper: t => seq(
@@ -557,6 +548,42 @@ module.exports = grammar({
             ),
             'else', 'if', t._expr,
         ))),
+
+        if_expr: t => prec.right(seq(
+            'if', t._expr,
+            opt(t._if_rep),
+            choice(
+                seq(':', t._expr_or_assign),
+                t.block,
+            ),
+            'else',
+            choice(
+                seq(':', t._expr_or_assign),
+                t.block,
+            ),
+        )),
+
+        // if_expr_end: t => seq(
+        //     'if', t._expr,
+        //     opt(t._if_rep),
+        //     choice(
+        //         choice(
+        //             seq(':', t._expr_or_assign_end),
+        //             t.block,
+        //         ),
+        //         seq(
+        //             choice(
+        //                 seq(':', t._expr_or_assign),
+        //                 t.block,
+        //             ),
+        //             'else',
+        //             choice(
+        //                 seq(':', t._expr_or_assign_end),
+        //                 t.block,
+        //             ),
+        //         ),
+        //     ),
+        // ),
 
         if_line_expr: t => prec.right(seq(
             'if', t._expr,

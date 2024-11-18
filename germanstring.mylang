@@ -1,4 +1,42 @@
 def main() -> Void {
+    let a = null;
+    let a = uninit;
+
+    let a = this;
+    let a = this.that;
+
+    let a = this^;
+    let a = this^.that;
+    let a = this.that^;
+
+    let a = &this;
+    let a = this.that;
+
+    let a = this^.&that;
+    let a = this.&that^;
+
+    let a = &this^;
+
+    let a = this[i];
+    let a = this[i].that[i];
+
+    let a = this^[i];
+    let a = this^[i].that[i];
+    let a = this[i].that^[i];
+
+    let a = &this[i];
+    let a = this[i].&that[i];
+
+    let a = this^[i].&that[i];
+    let a = this[i].&that^[i];
+
+    let a = this[i]^;
+    let a = this[i]^.that[i];
+    let a = this[i].that[i]^;
+
+    let a = this[i]^.&that[i];
+    let a = this[i].&that[i]^;
+
     if true: this = that else: that = this;
 
     let a: if true: Void else: Void;
